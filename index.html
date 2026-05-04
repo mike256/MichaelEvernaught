@@ -257,22 +257,26 @@
             loader.style.display = "block";
 
             try {
-                // IMPORTANT: In Cloudflare Pages, the Functions are mounted at the path matching the folder structure.
-                // Our script is in /functions/api/submit.js, so we fetch to /api/submit
                 const response = await fetch('/api/submit', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
 
+                // Safety check for JSON response content
+                const contentType = response.headers.get("content-type");
+                let result = {};
+                
+                if (contentType && contentType.includes("application/json")) {
+                    result = await response.json();
+                }
+
                 if (response.ok) {
-                    const result = await response.json();
                     document.getElementById('successMessage').innerText = `Your request has vanished into the ether, ${data.name}. Expect a manifestation by ${new Date().toLocaleDateString()} or sooner.`;
                     document.getElementById('successModal').style.display = 'flex';
                     this.reset();
                 } else {
-                    const errorData = await response.json();
-                    throw new Error(errorData.error || 'The spirits are currently restless.');
+                    throw new Error(result.error || 'The spirits are currently restless.');
                 }
             } catch (err) {
                 alert("A mystical interruption occurred: " + err.message);
