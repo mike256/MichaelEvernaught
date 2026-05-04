@@ -3,6 +3,17 @@
  * This script processes the form and sends an email using MailChannels.
  */
 
+export async function onRequest(context) {
+  // Only allow POST requests
+  if (context.request.method !== "POST") {
+    return new Response(JSON.stringify({ error: "Method Not Allowed" }), { 
+      status: 405,
+      headers: { "Content-Type": "application/json", "Allow": "POST" }
+    });
+  }
+  return onRequestPost(context);
+}
+
 export async function onRequestPost(context) {
   try {
     const data = await context.request.json();
@@ -16,7 +27,6 @@ export async function onRequestPost(context) {
       });
     }
 
-    // Prepare the email body
     const emailBody = `
 Greetings Michael,
 
@@ -39,30 +49,15 @@ Expect magic.
     // MailChannels integration
     const sendEmailResponse = await fetch("https://api.mailchannels.net/tx/v1/send", {
       method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
+      headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        personalizations: [
-          {
-            to: [{ email: "mike256+evernaught@gmail.com", name: "Michael Evernaught" }],
-          },
-        ],
-        from: {
-          email: "no-reply@michaelevernaught.com",
-          name: "The Man of Wonder Website",
-        },
+        personalizations: [{ to: [{ email: "mike256+evernaught@gmail.com", name: "Michael Evernaught" }] }],
+        from: { email: "no-reply@michaelevernaught.com", name: "The Man of Wonder Website" },
         subject: `New Booking Request: ${event_type} from ${name}`,
-        content: [
-          {
-            type: "text/plain",
-            value: emailBody,
-          },
-        ],
+        content: [{ type: "text/plain", value: emailBody }],
       }),
     });
 
-    // Ensure we always return a valid JSON response to the frontend
     if (!sendEmailResponse.ok) {
         const errorText = await sendEmailResponse.text();
         return new Response(JSON.stringify({ error: `Email service failed: ${errorText}` }), {
