@@ -16,7 +16,7 @@ export async function onRequestPost(context) {
       });
     }
 
-    // Prepare the email body for the "Man of Wonder"
+    // Prepare the email body
     const emailBody = `
 Greetings Michael,
 
@@ -36,11 +36,7 @@ ${message}
 Expect magic.
     `;
 
-    /**
-     * MailChannels integration for Cloudflare Workers/Pages.
-     * This service allows sending email from Cloudflare without an external API key,
-     * provided your domain's SPF record is configured correctly.
-     */
+    // MailChannels integration
     const sendEmailResponse = await fetch("https://api.mailchannels.net/tx/v1/send", {
       method: "POST",
       headers: {
@@ -49,7 +45,7 @@ Expect magic.
       body: JSON.stringify({
         personalizations: [
           {
-            to: [{ email: "mike256+evernaught@gmail.com.com", name: "Michael Evernaught" }],
+            to: [{ email: "bookings@michaelevernaught.com", name: "Michael Evernaught" }],
           },
         ],
         from: {
@@ -66,9 +62,13 @@ Expect magic.
       }),
     });
 
+    // Ensure we always return a valid JSON response to the frontend
     if (!sendEmailResponse.ok) {
         const errorText = await sendEmailResponse.text();
-        throw new Error(`Email service failed: ${errorText}`);
+        return new Response(JSON.stringify({ error: `Email service failed: ${errorText}` }), {
+            status: 500,
+            headers: { "Content-Type": "application/json" }
+        });
     }
 
     return new Response(JSON.stringify({ success: true, message: "Correspondence dispatched." }), {
