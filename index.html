@@ -257,6 +257,8 @@
             loader.style.display = "block";
 
             try {
+                // IMPORTANT: In Cloudflare Pages, the Functions are mounted at the path matching the folder structure.
+                // Our script is in /functions/api/submit.js, so we fetch to /api/submit
                 const response = await fetch('/api/submit', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -269,7 +271,8 @@
                     document.getElementById('successModal').style.display = 'flex';
                     this.reset();
                 } else {
-                    throw new Error('The spirits are currently restless.');
+                    const errorData = await response.json();
+                    throw new Error(errorData.error || 'The spirits are currently restless.');
                 }
             } catch (err) {
                 alert("A mystical interruption occurred: " + err.message);
