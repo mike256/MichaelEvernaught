@@ -272,14 +272,14 @@
                 }
 
                 if (response.ok) {
-                    document.getElementById('successMessage').innerText = `Your request has vanished into the ether, ${data.name}. Expect a manifestation by ${new Date().toLocaleDateString()} or sooner.`;
+                    document.getElementById('successMessage').innerText = `Your request has been sent, ${data.name}. Expect a manifestation by ${new Date().toLocaleDateString()} or sooner.`;
                     document.getElementById('successModal').style.display = 'flex';
                     this.reset();
                 } else {
-                    throw new Error(result.error || 'The spirits are currently restless.');
+                    throw new Error(result.error || 'An error has occured.');
                 }
             } catch (err) {
-                alert("A mystical interruption occurred: " + err.message);
+                alert("Oops, something went wrong! : " + err.message);
             } finally {
                 btn.disabled = false;
                 btnText.innerText = "Dispatch Request";
