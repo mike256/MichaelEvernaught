@@ -45,7 +45,7 @@ Expect magic.
       body: JSON.stringify({
         personalizations: [
           {
-            to: [{ email: "bookings@michaelevernaught.com", name: "Michael Evernaught" }],
+            to: [{ email: "mike256+evernaught@gmail.com.com", name: "Michael Evernaught" }],
           },
         ],
         from: {
