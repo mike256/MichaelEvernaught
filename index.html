@@ -65,7 +65,7 @@
             text-shadow: 1px 1px 0px rgba(255,255,255,0.1), 2px 2px 5px rgba(0,0,0,0.8);
         }
 
-        /* ANTIQUE PHOTO GALLERY */
+        /* GALLERY */
         .gallery-section { padding: 100px 10%; background: #0d0b09; text-align: center; }
         .gallery-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -75,47 +75,23 @@
         .photo-frame {
             position: relative;
             background: #1e1a15; 
-            padding: 25px; /* Frame thickness */
-            
-            /* Complex Antique Frame Border */
-            border: 8px solid #0d0b09; /* Outer wood edge */
-            outline: 2px solid #d4af37; /* Chiseled gold trim */
+            padding: 25px;
+            border: 8px solid #0d0b09;
+            outline: 2px solid #d4af37;
             outline-offset: -12px;
-            
-            box-shadow: 
-                0 20px 40px rgba(0,0,0,0.8), /* Floor shadow */
-                inset 0 0 15px rgba(0,0,0,1); /* Inner frame depth */
-            
+            box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 15px rgba(0,0,0,1);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .photo-frame::before {
-            /* Inner "Gold Bezel" effect */
-            content: '';
-            position: absolute;
-            top: 20px; left: 20px; right: 20px; bottom: 20px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            pointer-events: none;
-        }
-
         .photo-frame:hover { transform: scale(1.05) translateY(-10px); }
-
         .photo-frame img { 
-            width: 100%; 
-            height: auto; 
-            display: block;
+            width: 100%; height: auto; display: block;
             filter: sepia(0.4) contrast(1.1) brightness(0.9);
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Recess image into frame */
         }
 
         .caption { 
-            font-family: 'Cinzel', serif; 
-            color: #d4af37; 
-            margin-top: 25px; 
-            letter-spacing: 2px; 
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            font-family: 'Cinzel', serif; color: #d4af37; margin-top: 25px; 
+            letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;
         }
 
         /* Contact Section */
@@ -126,43 +102,67 @@
         }
 
         .contact-card {
-            width: 100%; 
-            max-width: 700px; 
-            background: #e0d5c1;
-            padding: 80px 60px; 
-            color: #120f0c; 
-            border: 1px solid #bfa57d;
-            border-radius: 40px; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.6);
+            width: 100%; max-width: 700px; background: #e0d5c1;
+            padding: 60px; color: #120f0c; border: 1px solid #bfa57d;
+            border-radius: 40px; box-shadow: 0 40px 100px rgba(0,0,0,0.6);
             position: relative;
         }
 
         /* GLASS WAX SEAL BUTTON */
         .wax-seal {
             display: flex; align-items: center; justify-content: center;
-            margin: 40px auto 0; width: 150px; height: 150px;
+            margin: 40px auto 0; padding: 22px 60px;
             background: radial-gradient(circle at 30% 30%, rgba(100, 0, 0, 0.6), rgba(40, 0, 0, 0.75));
             color: rgba(255, 255, 255, 0.85);
             border: 1.5px solid rgba(212, 175, 55, 0.25);
-            border-radius: 50%;
+            border-radius: 60px;
             font-family: 'Cinzel', serif; font-weight: bold; font-size: 1rem;
             text-transform: uppercase; letter-spacing: 2px; cursor: pointer;
             backdrop-filter: blur(4px);
-            box-shadow: 
-                0 6px 15px rgba(0,0,0,0.3), 
-                inset 0 0 10px rgba(80, 0, 0, 0.3),
-                inset 3px 3px 8px rgba(255, 255, 255, 0.1), 
-                inset -3px -3px 10px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3), inset 0 0 10px rgba(80, 0, 0, 0.3);
             transition: all 0.5s ease;
         }
 
-        .wax-seal:hover {
+        .wax-seal:hover:not(:disabled) {
             transform: scale(1.03);
             background: radial-gradient(circle at 30% 30%, rgba(139, 0, 0, 0.7), rgba(60, 0, 0, 0.85));
             box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3);
         }
 
+        .wax-seal:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            filter: grayscale(1);
+        }
+
+        /* Form Inputs */
+        .input-field {
+            width: 100%; padding: 15px 0; background: transparent; 
+            border: none; border-bottom: 1px solid rgba(0,0,0,0.2); 
+            font-family: inherit; outline: none; margin-bottom: 25px;
+            color: #120f0c; font-size: 1.1rem;
+        }
+
+        .input-field::placeholder { color: rgba(18, 15, 12, 0.5); font-style: italic; }
+
+        .optional-note {
+            display: block;
+            font-size: 0.75rem;
+            opacity: 0.6;
+            margin-top: -20px;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
         footer { text-align: center; padding: 60px 40px; font-size: 0.8rem; opacity: 0.4; letter-spacing: 2px; }
+
+        /* Loader */
+        .loader {
+            display: none; width: 24px; height: 24px; border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%; border-top-color: #fff; animation: spin 1s linear infinite;
+            margin-right: 15px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -174,7 +174,7 @@
             <h1>Michael Evernaught</h1>
             <div class="subtitle">International Man of Wonder</div>
             <a href="#contact" style="text-decoration:none;">
-                <button class="wax-seal" style="width:auto; height:auto; padding:22px 60px; border-radius:60px;">Request an Audience</button>
+                <button class="wax-seal">Request an Audience</button>
             </a>
         </div>
     </section>
@@ -184,52 +184,100 @@
         <h2 style="font-family:'Cinzel'; color:#d4af37; font-size: 2.2rem; margin-bottom: 20px;">Moments of Illumination</h2>
         <div class="gallery-grid">
             <div class="photo-frame">
-                <img src="poster1.png" alt="Illusion I">
+                <img src="poster1.png" alt="Illusion I" onerror="this.src='https://placehold.co/600x800/1e1a15/d4af37?text=The+Grand+Illusion'">
                 <div class="caption">The Grand Illusion</div>
             </div>
             <div class="photo-frame">
-                <img src="poster2.png" alt="Illusion II">
+                <img src="poster2.png" alt="Illusion II" onerror="this.src='https://placehold.co/600x800/1e1a15/d4af37?text=Echoes+of+Mystery'">
                 <div class="caption">Echoes of Mystery</div>
             </div>
             <div class="photo-frame">
-                <img src="poster3.png" alt="Illusion III">
+                <img src="poster3.png" alt="Illusion III" onerror="this.src='https://placehold.co/600x800/1e1a15/d4af37?text=The+Final+Vanishing'">
                 <div class="caption">The Final Vanishing</div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- CONTACT / BOOKING -->
     <section id="contact" class="contact-wrap">
         <div class="contact-card">
-            <h2 style="text-align:center; font-family:'Cinzel'; font-size: 2.2rem;">Functionality pending</h2>
-            <h3 style="text-align:center; font-family:'Cinzel'; font-size: 2.2rem;">Please call or text for info 541.380.1639</h3>
-            <p style="text-align:center; font-style:italic; opacity:0.7; margin-bottom:40px;">For bookings and matters of mystery.</p>
-            <form id="audience-form">
-                <input type="text" id="name" placeholder="Name or Alias" required style="width:100%; padding:15px 0; background:transparent; border:none; border-bottom:1px solid rgba(0,0,0,0.2); font-family:inherit; outline:none; margin-bottom:30px;">
-                <input type="email" id="email" placeholder="Contact Email" required style="width:100%; padding:15px 0; background:transparent; border:none; border-bottom:1px solid rgba(0,0,0,0.2); font-family:inherit; outline:none; margin-bottom:30px;">
-                <textarea id="message" rows="4" placeholder="Your Correspondence" required style="width:100%; padding:15px 0; background:transparent; border:none; border-bottom:1px solid rgba(0,0,0,0.2); font-family:inherit; outline:none; margin-bottom:30px; resize:none;"></textarea>
-                <button type="submit" class="wax-seal" disabled>Dispatch</button>
+            <h2 style="text-align:center; font-family:'Cinzel'; font-size: 2.2rem; margin-bottom: 10px;">The Ledger of Inquiry</h2>
+            <p style="text-align:center; font-style:italic; opacity:0.7; margin-bottom:40px;">For international bookings and matters of mystery.</p>
+            
+            <form id="booking-form">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <input type="text" name="name" placeholder="Name or Alias" required class="input-field">
+                    <input type="email" name="email" placeholder="Contact Email" required class="input-field">
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                    <input type="tel" name="phone" placeholder="Phone Number" class="input-field">
+                    <input type="text" name="event_type" placeholder="Nature of Event" required class="input-field">
+                </div>
+
+                <div>
+                    <input type="date" name="event_date" class="input-field" title="Event Date">
+                    <span class="optional-note">(Date optional)</span>
+                </div>
+
+                <textarea name="message" rows="4" placeholder="Your Correspondence..." required class="input-field" style="resize:none;"></textarea>
+                
+                <button type="submit" id="submit-btn" class="wax-seal">
+                    <div class="loader" id="loader"></div>
+                    <span id="btn-text">Dispatch Request</span>
+                </button>
             </form>
         </div>
     </section>
 
+    <!-- SUCCESS MODAL -->
     <div id="successModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center; backdrop-filter:blur(10px);">
         <div style="background:#e0d5c1; padding:50px; border:2px solid #d4af37; border-radius:30px; text-align:center; color:#120f0c; max-width:450px;">
             <h2 style="font-family:'Cinzel'; color:#600000;">Correspondence Received</h2>
-            <p id="successMessage"></p>
-            <button onclick="document.getElementById('successModal').style.display='none'" style="margin-top:25px; background:transparent; border:1px solid #120f0c; padding:10px 20px; font-family:'Cinzel'; cursor:pointer;">Return</button>
+            <p id="successMessage" style="margin-top:20px; line-height:1.6;"></p>
+            <button onclick="document.getElementById('successModal').style.display='none'" style="margin-top:25px; background:transparent; border:1px solid #120f0c; padding:10px 20px; font-family:'Cinzel'; cursor:pointer; text-transform:uppercase; letter-spacing:1px;">Return to the World</button>
         </div>
     </div>
 
     <footer>&copy; 2026 Michael Evernaught | International Man of Wonder</footer>
 
     <script>
-        document.getElementById('audience-form').addEventListener('submit', function(e) {
+        document.getElementById('booking-form').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const name = document.getElementById('name').value;
-            document.getElementById('successMessage').innerText = `Your message has vanished into the ether, ${name}. Expect a manifestation soon.`;
-            document.getElementById('successModal').style.display = 'flex';
-            this.reset();
+            
+            const btn = document.getElementById('submit-btn');
+            const btnText = document.getElementById('btn-text');
+            const loader = document.getElementById('loader');
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData.entries());
+
+            // UI Feedback
+            btn.disabled = true;
+            btnText.innerText = "Manifesting...";
+            loader.style.display = "block";
+
+            try {
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    const result = await response.json();
+                    document.getElementById('successMessage').innerText = `Your request has vanished into the ether, ${data.name}. Expect a manifestation by ${new Date().toLocaleDateString()} or sooner.`;
+                    document.getElementById('successModal').style.display = 'flex';
+                    this.reset();
+                } else {
+                    throw new Error('The spirits are currently restless.');
+                }
+            } catch (err) {
+                alert("A mystical interruption occurred: " + err.message);
+            } finally {
+                btn.disabled = false;
+                btnText.innerText = "Dispatch Request";
+                loader.style.display = "none";
+            }
         });
     </script>
 </body>
