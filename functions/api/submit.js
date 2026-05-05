@@ -4,17 +4,22 @@
  */
 
 export async function onRequest(context) {
-  // Only allow POST requests
-  if (context.request.method !== "POST") {
-    return new Response(JSON.stringify({ error: "Method Not Allowed" }), { 
-      status: 405,
-      headers: { "Content-Type": "application/json", "Allow": "POST" }
-    });
+  // Explicitly handle POST requests
+  if (context.request.method === "POST") {
+    return await handlePost(context);
   }
-  return onRequestPost(context);
+
+  // Return 405 for any other method (GET, etc.) to this specific API route
+  return new Response(JSON.stringify({ error: `Method ${context.request.method} Not Allowed` }), {
+    status: 405,
+    headers: { 
+      "Content-Type": "application/json",
+      "Allow": "POST" 
+    }
+  });
 }
 
-export async function onRequestPost(context) {
+async function handlePost(context) {
   try {
     const data = await context.request.json();
     const { name, email, phone, event_type, event_date, message } = data;
@@ -46,27 +51,32 @@ ${message}
 Expect magic.
     `;
 
-    // MailChannels integration
+    // MailChannels integration for Cloudflare Workers/Pages
     const sendEmailResponse = await fetch("https://api.mailchannels.net/tx/v1/send", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
-        personalizations: [{ to: [{ email: "mike256+evernaught@gmail.com", name: "Michael Evernaught" }] }],
-        from: { email: "no-reply@michaelevernaught.com", name: "The Man of Wonder Website" },
+        personalizations: [{ 
+          to: [{ email: "mike256+evernaught@gmail.com", name: "Michael Evernaught" }] 
+        }],
+        from: { 
+          email: "no-reply@michaelevernaught.com", 
+          name: "The Man of Wonder Website" 
+        },
         subject: `New Booking Request: ${event_type} from ${name}`,
         content: [{ type: "text/plain", value: emailBody }],
       }),
     });
 
     if (!sendEmailResponse.ok) {
-        const errorText = await sendEmailResponse.text();
-        return new Response(JSON.stringify({ error: `Email service failed: ${errorText}` }), {
-            status: 500,
-            headers: { "Content-Type": "application/json" }
-        });
+      const errorText = await sendEmailResponse.text();
+      return new Response(JSON.stringify({ error: `Mail service error: ${errorText}` }), {
+        status: 500,
+        headers: { "Content-Type": "application/json" }
+      });
     }
 
-    return new Response(JSON.stringify({ success: true, message: "Correspondence dispatched." }), {
+    return new Response(JSON.stringify({ success: true }), {
       status: 200,
       headers: { "Content-Type": "application/json" }
     });
