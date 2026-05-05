@@ -257,7 +257,7 @@
             loader.style.display = "block";
 
             try {
-                const response = await fetch('/functions/api/submit.js', {
+                const response = await fetch('/functions/api/submit', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
