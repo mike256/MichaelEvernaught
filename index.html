@@ -247,7 +247,7 @@
          * This script is agnostic of the backend provider.
          * You can point API_ENDPOINT to any service (Formspree, Zapier, Custom Node Server, etc.)
          */
-        const API_ENDPOINT = '/api/submit'; 
+        const API_ENDPOINT = '/functions/api/submit.js'; 
 
         document.getElementById('booking-form').addEventListener('submit', async function(e) {
             e.preventDefault();
