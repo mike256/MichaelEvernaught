@@ -257,12 +257,13 @@
             loader.style.display = "block";
 
             try {
+                    console.log("test a: Start try block"
                 const response = await fetch('/functions/api/submit.js', {
-                    method: 'GET',
+                    method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
-
+                    console.log("test 1: " + response)
                 // Safety check for JSON response content
                 const contentType = response.headers.get("content-type");
                 let result = {};
