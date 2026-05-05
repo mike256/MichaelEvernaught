@@ -242,6 +242,13 @@
     <footer>&copy; 2026 Michael Evernaught | International Man of Wonder</footer>
 
     <script>
+        /**
+         * Generic Form Handler
+         * This script is agnostic of the backend provider.
+         * You can point API_ENDPOINT to any service (Formspree, Zapier, Custom Node Server, etc.)
+         */
+        const API_ENDPOINT = '/api/submit'; 
+
         document.getElementById('booking-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -249,38 +256,38 @@
             const btnText = document.getElementById('btn-text');
             const loader = document.getElementById('loader');
             const formData = new FormData(this);
-            const data = Object.fromEntries(formData.entries());
+            const payload = Object.fromEntries(formData.entries());
 
             // UI Feedback
             btn.disabled = true;
-            btnText.innerText = "Manifesting...";
+            btnText.innerText = "Processing...";
             loader.style.display = "block";
 
             try {
-                    console.log("test a: Start try block"
-                const response = await fetch('/functions/api/submit.js', {
+                const response = await fetch(API_ENDPOINT, {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(data)
+                    headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
                 });
-                    console.log("test 1: " + response)
-                // Safety check for JSON response content
-                const contentType = response.headers.get("content-type");
+
                 let result = {};
-                
-                if (contentType && contentType.includes("application/json")) {
+                if (response.headers.get("content-type")?.includes("application/json")) {
                     result = await response.json();
                 }
 
                 if (response.ok) {
-                    document.getElementById('successMessage').innerText = `Your request has been sent, ${data.name}. Expect a manifestation by ${new Date().toLocaleDateString()} or sooner.`;
+                    document.getElementById('successMessage').innerText = `Your request has been dispatched, ${payload.name}. Expect a manifestation shortly.`;
                     document.getElementById('successModal').style.display = 'flex';
                     this.reset();
                 } else {
-                    throw new Error(result.error || 'An error has occured.');
+                    throw new Error(result.error || `Submission failed (Error ${response.status})`);
                 }
             } catch (err) {
-                alert("Oops, something went wrong! : " + err.message);
+                console.error('Submission Error:', err);
+                alert("A mystical interruption occurred: " + err.message);
             } finally {
                 btn.disabled = false;
                 btnText.innerText = "Dispatch Request";
