@@ -258,7 +258,7 @@
 
             try {
                 const response = await fetch('/functions/api/submit.js', {
-                    method: 'POST',
+                    method: 'GET',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
