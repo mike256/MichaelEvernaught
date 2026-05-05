@@ -6,13 +6,7 @@
     "nodejs_compat"
   ],
   "assets": {
-    "directory": ".",
-    "binding": "ASSETS"
-  },
-  "build": {
-    "command": "",
-    "path": "functions",
-    "upload_source_maps": false
+    "directory": "."
   },
   "observability": {
     "enabled": true
