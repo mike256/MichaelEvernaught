@@ -4,22 +4,17 @@
  */
 
 export async function onRequest(context) {
-  // Explicitly handle POST requests
-  if (context.request.method === "POST") {
-    return await handlePost(context);
+  // Only allow POST requests to this endpoint
+  if (context.request.method !== "POST") {
+    return new Response(JSON.stringify({ error: `Method ${context.request.method} Not Allowed` }), {
+      status: 405,
+      headers: { 
+        "Content-Type": "application/json",
+        "Allow": "POST" 
+      }
+    });
   }
 
-  // Return 405 for any other method (GET, etc.) to this specific API route
-  return new Response(JSON.stringify({ error: `Method ${context.request.method} Not Allowed` }), {
-    status: 405,
-    headers: { 
-      "Content-Type": "application/json",
-      "Allow": "POST" 
-    }
-  });
-}
-
-async function handlePost(context) {
   try {
     const data = await context.request.json();
     const { name, email, phone, event_type, event_date, message } = data;
