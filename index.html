@@ -3,7 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Michael Evernaught | International Man of Wonder</title>
+    
+    <!-- Primary Meta Tags -->
+    <title>Michael Evernaught | Magician in the Columbia River Gorge</title>
+    <meta name="title" content="Michael Evernaught | Magician in the Columbia River Gorge">
+    <meta name="description" content="Michael Evernaught provides world-class traveling magic, closeup, walk-around, and platform magic performances throughout the Columbia River Gorge and beyond.">
+    <meta name="keywords" content="magician columbia river gorge, traveling magician, walk around magic, closeup magic, platform magic, event entertainment hood river, magician the dalles, magician white salmon">
+    <meta name="author" content="Michael Evernaught">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://michaelevernaught.com/">
+    <meta property="og:title" content="Michael Evernaught | International Man of Wonder">
+    <meta property="og:description" content="Experience the impossible. Traveling closeup and platform magic in the Columbia River Gorge.">
+    <meta property="og:image" content="https://michaelevernaught.com/hero2.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://michaelevernaught.com/">
+    <meta property="twitter:title" content="Michael Evernaught | International Man of Wonder">
+    <meta property="twitter:description" content="Experience the impossible. Traveling closeup and platform magic in the Columbia River Gorge.">
+    <meta property="twitter:image" content="https://michaelevernaught.com/hero2.png">
+
+    <!-- Structured Data for Local Business/Service -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EntertainmentBusiness",
+      "name": "Michael Evernaught",
+      "description": "Professional traveling magician specializing in closeup, walk-around, and platform magic performances.",
+      "url": "https://michaelevernaught.com",
+      "image": "https://michaelevernaught.com/hero2.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Columbia River Gorge",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoShape",
+        "region": "Columbia River Gorge"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Magic Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Closeup Magic"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Walk-around Magic"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Platform Magic"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Fauna+One&display=swap');
 
@@ -106,11 +175,28 @@
             padding: 60px; color: #120f0c; border: 1px solid #bfa57d;
             border-radius: 40px; box-shadow: 0 40px 100px rgba(0,0,0,0.6);
             position: relative;
+            text-align: center;
         }
 
-        /* GLASS WAX SEAL BUTTON */
+        .contact-link {
+            display: inline-block;
+            margin-top: 20px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            color: #600000;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
+        .contact-link:hover {
+            opacity: 0.7;
+        }
+
+        /* GLASS WAX SEAL BUTTON (Link Style) */
         .wax-seal {
-            display: flex; align-items: center; justify-content: center;
+            display: inline-flex; align-items: center; justify-content: center;
             margin: 40px auto 0; padding: 22px 60px;
             background: radial-gradient(circle at 30% 30%, rgba(100, 0, 0, 0.6), rgba(40, 0, 0, 0.75));
             color: rgba(255, 255, 255, 0.85);
@@ -121,48 +207,17 @@
             backdrop-filter: blur(4px);
             box-shadow: 0 6px 15px rgba(0,0,0,0.3), inset 0 0 10px rgba(80, 0, 0, 0.3);
             transition: all 0.5s ease;
+            text-decoration: none;
         }
 
-        .wax-seal:hover:not(:disabled) {
+        .wax-seal:hover {
             transform: scale(1.03);
             background: radial-gradient(circle at 30% 30%, rgba(139, 0, 0, 0.7), rgba(60, 0, 0, 0.85));
             box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3);
-        }
-
-        .wax-seal:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            filter: grayscale(1);
-        }
-
-        /* Form Inputs */
-        .input-field {
-            width: 100%; padding: 15px 0; background: transparent; 
-            border: none; border-bottom: 1px solid rgba(0,0,0,0.2); 
-            font-family: inherit; outline: none; margin-bottom: 25px;
-            color: #120f0c; font-size: 1.1rem;
-        }
-
-        .input-field::placeholder { color: rgba(18, 15, 12, 0.5); font-style: italic; }
-
-        .optional-note {
-            display: block;
-            font-size: 0.75rem;
-            opacity: 0.6;
-            margin-top: -20px;
-            margin-bottom: 25px;
-            font-style: italic;
+            color: #fff;
         }
 
         footer { text-align: center; padding: 60px 40px; font-size: 0.8rem; opacity: 0.4; letter-spacing: 2px; }
-
-        /* Loader */
-        .loader {
-            display: none; width: 24px; height: 24px; border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 50%; border-top-color: #fff; animation: spin 1s linear infinite;
-            margin-right: 15px;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
@@ -173,9 +228,7 @@
         <div class="hero-text">
             <h1>Michael Evernaught</h1>
             <div class="subtitle">International Man of Wonder</div>
-            <a href="#contact" style="text-decoration:none;">
-                <button class="wax-seal">Request an Audience</button>
-            </a>
+            <a href="#contact" class="wax-seal">Request an Audience</a>
         </div>
     </section>
 
@@ -198,103 +251,68 @@
         </div>
     </section>
 
-    <!-- CONTACT / BOOKING ---- Commented out due to broken functionality. 
+    <!-- CONTACT / BOOKING -->
     <section id="contact" class="contact-wrap">
         <div class="contact-card">
-            <h2 style="text-align:center; font-family:'Cinzel'; font-size: 2.2rem; margin-bottom: 10px;">The Ledger of Inquiry</h2>
-            <p style="text-align:center; font-style:italic; opacity:0.7; margin-bottom:40px;">For international bookings and matters of mystery.</p>
+            <h2 style="font-family:'Cinzel'; font-size: 2.2rem; margin-bottom: 10px;">The Ledger of Inquiry</h2>
+            <p style="font-style:italic; opacity:0.7; margin-bottom:40px; line-height: 1.6;">
+                For international bookings, closeup performances, and matters of mystery throughout the Columbia River Gorge.
+            </p>
             
-            <form id="booking-form">
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    <input type="text" name="name" placeholder="Name or Alias" required class="input-field">
-                    <input type="email" name="email" placeholder="Contact Email" required class="input-field">
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-                    <input type="tel" name="phone" placeholder="Phone Number" class="input-field">
-                    <input type="text" name="event_type" placeholder="Nature of Event" required class="input-field">
-                </div>
+            <div style="margin-bottom: 40px;">
+                <span style="display:block; text-transform:uppercase; letter-spacing:2px; font-size:0.8rem; opacity:0.6; margin-bottom:5px;">Direct Correspondence</span>
+                <span class="secure-mail contact-link" data-user="mike256+evernaught" data-domain="gmail.com">
+                    [Reveal Correspondence Path]
+                </span>
+            </div>
 
-                <div>
-                    <input type="date" name="event_date" class="input-field" title="Event Date">
-                    <span class="optional-note">(Date optional)</span>
-                </div>
-
-                <textarea name="message" rows="4" placeholder="Your Correspondence..." required class="input-field" style="resize:none;"></textarea>
-                
-                <button type="submit" id="submit-btn" class="wax-seal">
-                    <div class="loader" id="loader"></div>
-                    <span id="btn-text">Dispatch Request</span>
-                </button>
-            </form>
+            <button class="wax-seal secure-mail-btn" data-user="mike256+evernaught" data-domain="gmail.com" data-subject="Booking Inquiry">
+                Dispatch an Email
+            </button>
         </div>
     </section>
- -->
-    
-    <!-- SUCCESS MODAL -->
-    <div id="successModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:1000; align-items:center; justify-content:center; backdrop-filter:blur(10px);">
-        <div style="background:#e0d5c1; padding:50px; border:2px solid #d4af37; border-radius:30px; text-align:center; color:#120f0c; max-width:450px;">
-            <h2 style="font-family:'Cinzel'; color:#600000;">Correspondence Received</h2>
-            <p id="successMessage" style="margin-top:20px; line-height:1.6;"></p>
-            <button onclick="document.getElementById('successModal').style.display='none'" style="margin-top:25px; background:transparent; border:1px solid #120f0c; padding:10px 20px; font-family:'Cinzel'; cursor:pointer; text-transform:uppercase; letter-spacing:1px;">Return to the World</button>
-        </div>
-    </div>
 
-    <footer>&copy; 2026 Michael Evernaught | International Man of Wonder</footer>
+    <footer>&copy; 2026 Michael Evernaught | Traveling Magician in the Columbia River Gorge</footer>
 
     <script>
         /**
-         * Generic Form Handler
-         * This script is agnostic of the backend provider.
-         * You can point API_ENDPOINT to any service (Formspree, Zapier, Custom Node Server, etc.)
+         * Email Obfuscation Logic
+         * Reconstructs the email address on user interaction to prevent
+         * simple spambots from harvesting the address from source code.
          */
-        const API_ENDPOINT = '/functions/api/submit.js'; 
+        function handleSecureMail() {
+            const secureElements = document.querySelectorAll('.secure-mail');
+            const secureButtons = document.querySelectorAll('.secure-mail-btn');
 
-        document.getElementById('booking-form').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const btn = document.getElementById('submit-btn');
-            const btnText = document.getElementById('btn-text');
-            const loader = document.getElementById('loader');
-            const formData = new FormData(this);
-            const payload = Object.fromEntries(formData.entries());
+            const getAddress = (el) => {
+                const user = el.getAttribute('data-user');
+                const domain = el.getAttribute('data-domain');
+                return `${user}@${domain}`;
+            };
 
-            // UI Feedback
-            btn.disabled = true;
-            btnText.innerText = "Processing...";
-            loader.style.display = "block";
+            // Setup text displays
+            secureElements.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    el.innerText = getAddress(el);
+                }, { once: true });
 
-            try {
-                const response = await fetch(API_ENDPOINT, {
-                    method: 'POST',
-                    headers: { 
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
+                el.addEventListener('click', () => {
+                    const address = getAddress(el);
+                    window.location.href = `mailto:${address}`;
                 });
+            });
 
-                let result = {};
-                if (response.headers.get("content-type")?.includes("application/json")) {
-                    result = await response.json();
-                }
+            // Setup buttons
+            secureButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const address = getAddress(btn);
+                    const subject = btn.getAttribute('data-subject') || 'Inquiry';
+                    window.location.href = `mailto:${address}?subject=${encodeURIComponent(subject)}`;
+                });
+            });
+        }
 
-                if (response.ok) {
-                    document.getElementById('successMessage').innerText = `Your request has been dispatched, ${payload.name}. Expect a manifestation shortly.`;
-                    document.getElementById('successModal').style.display = 'flex';
-                    this.reset();
-                } else {
-                    throw new Error(result.error || `Submission failed (Error ${response.status})`);
-                }
-            } catch (err) {
-                console.error('Submission Error:', err);
-                alert("A mystical interruption occurred: " + err.message);
-            } finally {
-                btn.disabled = false;
-                btnText.innerText = "Dispatch Request";
-                loader.style.display = "none";
-            }
-        });
+        window.onload = handleSecureMail;
     </script>
 </body>
 </html>
