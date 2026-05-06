@@ -133,14 +133,27 @@
             justify-content: flex-end;
             align-items: center;
             text-align: center;
+            overflow: hidden;
+        }
+
+        /* Smoke Canvas - Layered between BG and Text */
+        #smoke-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            pointer-events: none;
         }
 
         .hero-overlay {
             position: absolute; bottom: 0; width: 100%; height: 50%;
             background: linear-gradient(transparent, #0d0b09);
+            z-index: 3;
         }
 
-        .hero-text { position: relative; z-index: 2; margin-bottom: 80px; padding: 0 20px; }
+        .hero-text { position: relative; z-index: 4; margin-bottom: 80px; padding: 0 20px; }
 
         /* Raised Brass Hero Text */
         h1 {
@@ -254,7 +267,7 @@
             letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;
         }
 
-        /* Lightbox Modal - Increased Transparency and Slower Animations */
+        /* Lightbox Modal */
         #lightbox {
             display: none;
             position: fixed;
@@ -354,7 +367,7 @@
             opacity: 0.7;
         }
 
-        /* GLASS WAX SEAL BUTTON (Link Style) */
+        /* GLASS WAX SEAL BUTTON */
         .wax-seal {
             display: inline-flex; align-items: center; justify-content: center;
             margin: 40px auto 0; padding: 22px 60px;
@@ -391,6 +404,7 @@
 
     <!-- HERO -->
     <section class="hero-banner">
+        <canvas id="smoke-canvas"></canvas>
         <div class="hero-overlay"></div>
         <div class="hero-text">
             <h1>Michael Evernaught</h1>
@@ -461,6 +475,93 @@
 
     <script>
         /**
+         * PROCEDURAL SMOKE ANIMATION
+         */
+        const smokeCanvas = document.getElementById('smoke-canvas');
+        const ctxSmoke = smokeCanvas.getContext('2d');
+        let smokeParticles = [];
+        const smokeParticleCount = 45;
+
+        function resizeSmoke() {
+            smokeCanvas.width = window.innerWidth;
+            smokeCanvas.height = window.innerHeight;
+        }
+
+        class SmokeParticle {
+            constructor(initial = false) {
+                this.reset(initial);
+            }
+
+            reset(initial = false) {
+                this.x = Math.random() * smokeCanvas.width;
+                // If initial load, distribute throughout height. Otherwise, start from bottom.
+                this.y = initial ? Math.random() * smokeCanvas.height : smokeCanvas.height + Math.random() * 200;
+                this.size = Math.random() * 150 + 80;
+                this.opacity = Math.random() * 0.2 + 0.1; // Increased opacity slightly
+                this.vx = (Math.random() - 0.5) * 0.4;
+                this.vy = -(Math.random() * 0.8 + 0.4);
+                this.life = 0;
+                this.maxLife = Math.random() * 400 + 300;
+                this.wobble = Math.random() * Math.PI * 2;
+                this.wobbleSpeed = Math.random() * 0.02;
+            }
+
+            update() {
+                this.life++;
+                this.wobble += this.wobbleSpeed;
+                
+                // Drift logic
+                this.x += this.vx + Math.sin(this.wobble) * 0.3;
+                this.y += this.vy;
+
+                // Fade out at end of life
+                if (this.life > this.maxLife * 0.6) {
+                    this.opacity -= 0.0008;
+                }
+
+                if (this.life >= this.maxLife || this.opacity <= 0 || this.y < -this.size) {
+                    this.reset(false);
+                }
+            }
+
+            draw() {
+                if (this.opacity <= 0) return;
+                ctxSmoke.beginPath();
+                const gradient = ctxSmoke.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.size);
+                gradient.addColorStop(0, `rgba(180, 180, 190, ${this.opacity})`);
+                gradient.addColorStop(0.4, `rgba(140, 140, 150, ${this.opacity * 0.5})`);
+                gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+                ctxSmoke.fillStyle = gradient;
+                ctxSmoke.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctxSmoke.fill();
+            }
+        }
+
+        function initSmoke() {
+            resizeSmoke();
+            smokeParticles = [];
+            for (let i = 0; i < smokeParticleCount; i++) {
+                // Set initial to true so they aren't all at the bottom on refresh
+                smokeParticles.push(new SmokeParticle(true));
+            }
+        }
+
+        function animateSmoke() {
+            ctxSmoke.clearRect(0, 0, smokeCanvas.width, smokeCanvas.height);
+            // Global composite to make smoke feel more airy
+            ctxSmoke.globalCompositeOperation = 'screen'; 
+            smokeParticles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animateSmoke);
+        }
+
+        window.addEventListener('resize', resizeSmoke);
+        initSmoke();
+        animateSmoke();
+
+        /**
          * LIGHTBOX LOGIC
          */
         function openLightbox(element) {
@@ -495,35 +596,26 @@
         /**
          * MAGICAL EFFECTS: Pixie Dust & Pop
          */
-        
         document.addEventListener('mousemove', function(e) {
             const particlesPerStep = 3; 
-            
             for (let i = 0; i < particlesPerStep; i++) {
                 if (Math.random() > 0.4) continue;
-
                 const sparkle = document.createElement('div');
                 sparkle.className = 'sparkle-trail';
-                
                 const size = Math.random() * 5 + 2;
                 sparkle.style.width = size + 'px';
                 sparkle.style.height = size + 'px';
-                
                 sparkle.style.left = e.clientX + 'px';
                 sparkle.style.top = e.clientY + 'px';
-                
                 const dx = (Math.random() - 0.5) * 50;
                 const dy = (Math.random() * 30) + 10; 
                 sparkle.style.setProperty('--dx', `${dx}px`);
                 sparkle.style.setProperty('--dy', `${dy}px`);
-                
                 const glowColors = ['#d4af37', '#e5c687', '#ffffff', '#f1d38e'];
                 const color = glowColors[Math.floor(Math.random() * glowColors.length)];
                 sparkle.style.setProperty('--glow', color);
                 sparkle.style.background = color;
-
                 document.body.appendChild(sparkle);
-                
                 setTimeout(() => sparkle.remove(), 1500);
             }
         });
@@ -535,18 +627,14 @@
                 particle.className = 'magical-pop';
                 particle.style.left = e.clientX + 'px';
                 particle.style.top = e.clientY + 'px';
-
                 const angle = Math.random() * Math.PI * 2;
                 const distance = 60 + Math.random() * 100;
                 const tx = Math.cos(angle) * distance;
                 const ty = Math.sin(angle) * distance;
-                
                 particle.style.setProperty('--tx', `${tx}px`);
                 particle.style.setProperty('--ty', `${ty}px`);
-                
                 const colors = ['#e5c687', '#d4af37', '#ffffff', '#f1d38e'];
                 particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-
                 document.body.appendChild(particle);
                 setTimeout(() => particle.remove(), 800);
             }
@@ -555,24 +643,20 @@
         function handleSecureMail() {
             const secureElements = document.querySelectorAll('.secure-mail');
             const secureButtons = document.querySelectorAll('.secure-mail-btn');
-
             const getAddress = (el) => {
                 const user = el.getAttribute('data-user');
                 const domain = el.getAttribute('data-domain');
                 return `${user}@${domain}`;
             };
-
             secureElements.forEach(el => {
                 el.addEventListener('mouseenter', () => {
                     el.innerText = getAddress(el);
                 }, { once: true });
-
                 el.addEventListener('click', () => {
                     const address = getAddress(el);
                     window.location.href = `mailto:${address}`;
                 });
             });
-
             secureButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
                     const address = getAddress(btn);
