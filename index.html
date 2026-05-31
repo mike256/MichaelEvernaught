@@ -16,14 +16,14 @@
     <meta property="og:url" content="https://michaelevernaught.com/">
     <meta property="og:title" content="Michael Evernaught | International Man of Wonder">
     <meta property="og:description" content="Experience the impossible. Traveling closeup and platform magic in the Columbia River Gorge.">
-    <meta property="og:image" content="https://michaelevernaught.com/Images/hero2.png">
+    <meta property="og:image" content="https://michaelevernaught.com/Images/hero.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://michaelevernaught.com/">
     <meta property="twitter:title" content="Michael Evernaught | International Man of Wonder">
     <meta property="twitter:description" content="Experience the impossible. Traveling closeup and platform magic in the Columbia River Gorge.">
-    <meta property="twitter:image" content="https://michaelevernaught.com/Images/hero2.png">
+    <meta property="twitter:image" content="https://michaelevernaught.com/Images/hero.png">
 
     <!-- Structured Data for Local Business/Service -->
     <script type="application/ld+json">
@@ -33,7 +33,7 @@
       "name": "Michael Evernaught",
       "description": "Professional traveling magician specializing in closeup, walk-around, and platform magic performances.",
       "url": "https://michaelevernaught.com",
-      "image": "https://michaelevernaught.com/Images/hero2.png",
+      "image": "https://michaelevernaught.com/Images/hero.png",
       "address": {
         "@type": "PostalAddress",
         "addressRegion": "Columbia River Gorge",
@@ -73,322 +73,19 @@
     }
     </script>
 
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Fauna+One&display=swap');
-
-        /* Global Styles */
-        body, html { 
-            margin: 0; padding: 0; background-color: #0d0b09; 
-            color: #d1c7b1; font-family: 'Fauna One', serif;
-            scroll-behavior: smooth; overflow-x: hidden;
-            cursor: default;
-        }
-
-        /* Magical Pixie Dust FX Styles */
-        .sparkle-trail {
-            position: fixed;
-            pointer-events: none;
-            background: #fff;
-            border-radius: 50%;
-            z-index: 9999;
-            box-shadow: 0 0 10px 1px var(--glow);
-            animation: pixie-fade 1.5s cubic-bezier(0.1, 0.4, 0.4, 1) forwards;
-        }
-
-        @keyframes pixie-fade {
-            0% { 
-                transform: translate(0, 0) scale(1) rotate(0deg); 
-                opacity: 0.8; 
-            }
-            100% { 
-                transform: translate(var(--dx), var(--dy)) scale(0) rotate(360deg); 
-                opacity: 0; 
-            }
-        }
-
-        .magical-pop {
-            position: fixed;
-            pointer-events: none;
-            width: 3px;
-            height: 3px;
-            background: white;
-            z-index: 11000;
-            border-radius: 50%;
-            animation: pop-out 0.8s ease-out forwards;
-        }
-
-        @keyframes pop-out {
-            0% { transform: translate(0, 0) scale(1); opacity: 1; }
-            100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
-        }
-
-        /* Hero Section */
-        .hero-banner {
-            position: relative;
-            background: url('Images/hero2.png') no-repeat center top;
-            background-size: cover;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
-
-        .hero-overlay {
-            position: absolute; bottom: 0; width: 100%; height: 50%;
-            background: linear-gradient(transparent, #0d0b09);
-            z-index: 1;
-        }
-
-        .hero-text { position: relative; z-index: 2; margin-bottom: 80px; padding: 0 20px; }
-
-        /* Raised Brass Hero Text */
-        h1 {
-            font-family: 'Cinzel', serif; 
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            margin: 0; 
-            letter-spacing: 6px;
-            font-weight: 700;
-            background: linear-gradient(
-                to bottom, 
-                #e5c687 0%,    
-                #d4af37 45%,   
-                #a67c00 55%,   
-                #8a6d3b 100%   
-            );
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0px 1px 0px #f1d38e) 
-                    drop-shadow(0px -1px 0px #5e4a1e) 
-                    drop-shadow(2px 4px 6px rgba(0,0,0,0.9));
-        }
-
-        .subtitle {
-            font-size: clamp(1rem, 3vw, 1.3rem); 
-            font-style: italic;
-            color: #bfa57d; 
-            margin-top: 10px; 
-            text-transform: uppercase; 
-            letter-spacing: 8px;
-            text-shadow: 1px 1px 0px rgba(255,255,255,0.1), 2px 2px 5px rgba(0,0,0,0.8);
-        }
-
-        /* Intro Section Styles */
-        .intro-section {
-            padding: 100px 15%;
-            text-align: center;
-            background: radial-gradient(circle at center, #161310 0%, #0d0b09 100%);
-            position: relative;
-        }
-
-        .intro-content {
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .intro-quote {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
-            line-height: 1.6;
-            color: #e5c687;
-            margin-bottom: 40px;
-            font-weight: 400;
-            font-style: italic;
-            position: relative;
-        }
-
-        .intro-quote::before, .intro-quote::after {
-            content: "";
-            display: block;
-            width: 60px;
-            height: 1px;
-            background: #d4af37;
-            margin: 20px auto;
-            opacity: 0.5;
-        }
-
-        .intro-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #d1c7b1;
-            opacity: 0.8;
-            margin-bottom: 30px;
-            letter-spacing: 0.5px;
-        }
-
-        .intro-text span.highlight {
-            font-family: 'Cinzel', serif;
-            color: #d4af37;
-            font-weight: 700;
-            letter-spacing: 1px;
-        }
-
-        /* GALLERY */
-        .gallery-section { padding: 100px 10%; background: #0d0b09; text-align: center; }
-        .gallery-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px; margin-top: 50px;
-        }
-
-        .photo-frame {
-            position: relative;
-            background: #1e1a15; 
-            padding: 25px;
-            border: 8px solid #0d0b09;
-            outline: 2px solid #d4af37;
-            outline-offset: -12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 15px rgba(0,0,0,1);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            cursor: pointer;
-        }
-
-        .photo-frame:hover { transform: scale(1.05) translateY(-10px); }
-        .photo-frame img { 
-            width: 100%; height: auto; display: block;
-            filter: sepia(0.4) contrast(1.1) brightness(0.9);
-        }
-
-        .caption { 
-            font-family: 'Cinzel', serif; color: #d4af37; margin-top: 25px; 
-            letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;
-        }
-
-        /* Lightbox Modal */
-        #lightbox {
-            display: none;
-            position: fixed;
-            top: 50%; left: 50%;
-            width: 85vw; height: 85vh;
-            transform: translate(-50%, -50%);
-            background: rgba(13, 11, 9, 0.45); 
-            z-index: 10000;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.8s ease-out; 
-            backdrop-filter: blur(20px) saturate(160%);
-            -webkit-backdrop-filter: blur(20px) saturate(160%);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 40px;
-            box-shadow: 0 0 100px rgba(0,0,0,0.8);
-        }
-
-        #lightbox.active {
-            display: flex;
-            opacity: 1;
-        }
-
-        #lightbox-img {
-            max-width: 80%;
-            max-height: 75%;
-            border: 2px solid #d4af37;
-            box-shadow: 0 0 60px rgba(212, 175, 55, 0.2);
-            transform: scale(0.6) translateY(20px);
-            transition: transform 1.0s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 1.0s ease; 
-            opacity: 0;
-            border-radius: 4px;
-        }
-
-        #lightbox.active #lightbox-img {
-            transform: scale(1) translateY(0);
-            opacity: 1;
-        }
-
-        #lightbox-caption {
-            position: absolute;
-            bottom: 30px;
-            font-family: 'Cinzel', serif;
-            color: #d4af37;
-            font-size: clamp(1rem, 4vw, 1.5rem);
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            text-shadow: 0 2px 10px rgba(0,0,0,1);
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            font-family: 'Cinzel', serif;
-            color: #d1c7b1;
-            font-size: 2.5rem;
-            cursor: pointer;
-            transition: transform 0.3s ease, color 0.3s ease;
-            line-height: 1;
-        }
-
-        .close-lightbox:hover {
-            color: #d4af37;
-            transform: rotate(90deg);
-        }
-
-        /* Contact Section */
-        .contact-wrap {
-            padding: 120px 5%; 
-            background: radial-gradient(circle, #1e1a15 0%, #0d0b09 100%);
-            display: flex; justify-content: center;
-        }
-
-        .contact-card {
-            width: 100%; max-width: 700px; background: #e0d5c1;
-            padding: 60px; color: #120f0c; border: 1px solid #bfa57d;
-            border-radius: 40px; box-shadow: 0 40px 100px rgba(0,0,0,0.6);
-            position: relative;
-            text-align: center;
-        }
-
-        .contact-link {
-            display: inline-block;
-            margin-top: 20px;
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            color: #600000;
-            text-decoration: none;
-            font-weight: bold;
-            transition: opacity 0.3s ease;
-            cursor: pointer;
-        }
-
-        .contact-link:hover {
-            opacity: 0.7;
-        }
-
-        /* GLASS WAX SEAL BUTTON */
-        .wax-seal {
-            display: inline-flex; align-items: center; justify-content: center;
-            margin: 40px auto 0; padding: 22px 60px;
-            background: radial-gradient(circle at 30% 30%, rgba(100, 0, 0, 0.6), rgba(40, 0, 0, 0.75));
-            color: rgba(255, 255, 255, 0.85);
-            border: 1.5px solid rgba(212, 175, 55, 0.25);
-            border-radius: 60px;
-            font-family: 'Cinzel', serif; font-weight: bold; font-size: 1rem;
-            text-transform: uppercase; letter-spacing: 2px; cursor: pointer;
-            backdrop-filter: blur(4px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.3), inset 0 0 10px rgba(80, 0, 0, 0.3);
-            transition: all 0.5s ease;
-            text-decoration: none;
-        }
-
-        .wax-seal:hover {
-            transform: scale(1.03);
-            background: radial-gradient(circle at 30% 30%, rgba(139, 0, 0, 0.7), rgba(60, 0, 0, 0.85));
-            box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3);
-            color: #fff;
-        }
-
-        footer { text-align: center; padding: 60px 40px; font-size: 0.8rem; opacity: 0.4; letter-spacing: 2px; }
-    </style>
+    <!-- Link to external CSS file located in the Styles/ directory -->
+    <link rel="stylesheet" href="Styles/styles.css">
 </head>
 <body>
 
     <!-- LIGHTBOX -->
     <div id="lightbox" onclick="closeLightbox()">
         <span class="close-lightbox" onclick="event.stopPropagation(); closeLightbox();">&times;</span>
-        <img id="lightbox-img" src="" alt="Enlarged Illusion" onclick="event.stopPropagation()">
-        <div id="lightbox-caption"></div>
+        <div id="lightbox-content-container" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Enlarged Illusion">
+            <video id="lightbox-video" controls></video>
+            <div id="lightbox-caption"></div>
+        </div>
     </div>
 
     <!-- HERO -->
@@ -403,7 +100,7 @@
 
     <!-- INTRODUCTION SECTION -->
     <section class="intro-section">
-        <div class="intro-content">
+        <div class="intro-content filigree-frame">
             <blockquote class="intro-quote">
                 "Peer behind the curtain and rediscover a sense of wonder through the art of the impossible. Explore the thin line between reality and mystery as you embrace the curiosity and inspiration found in the extraordinary."
             </blockquote>
@@ -419,30 +116,19 @@
         </div>
     </section>
 
-    <!-- GALLERY -->
+    <!-- GALLERY (Now Dynamic with Video Support) -->
     <section class="gallery-section">
         <h2 style="font-family:'Cinzel'; color:#d4af37; font-size: 2.2rem; margin-bottom: 20px;">Moments of Illumination</h2>
-        <div class="gallery-grid">
-            <div class="photo-frame" onclick="openLightbox(this)">
-                <img src="Images/Sword.png" alt="Danger" onerror="this.src='https://placehold.co/600x800/1e1a15/d4af37?text=Danger'">
-                <div class="caption">Danger</div>
-            </div>
-            <div class="photo-frame" onclick="openLightbox(this)">
-                <img src="Images/fire.jpg" alt="Mystery" onerror="this.src='https://placehold.co/600x800/1e1a15/d4af37?text=Mystery'">
-                <div class="caption">Mystery</div>
-            </div>
-            <div class="photo-frame" onclick="openLightbox(this)">
-                <img src="Images/cane.jpg" alt="Wonder" onerror="this.src='https://placehold.co/600x800/1e1a15/d4af37?text=Wonder'">
-                <div class="caption">Wonder</div>
-            </div>
+        <div class="gallery-grid" id="dynamic-gallery">
+            <!-- Images and Videos will be injected here automatically -->
         </div>
     </section>
 
     <!-- CONTACT / BOOKING -->
     <section id="contact" class="contact-wrap">
-        <div class="contact-card">
-            <h2 style="font-family:'Cinzel'; font-size: 2.2rem; margin-bottom: 10px;">The Ledger of Inquiry</h2>
-            <p style="font-style:italic; opacity:0.7; margin-bottom:40px; line-height: 1.6;">
+        <div class="contact-card filigree-frame">
+            <h2 style="font-family:'Cinzel'; font-size: 2.2rem; margin-bottom: 10px; color:#d4af37;">The Ledger of Inquiry</h2>
+            <p style="font-style:italic; opacity:0.8; margin-bottom:40px; line-height: 1.6; color:#d1c7b1;">
                 For international bookings, closeup performances, and matters of mystery throughout the Columbia River Gorge.
             </p>
             
@@ -460,114 +146,25 @@
     </section>
 
     <footer>&copy; 2026 Michael Evernaught | Traveling Magician in the Columbia River Gorge</footer>
-
+    <!-- Define your gallery images here so they are easy to update -->
     <script>
         /**
-         * LIGHTBOX LOGIC
+         * DYNAMIC GALLERY CONFIGURATION
+         * -----------------------------------------------------------------
+         * Add your images and videos to the Images/ folder. 
+         * To add a video, include `type: 'video'` in the configuration object.
          */
-        function openLightbox(element) {
-            const lightbox = document.getElementById('lightbox');
-            const lightboxImg = document.getElementById('lightbox-img');
-            const lightboxCap = document.getElementById('lightbox-caption');
-            const sourceImg = element.querySelector('img');
-            const sourceCap = element.querySelector('.caption');
-
-            lightboxImg.src = sourceImg.src;
-            lightboxCap.innerText = sourceCap.innerText;
-            
-            lightbox.style.display = 'flex';
-            requestAnimationFrame(() => {
-                lightbox.classList.add('active');
-            });
-            document.body.style.overflow = 'hidden'; 
-        }
-
-        function closeLightbox() {
-            const lightbox = document.getElementById('lightbox');
-            lightbox.classList.remove('active');
-            
-            setTimeout(() => {
-                if (!lightbox.classList.contains('active')) {
-                    lightbox.style.display = 'none';
-                }
-            }, 800);
-            document.body.style.overflow = 'auto'; 
-        }
-
-        /**
-         * MAGICAL EFFECTS: Pixie Dust & Pop
-         */
-        document.addEventListener('mousemove', function(e) {
-            const particlesPerStep = 3; 
-            for (let i = 0; i < particlesPerStep; i++) {
-                if (Math.random() > 0.4) continue;
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle-trail';
-                const size = Math.random() * 5 + 2;
-                sparkle.style.width = size + 'px';
-                sparkle.style.height = size + 'px';
-                sparkle.style.left = e.clientX + 'px';
-                sparkle.style.top = e.clientY + 'px';
-                const dx = (Math.random() - 0.5) * 50;
-                const dy = (Math.random() * 30) + 10; 
-                sparkle.style.setProperty('--dx', `${dx}px`);
-                sparkle.style.setProperty('--dy', `${dy}px`);
-                const glowColors = ['#d4af37', '#e5c687', '#ffffff', '#f1d38e'];
-                const color = glowColors[Math.floor(Math.random() * glowColors.length)];
-                sparkle.style.setProperty('--glow', color);
-                sparkle.style.background = color;
-                document.body.appendChild(sparkle);
-                setTimeout(() => sparkle.remove(), 1500);
-            }
-        });
-
-        document.addEventListener('mousedown', function(e) {
-            const particleCount = 20;
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'magical-pop';
-                particle.style.left = e.clientX + 'px';
-                particle.style.top = e.clientY + 'px';
-                const angle = Math.random() * Math.PI * 2;
-                const distance = 60 + Math.random() * 100;
-                const tx = Math.cos(angle) * distance;
-                const ty = Math.sin(angle) * distance;
-                particle.style.setProperty('--tx', `${tx}px`);
-                particle.style.setProperty('--ty', `${ty}px`);
-                const colors = ['#e5c687', '#d4af37', '#ffffff', '#f1d38e'];
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                document.body.appendChild(particle);
-                setTimeout(() => particle.remove(), 800);
-            }
-        });
-
-        function handleSecureMail() {
-            const secureElements = document.querySelectorAll('.secure-mail');
-            const secureButtons = document.querySelectorAll('.secure-mail-btn');
-            const getAddress = (el) => {
-                const user = el.getAttribute('data-user');
-                const domain = el.getAttribute('data-domain');
-                return `${user}@${domain}`;
-            };
-            secureElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    el.innerText = getAddress(el);
-                }, { once: true });
-                el.addEventListener('click', () => {
-                    const address = getAddress(el);
-                    window.location.href = `mailto:${address}`;
-                });
-            });
-            secureButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const address = getAddress(btn);
-                    const subject = btn.getAttribute('data-subject') || 'Inquiry';
-                    window.location.href = `mailto:${address}?subject=${encodeURIComponent(subject)}`;
-                });
-            });
-        }
-
-        window.onload = handleSecureMail;
+        const galleryImages = [
+            { filename: 'fire.jpg', caption: 'Mystery' },
+            { filename: 'reaction.jpg', caption: 'reaction' },
+            { filename: 'card1.jpg', caption: 'cards' },
+            { filename: 'sponge1.jpg', caption: 'sponges' },
+            { filename: 'sponge2.jpg', caption: 'sponge' },
+            { filename: 'Sword.png', caption: 'Danger' },
+            { filename: 'cane.jpg', caption: 'Wonder' }
+            //{ filename: 'magic-video.mp4', caption: 'Live Performance', type: 'video' }
+        ];
     </script>
+    <script src="Scripts/script.js"></script>
 </body>
 </html>
