@@ -14,19 +14,19 @@ function initializeGallery() {
             // Build the path pointing directly to the Images folder
             const basePath = `Images/${item.filename}`;
 
-            if (item.type === 'video') {
-                photoFrame.innerHTML = `
-                    <video src="${basePath}" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
-                    <div class="play-button-overlay"></div>
-                    <div class="caption">${item.caption}</div>
-                `;
-            } else {
-                const placeholder = `https://placehold.co/600x800/1e1a15/d4af37?text=${encodeURIComponent(item.caption)}`;
-                photoFrame.innerHTML = `
-                    <img src="${basePath}" alt="${item.caption}" onerror="this.src='${placeholder}'">
-                    <div class="caption">${item.caption}</div>
-                `;
-            }
+            // Update the render logic inside initializeGallery in script.js
+
+if (item.type === 'video') {
+    photoFrame.innerHTML = `
+        <video src="${basePath}" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="play-button-overlay"></div>
+    `; // Removed caption div
+} else {
+    const placeholder = `https://placehold.co/600x800/1e1a15/d4af37?text=${encodeURIComponent(item.caption)}`;
+    photoFrame.innerHTML = `
+        <img src="${basePath}" alt="${item.caption}" onerror="this.src='${placeholder}'">
+    `; // Removed caption div
+}
 
             galleryContainer.appendChild(photoFrame);
         });

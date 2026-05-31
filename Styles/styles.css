@@ -158,23 +158,34 @@ h1 {
     gap: 50px; margin-top: 50px;
 }
 
+/* Update these sections in styles.css */
+
 .photo-frame {
     position: relative;
     background: #1e1a15; 
-    padding: 25px;
-    border: 8px solid #161310;
-    outline: 2px solid #d4af37;
-    outline-offset: -12px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.8), inset 0 0 15px rgba(0,0,0,1);
+    padding: 0; /* Remove padding */
+    border: none; /* Remove border */
+    overflow: hidden; /* Ensure image doesn't overflow */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     cursor: pointer;
 }
 
-.photo-frame:hover { transform: scale(1.05) translateY(-10px); }
 .photo-frame img, .photo-frame video { 
-    width: 100%; height: auto; display: block;
+    width: 100%; 
+    height: 300px; /* Set a fixed height for consistency */
+    object-fit: cover; /* This makes the image fill the container */
+    display: block;
     filter: sepia(0.4) contrast(1.1) brightness(0.9);
 }
+
+/* Remove or comment out the .caption class styling */
+.caption { 
+    display: none; 
+}
+
+.photo-frame:hover { transform: scale(1.05) translateY(-10px); }
+
 
 .play-button-overlay {
     position: absolute;
