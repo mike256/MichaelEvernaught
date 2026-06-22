@@ -103,6 +103,18 @@ body, html {
 
 .site-nav a:hover { color: #fff; }
 
+/* Services Section */
+.services-section { padding: 100px 10%; background: #2a2a2a; color: #d1c7b1; }
+.services-section h2 { font-family: 'Cinzel', serif; color: #d4af37; text-align: center; font-size: 2.2rem; }
+.services-list { max-width: 800px; margin: 40px auto; list-style-type: none; padding: 0; }
+.services-list li { 
+    margin-bottom: 20px; padding-left: 30px; position: relative; font-size: 1.1rem;
+    line-height: 1.6;
+}
+.services-list li::before { 
+    content: "✦"; position: absolute; left: 0; color: #d4af37; 
+}
+        
 /* Magical Pixie Dust FX Styles */
 .sparkle-trail {
     position: fixed;
@@ -491,6 +503,19 @@ footer { text-align: center; padding: 60px 40px; font-size: 0.8rem; opacity: 0.4
             <!-- Images and Videos will be injected here automatically -->
         </div>
         <a href="album.html" class="gallery-btn">VIEW EXTENDED GALLERY</a>
+    </section>
+    
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services-section">
+        <h2>Services Offered</h2>
+        <ul class="services-list">
+            <li><strong>Close-Up Magic:</strong> Intimate sleight of hand performances perfect for cocktail hours and networking events.</li>
+            <li><strong>Platform and parolor:</strong> Engaging magic shows designed for stages, galas, and medium-sized gatherings.</li>
+            <li><strong>Consultation:</strong> Tailored magical concepts and theatrical consulting for unique private events.</li>
+            <li><strong>Traveling Wonder:</strong> Bringing professional entertainment directly to your venue!</li>
+            <li><strong>Special Occasions:</strong> Customized routines crafted specifically to elevate your event.
+                <ul><li>Weddings, birthdays, or corporate functions.</li></ul></li>    
+        </ul>
     </section>
     
     <!-- CALENDAR WIDGET -->
