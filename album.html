@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moments of Illumination | Michael Evernaught</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Fauna+One&display=swap" rel="stylesheet">
+    <style>
+        body, html { 
+            margin: 0; padding: 0; background-color: #242424; 
+            color: #d1c7b1; font-family: 'Fauna One', serif;
+        }
+
+        .gallery-nav { padding: 40px 20px; text-align: center; }
+        .nav-link {
+            font-family: 'Cinzel', serif; color: #d4af37; text-decoration: none;
+            text-transform: uppercase; letter-spacing: 3px;
+            border: 1px solid rgba(212, 175, 55, 0.3); padding: 10px 20px;
+        }
+
+        /* Lightbox Container */
+        .gallery-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 70vh;
+            padding: 20px;
+        }
+
+        .lightbox {
+            width: 700px;
+            height: 450px;
+            background: rgba(30, 30, 30, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .lightbox img {
+            max-width: 95%;
+            max-height: 95%;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.5);
+            transition: opacity 0.5s ease;
+        }
+
+        /* Buttons */
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            gap: 20px;
+        }
+
+        button {
+            background: rgba(212, 175, 55, 0.1);
+            color: #d4af37;
+            border: 1px solid #d4af37;
+            padding: 10px 25px;
+            font-family: 'Cinzel', serif;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        @media (max-width: 800px) {
+            .lightbox { width: 90vw; height: 60vw; }
+        }
+
+/* Magical Pixie Dust FX Styles */
+.sparkle-trail {
+    position: fixed;
+    pointer-events: none;
+    background: #fff;
+    border-radius: 50%;
+    z-index: 9999;
+    box-shadow: 0 0 10px 1px var(--glow);
+    animation: pixie-fade 1.5s cubic-bezier(0.1, 0.4, 0.4, 1) forwards;
+}
+
+@keyframes pixie-fade {
+    0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.8; }
+    100% { transform: translate(var(--dx), var(--dy)) scale(0) rotate(360deg); opacity: 0; }
+}
+
+.magical-pop {
+    position: fixed;
+    pointer-events: none;
+    width: 3px;
+    height: 3px;
+    background: white;
+    z-index: 11000;
+    border-radius: 50%;
+    animation: pop-out 0.8s ease-out forwards;
+}
+
+@keyframes pop-out {
+    0% { transform: translate(0, 0) scale(1); opacity: 1; }
+    100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+}
+    </style>
+</head>
+<body>
+
+    <div class="gallery-nav">
+        <a href="index.html" class="nav-link">← Return to the Unknown</a>
+    </div>
+
+    <div class="gallery-wrapper">
+        <div class="lightbox" id="lightbox">
+            <img id="galleryImg" src="Images/album/1.jpg" alt="Gallery Photo">
+        </div>
+        <div class="controls">
+            <button onclick="changePhoto(-1)">PREVIOUS</button>
+            <button onclick="changePhoto(1)">NEXT</button>
+        </div>
+    </div>
+
+    <script>
+        const totalPhotos = 5; 
+        let currentIndex = 1;
+        const imgElement = document.getElementById('galleryImg');
+
+        function changePhoto(direction) {
+            currentIndex += direction;
+            if (currentIndex > totalPhotos) currentIndex = 1;
+            if (currentIndex < 1) currentIndex = totalPhotos;
+            
+            imgElement.style.opacity = 0;
+            setTimeout(() => {
+                imgElement.src = `Images/album/${currentIndex}.jpg`;
+                imgElement.style.opacity = 1;
+            }, 300);
+        }
+
+/**
+ * MAGICAL EFFECTS: Pixie Dust & Pop
+ */
+document.addEventListener('mousemove', function(e) {
+    const particlesPerStep = 3; 
+    for (let i = 0; i < particlesPerStep; i++) {
+        if (Math.random() > 0.4) continue;
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle-trail';
+        const size = Math.random() * 5 + 2;
+        sparkle.style.width = size + 'px';
+        sparkle.style.height = size + 'px';
+        sparkle.style.left = e.clientX + 'px';
+        sparkle.style.top = e.clientY + 'px';
+        const dx = (Math.random() - 0.5) * 50;
+        const dy = (Math.random() * 30) + 10; 
+        sparkle.style.setProperty('--dx', `${dx}px`);
+        sparkle.style.setProperty('--dy', `${dy}px`);
+        const glowColors = ['#d4af37', '#e5c687', '#ffffff', '#f1d38e'];
+        const color = glowColors[Math.floor(Math.random() * glowColors.length)];
+        sparkle.style.setProperty('--glow', color);
+        sparkle.style.background = color;
+        document.body.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 1500);
+    }
+});
+
+document.addEventListener('mousedown', function(e) {
+    const particleCount = 20;
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'magical-pop';
+        particle.style.left = e.clientX + 'px';
+        particle.style.top = e.clientY + 'px';
+        const angle = Math.random() * Math.PI * 2;
+        const distance = 60 + Math.random() * 100;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
+        particle.style.setProperty('--tx', `${tx}px`);
+        particle.style.setProperty('--ty', `${ty}px`);
+        const colors = ['#e5c687', '#d4af37', '#ffffff', '#f1d38e'];
+        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+        document.body.appendChild(particle);
+        setTimeout(() => particle.remove(), 800);
+    }
+});
+
+
+    </script>
+</body>
+</html>
