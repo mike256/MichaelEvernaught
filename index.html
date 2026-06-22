@@ -3,79 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moments of Illumination | Michael Evernaught</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Fauna+One&display=swap" rel="stylesheet">
+    
+    <!-- Primary Meta Tags -->
+    <title>Michael Evernaught | Magician in the Columbia River Gorge</title>
+    <meta name="title" content="Michael Evernaught | Magician in the Columbia River Gorge">
+    <meta name="description" content="Michael Evernaught provides world-class traveling magic, closeup, walk-around, and platform magic performances throughout the Columbia River Gorge and beyond.">
+    <meta name="keywords" content="magician columbia river gorge, traveling magician, walk around magic, closeup magic, platform magic, event entertainment hood river, magician the dalles, magician white salmon">
+    <meta name="author" content="Michael Evernaught">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://michaelevernaught.com/">
+    <meta property="og:title" content="Michael Evernaught | International Man of Wonder">
+    <meta property="og:description" content="Experience the impossible. Traveling closeup and platform magic in the Columbia River Gorge.">
+    <meta property="og:image" content="https://michaelevernaught.com/Images/hero.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://michaelevernaught.com/">
+    <meta property="twitter:title" content="Michael Evernaught | International Man of Wonder">
+    <meta property="twitter:description" content="Experience the impossible. Traveling closeup and platform magic in the Columbia River Gorge.">
+    <meta property="twitter:image" content="https://michaelevernaught.com/Images/hero.png">
+
+    <!-- Structured Data for Local Business/Service -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EntertainmentBusiness",
+      "name": "Michael Evernaught",
+      "description": "Professional traveling magician specializing in closeup, walk-around, and platform magic performances.",
+      "url": "https://michaelevernaught.com",
+      "image": "https://michaelevernaught.com/Images/hero.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "Columbia River Gorge",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoShape",
+        "region": "Columbia River Gorge"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Magic Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Closeup Magic"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Walk-around Magic"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Platform Magic"
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Link to external CSS file located in the Styles/ directory -->
     <style>
-        body, html { 
-            margin: 0; padding: 0; background-color: #242424; 
-            color: #d1c7b1; font-family: 'Fauna One', serif;
-        }
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Fauna+One&display=swap');
 
-        .gallery-nav { padding: 40px 20px; text-align: center; }
-        .nav-link {
-            font-family: 'Cinzel', serif; color: #d4af37; text-decoration: none;
-            text-transform: uppercase; letter-spacing: 3px;
-            border: 1px solid rgba(212, 175, 55, 0.3); padding: 10px 20px;
-        }
+/* Global Styles */
+body, html { 
+    margin: 0; padding: 0; background-color: #242424; 
+    color: #d1c7b1; font-family: 'Fauna One', serif;
+    scroll-behavior: smooth; overflow-x: hidden;
+    cursor: default;
+}
 
-        /* Lightbox Container */
-        .gallery-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 70vh;
-            padding: 20px;
-        }
+/* Fixed Navigation Bar */
+.site-nav {
+    position: fixed; top: 0; width: 100%; z-index: 10000;
+    background: rgba(26, 26, 26, 0.95);
+    padding: 1rem 0;
+    display: flex; justify-content: center; align-items: center;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    flex-wrap: wrap;
+}
 
-        .lightbox {
-            width: 700px;
-            height: 450px;
-            background: rgba(30, 30, 30, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
+.site-nav a {
+    color: #d4af37; text-decoration: none; margin: 0 15px;
+    font-family: 'Cinzel', serif; letter-spacing: 2px; font-size: 0.9rem;
+    transition: color 0.3s;
+}
 
-        .lightbox img {
-            max-width: 95%;
-            max-height: 95%;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            transition: opacity 0.5s ease;
-        }
-
-        /* Buttons */
-        .controls {
-            margin-top: 20px;
-            display: flex;
-            gap: 20px;
-        }
-
-        button {
-            background: rgba(212, 175, 55, 0.1);
-            color: #d4af37;
-            border: 1px solid #d4af37;
-            padding: 10px 25px;
-            font-family: 'Cinzel', serif;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        button:hover {
-            background: rgba(212, 175, 55, 0.2);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        }
-
-        @media (max-width: 800px) {
-            .lightbox { width: 90vw; height: 60vw; }
-        }
+.site-nav a:hover { color: #fff; }
 
 /* Magical Pixie Dust FX Styles */
 .sparkle-trail {
@@ -108,40 +134,504 @@
     0% { transform: translate(0, 0) scale(1); opacity: 1; }
     100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
 }
+
+/* Reusable Elegant Frame (No Corner Filigrees) */
+.filigree-frame {
+    position: relative;
+    padding: clamp(40px, 8vw, 80px) clamp(30px, 6vw, 60px);
+    background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(15, 15, 15, 0.95) 100%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow: inset 0 0 50px rgba(0,0,0,0.8), 0 30px 60px rgba(0,0,0,0.7);
+    border-radius: 4px;
+}
+
+/* Hero Section */
+.hero-banner {
+    position: relative;
+    background: url('../Images/hero.png') no-repeat center top;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute; bottom: 0; width: 100%; height: 50%;
+    background: linear-gradient(transparent, #242424);
+    z-index: 1;
+}
+
+.hero-text { position: relative; z-index: 2; margin-bottom: 80px; padding: 0 20px; }
+
+/* Raised Brass Hero Text */
+h1 {
+    font-family: 'Cinzel', serif; 
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    margin: 0; 
+    letter-spacing: 0.1em;
+    line-height: 1.2;
+    padding: 0.1em;
+    font-weight: 700;
+    background: linear-gradient(to bottom, #e5c687 0%, #d4af37 45%, #a67c00 55%, #8a6d3b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px rgba(255, 235, 180, 0.5); /* Highlight Outline */
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.9); /* Single Layer Shadow */
+    transform: translateZ(0); 
+    white-space: nowrap; 
+}
+
+.subtitle {
+    font-size: clamp(1rem, 3vw, 1.3rem); 
+    font-style: italic;
+    color: #bfa57d; 
+    margin-top: 10px; 
+    text-transform: uppercase; 
+    letter-spacing: 8px;
+    text-shadow: 0.05em 0.05em 0 rgba(255,255,255,0.1), 0.1em 0.1em 0.25em rgba(0,0,0,0.8);
+}
+
+/* Intro Section Styles */
+.intro-section {
+    padding: 100px 15%;
+    text-align: center;
+    background: radial-gradient(circle at center, #333333 0%, #242424 100%);
+    position: relative;
+}
+
+.intro-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.intro-quote {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    line-height: 1.6;
+    color: #e5c687;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-style: italic;
+    position: relative;
+}
+
+.intro-quote::before, .intro-quote::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: #d4af37;
+    margin: 20px auto;
+    opacity: 0.5;
+}
+
+.intro-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #d1c7b1;
+    opacity: 0.8;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+}
+
+.intro-text span.highlight {
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* GALLERY */
+.gallery-section { padding: 100px 10%; background: #242424; text-align: center; }
+.gallery-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 50px; margin-top: 50px;
+}
+
+/* Update these sections in styles.css */
+
+.photo-frame {
+    position: relative;
+    background: #1e1a15; 
+    padding: 0; /* Remove padding */
+    border: none; /* Remove border */
+    overflow: hidden; /* Ensure image doesn't overflow */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+}
+
+.photo-frame img, .photo-frame video { 
+    width: 100%; 
+    height: 300px; /* Set a fixed height for consistency */
+    object-fit: cover; /* This makes the image fill the container */
+    display: block;
+    filter: sepia(0.4) contrast(1.1) brightness(0.9);
+}
+
+/* Remove or comment out the .caption class styling */
+.caption { 
+    display: none; 
+}
+
+.photo-frame:hover { transform: scale(1.05) translateY(-10px); }
+
+
+.play-button-overlay {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px; height: 60px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 2px solid #d4af37;
+    border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    color: #d4af37; font-size: 24px;
+    pointer-events: none;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+.play-button-overlay::after {
+    content: '▶';
+    margin-left: 5px;
+}
+
+.caption { 
+    font-family: 'Cinzel', serif; color: #d4af37; margin-top: 25px; 
+    letter-spacing: 2px; text-transform: uppercase; font-size: 0.9rem;
+}
+
+/* Lightbox Modal */
+#lightbox {
+    display: none;
+    position: fixed;
+    top: 50%; left: 50%;
+    width: 85vw; height: 85vh;
+    transform: translate(-50%, -50%);
+    background: rgba(26, 26, 26, 0.65); 
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.8s ease-out; 
+    backdrop-filter: blur(20px) saturate(160%);
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 40px;
+    box-shadow: 0 0 100px rgba(0,0,0,0.8);
+}
+
+#lightbox.active { display: flex; opacity: 1; }
+
+#lightbox-content-container {
+    max-width: 80%; max-height: 75%;
+    transform: scale(0.6) translateY(20px);
+    transition: transform 1.0s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 1.0s ease; 
+    opacity: 0;
+    position: relative;
+}
+
+#lightbox.active #lightbox-content-container {
+    transform: scale(1) translateY(0); opacity: 1;
+}
+
+#lightbox-img, #lightbox-video {
+    max-width: 100%; max-height: 75vh;
+    border: 2px solid #d4af37;
+    box-shadow: 0 0 60px rgba(212, 175, 55, 0.2);
+    border-radius: 4px;
+    display: none;
+}
+
+#lightbox-caption {
+    position: absolute;
+    bottom: -50px; left: 0; width: 100%; text-align: center;
+    font-family: 'Cinzel', serif;
+    color: #d4af37;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0,0,0,1);
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-family: 'Cinzel', serif;
+    color: #d1c7b1;
+    font-size: 2.5rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, color 0.3s ease;
+    line-height: 1;
+}
+
+.close-lightbox:hover {
+    color: #d4af37;
+    transform: rotate(90deg);
+}
+
+/* Contact Section */
+.contact-wrap {
+    padding: 120px 5%; 
+    background: radial-gradient(circle, #333333 0%, #242424 100%);
+    display: flex; justify-content: center;
+}
+
+.contact-card {
+    width: 100%; max-width: 700px;
+    text-align: center;
+}
+
+.contact-link {
+    display: inline-block;
+    margin-top: 20px;
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+    cursor: pointer;
+}
+
+.contact-link:hover { opacity: 0.7; }
+
+/* GLASS WAX SEAL BUTTON */
+.wax-seal {
+    display: inline-flex; align-items: center; justify-content: center;
+    margin: 40px auto 0; padding: 22px 60px;
+    background: radial-gradient(circle at 30% 30%, rgba(100, 0, 0, 0.6), rgba(40, 0, 0, 0.75));
+    color: rgba(255, 255, 255, 0.85);
+    border: 1.5px solid rgba(212, 175, 55, 0.25);
+    border-radius: 60px;
+    font-family: 'Cinzel', serif; font-weight: bold; font-size: 1rem;
+    text-transform: uppercase; letter-spacing: 2px; cursor: pointer;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3), inset 0 0 10px rgba(80, 0, 0, 0.3);
+    transition: all 0.5s ease;
+    text-decoration: none;
+}
+
+.wax-seal:hover {
+    transform: scale(1.03);
+    background: radial-gradient(circle at 30% 30%, rgba(139, 0, 0, 0.7), rgba(60, 0, 0, 0.85));
+    box-shadow: 0 8px 20px rgba(139, 0, 0, 0.3);
+    color: #fff;
+}
+
+footer { text-align: center; padding: 60px 40px; font-size: 0.8rem; opacity: 0.4; letter-spacing: 2px; }
+
+/* Gallery Button Style */
+.gallery-btn {
+    display: inline-block; margin-top: 40px;
+    padding: 15px 30px; border: 1px solid #d4af37;
+    color: #d4af37; text-decoration: none;
+    font-family: 'Cinzel', serif; letter-spacing: 2px;
+    transition: all 0.3s;
+}
+.gallery-btn:hover { background: rgba(212, 175, 55, 0.1); color: #fff; }
     </style>
 </head>
 <body>
-
-    <div class="gallery-nav">
-        <a href="index.html" class="nav-link">← Return to the Unknown</a>
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#gallery">Moments of Illumination</a>
+        <a href="#contact">Contact</a>
+    </nav>
+    <!-- LIGHTBOX -->
+    <div id="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox" onclick="event.stopPropagation(); closeLightbox();">&times;</span>
+        <div id="lightbox-content-container" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Enlarged Illusion">
+            <video id="lightbox-video" controls></video>
+            <div id="lightbox-caption"></div>
+        </div>
     </div>
 
-    <div class="gallery-wrapper">
-        <div class="lightbox" id="lightbox">
-            <img id="galleryImg" src="Images/album/1.jpg" alt="Gallery Photo">
+    <!-- HERO -->
+    <section class="hero-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <h1>Michael Evernaught</h1>
+            <div class="subtitle">International Man of Wonder</div>
+            <a href="#contact" class="wax-seal">Request an Audience</a>
         </div>
-        <div class="controls">
-            <button onclick="changePhoto(-1)">PREVIOUS</button>
-            <button onclick="changePhoto(1)">NEXT</button>
+    </section>
+
+    <!-- INTRODUCTION SECTION -->
+    <section class="intro-section">
+        <div class="intro-content filigree-frame">
+            <blockquote class="intro-quote">
+                "Peer behind the curtain and rediscover a sense of wonder through the art of the impossible. Explore the thin line between reality and mystery as you embrace the curiosity and inspiration found in the extraordinary."
+            </blockquote>
+            <p class="intro-text">
+                In the shadows of the Columbia River Gorge, where the logic of the day gives way to the mystery of the night, <span class="highlight">Michael Evernaught</span> serves as a bridge between the possible and the inexplicable. His craft is more than a performance—it is a shared exploration of the unknown, a precision-tuned journey through sleight of hand and psychological intrigue.
+            </p>
+            <p class="intro-text">
+                Specializing in the intimate world of closeup, walk-around, and platform magic, Michael invites his audience to question their own senses. Each interaction is a deliberate act of curiosity, designed to linger long after the illusion has passed. In a world of explanations, he offers the rare gift of truly being surprised.
+            </p>
+            <p class="intro-text">
+                Sit back and enjoy the magic of <span class="highlight">Michael Evernaught</span>.
+            </p>
+        </div>
+    </section>
+
+    <!-- GALLERY (Now Dynamic with Video Support) -->
+    <section id="gallery" class="gallery-section">
+        <h2 style="font-family:'Cinzel'; color:#d4af37; font-size: 2.2rem; margin-bottom: 20px;">Moments of Illumination</h2>
+        <div class="gallery-grid" id="dynamic-gallery">
+            <!-- Images and Videos will be injected here automatically -->
+        </div>
+        <a href="album.html" class="gallery-btn">VIEW EXTENDED GALLERY</a>
+    </section>
+    
+    <!-- CALENDAR WIDGET -->
+    <section class="calendar-section" style="padding: 100px 5%; background: #242424; text-align: center;">
+    <div class="filigree-frame">
+        <h2 style="font-family:'Cinzel'; color:#d4af37; font-size: 2.2rem; margin-bottom: 30px;">Upcoming Engagements</h2>
+        <div class="calendar-container" style="max-width: 800px; margin: 0 auto; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 4px; overflow: hidden;">
+            <!-- Paste your iframe code here -->
+            <iframe src="https://calendar.google.com/calendar/embed?src=8f0dbcf90630f7cc734816bc48a575baade07dc368727e06b7e1b6b6d61e2b72%40group.calendar.google.com&ctz=America%2FLos_Angeles" 
+                    style="border: 0; width: 100%; height: 600px; filter: invert(90%) hue-rotate(180deg) brightness(0.8);" 
+                    frameborder="0" scrolling="no">
+            </iframe>
         </div>
     </div>
+    </section>
 
-    <script>
-        const totalPhotos = 5; 
-        let currentIndex = 1;
-        const imgElement = document.getElementById('galleryImg');
-
-        function changePhoto(direction) {
-            currentIndex += direction;
-            if (currentIndex > totalPhotos) currentIndex = 1;
-            if (currentIndex < 1) currentIndex = totalPhotos;
+    
+    <!-- CONTACT / BOOKING -->
+    <section id="contact" class="contact-wrap">
+        <div class="contact-card filigree-frame">
+            <h2 style="font-family:'Cinzel'; font-size: 2.2rem; margin-bottom: 10px; color:#d4af37;">The Ledger of Inquiry</h2>
+            <p style="font-style:italic; opacity:0.8; margin-bottom:40px; line-height: 1.6; color:#d1c7b1;">
+                For international bookings, closeup performances, and matters of mystery throughout the Columbia River Gorge.
+            </p>
             
-            imgElement.style.opacity = 0;
-            setTimeout(() => {
-                imgElement.src = `Images/album/${currentIndex}.jpg`;
-                imgElement.style.opacity = 1;
-            }, 300);
+            <div style="margin-bottom: 40px;">
+                <span style="display:block; text-transform:uppercase; letter-spacing:2px; font-size:0.8rem; opacity:0.6; margin-bottom:5px;">Direct Correspondence</span>
+                <span class="secure-mail contact-link" data-user="mike256+evernaught" data-domain="gmail.com">
+                    [Reveal Correspondence Path]
+                </span>
+            </div>
+
+            <button class="wax-seal secure-mail-btn" data-user="mike256+evernaught" data-domain="gmail.com" data-subject="Booking Inquiry">
+                Dispatch an Email
+            </button>
+        </div>
+    </section>
+
+    <footer>&copy; 2026 Michael Evernaught | Traveling Magician in the Columbia River Gorge</footer>
+    <!-- Define your gallery images here so they are easy to update -->
+    <script>
+        /**
+         * DYNAMIC GALLERY CONFIGURATION
+         * -----------------------------------------------------------------
+         * Add your images and videos to the Images/ folder. 
+         * To add a video, include `type: 'video'` in the configuration object.
+         */
+        const galleryImages = [
+            { filename: 'fire.jpg', caption: 'Mystery' },
+            { filename: 'reaction.jpg', caption: 'reaction' },
+            { filename: 'card1.jpg', caption: 'cards' },
+            { filename: 'sponge1.jpg', caption: 'sponges' },
+            { filename: 'sponge2.jpg', caption: 'sponge' },
+            { filename: 'Sword.png', caption: 'Danger' },
+            { filename: 'cane.jpg', caption: 'Wonder' }
+//            { filename: 'magic-video.mp4', caption: 'Live Performance', type: 'video' }
+        ];
+    </script>
+    <script>
+/**
+ * RENDER DYNAMIC GALLERY
+ */
+function initializeGallery() {
+    const galleryContainer = document.getElementById('dynamic-gallery');
+    
+    // Uses the galleryImages array defined in your HTML file
+    if (typeof galleryImages !== 'undefined') {
+        galleryImages.forEach(item => {
+            const photoFrame = document.createElement('div');
+            photoFrame.className = 'photo-frame';
+            photoFrame.onclick = function() { openLightbox(this, item.type); };
+
+            // Build the path pointing directly to the Images folder
+            const basePath = `Images/${item.filename}`;
+
+            // Update the render logic inside initializeGallery in script.js
+
+if (item.type === 'video') {
+    photoFrame.innerHTML = `
+        <video src="${basePath}" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+        <div class="play-button-overlay"></div>
+    `; // Removed caption div
+} else {
+    const placeholder = `https://placehold.co/600x800/1e1a15/d4af37?text=${encodeURIComponent(item.caption)}`;
+    photoFrame.innerHTML = `
+        <img src="${basePath}" alt="${item.caption}" onerror="this.src='${placeholder}'">
+    `; // Removed caption div
+}
+
+            galleryContainer.appendChild(photoFrame);
+        });
+    }
+}
+
+/**
+ * LIGHTBOX LOGIC
+ */
+function openLightbox(element, type) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxVid = document.getElementById('lightbox-video');
+    const lightboxCap = document.getElementById('lightbox-caption');
+    const sourceCap = element.querySelector('.caption');
+
+    // Reset visibility
+    lightboxImg.style.display = 'none';
+    lightboxVid.style.display = 'none';
+    lightboxVid.pause();
+
+    if (type === 'video') {
+        const sourceVid = element.querySelector('video');
+        lightboxVid.src = sourceVid.src;
+        lightboxVid.style.display = 'block';
+    } else {
+        const sourceImg = element.querySelector('img');
+        lightboxImg.src = sourceImg.src;
+        lightboxImg.style.display = 'block';
+    }
+
+    lightboxCap.innerText = sourceCap.innerText;
+    
+    lightbox.style.display = 'flex';
+    requestAnimationFrame(() => {
+        lightbox.classList.add('active');
+    });
+    document.body.style.overflow = 'hidden'; 
+}
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxVid = document.getElementById('lightbox-video');
+    
+    lightbox.classList.remove('active');
+    lightboxVid.pause(); // Stop video playing in the background
+    
+    setTimeout(() => {
+        if (!lightbox.classList.contains('active')) {
+            lightbox.style.display = 'none';
         }
+    }, 800);
+    document.body.style.overflow = 'auto'; 
+}
 
 /**
  * MAGICAL EFFECTS: Pixie Dust & Pop
@@ -190,6 +680,37 @@ document.addEventListener('mousedown', function(e) {
     }
 });
 
+function handleSecureMail() {
+    const secureElements = document.querySelectorAll('.secure-mail');
+    const secureButtons = document.querySelectorAll('.secure-mail-btn');
+    const getAddress = (el) => {
+        const user = el.getAttribute('data-user');
+        const domain = el.getAttribute('data-domain');
+        return `${user}@${domain}`;
+    };
+    secureElements.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+            el.innerText = getAddress(el);
+        }, { once: true });
+        el.addEventListener('click', () => {
+            const address = getAddress(el);
+            window.location.href = `mailto:${address}`;
+        });
+    });
+    secureButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const address = getAddress(btn);
+            const subject = btn.getAttribute('data-subject') || 'Inquiry';
+            window.location.href = `mailto:${address}?subject=${encodeURIComponent(subject)}`;
+        });
+    });
+}
+
+// Run both setup scripts when the page finishes loading
+window.onload = function() {
+    handleSecureMail();
+    initializeGallery();
+};
 
     </script>
 </body>
