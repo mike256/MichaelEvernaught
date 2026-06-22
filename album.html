@@ -118,7 +118,7 @@
 
     <div class="gallery-wrapper">
         <div class="lightbox" id="lightbox">
-            <img id="galleryImg" src="Images/album/1.jpg" alt="Gallery Photo">
+            <img id="galleryImg" src="Images/gallery/1.jpg" alt="Gallery Photo">
         </div>
         <div class="controls">
             <button onclick="changePhoto(-1)">PREVIOUS</button>
@@ -138,7 +138,7 @@
             
             imgElement.style.opacity = 0;
             setTimeout(() => {
-                imgElement.src = `Images/album/${currentIndex}.jpg`;
+                imgElement.src = `Images/gallery/${currentIndex}.jpg`;
                 imgElement.style.opacity = 1;
             }, 300);
         }
