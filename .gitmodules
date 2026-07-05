@@ -1,3 +1,11 @@
 [submodule "Images"]
 	path = Images
 	url = https://github.com/mike256/MichaelEvernaught/Images
+
+[submodule "Styles"]
+	path = Styles
+	url = https://github.com/mike256/MichaelEvernaught/Styles
+
+[submodule "Scripts"]
+	path = Scripts
+	url = https://github.com/mike256/MichaelEvernaught/Scripts
