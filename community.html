@@ -72,112 +72,112 @@
       }
     }
     </script>
-
-    <link rel="stylesheet" href="./Styles/style.css">  
+    <link rel="stylesheet" href="./Styles/style.css">
 </head>
-<body class="bg-[#0d0d0d] text-gray-300 font-sans antialiased">
+<body>
 
-    <!-- Minimal Header to keep them on the booking path -->
-    <header class="border-b border-[#b5a642]/30 p-6 flex justify-between items-center">
-        <h1 class="text-2xl font-serif text-[#d97706] tracking-widest uppercase">Michael Evernaught</h1>
-        <a href="/" class="text-sm text-gray-400 hover:text-[#fbbf24] transition-colors">Return to Main Site</a>
-    </header>
+    <!-- Minimal Header -->
+    <nav class="site-nav">
+        <a href="/">Return to Main Site</a>
+    </nav>
 
-    <main class="max-w-4xl mx-auto px-6 py-12">
+    <!-- Hero Section -->
+    <section class="hero-banner">
+        <div class="hero-overlay"></div>
+        <div class="hero-text">
+            <h1>Community Entertainment</h1>
+            <div class="subtitle">Senior Living & Center Performances</div>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <main class="content-wrapper">
         
-        <!-- Hero Section -->
-        <section class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-serif text-white mb-6">Engaging Wonder for Your Community</h2>
-            <p class="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+        <!-- Intro Section -->
+        <section class="intro-section">
+            <h2>Engaging Wonder for Your Community</h2>
+            <p>
                 Bring the art of the impossible directly to your residents. Specializing in highly visual, accessible magic, Michael provides polished entertainment perfectly paced for senior living communities and community centers throughout the Columbia River Gorge.
             </p>
         </section>
 
         <!-- The Experience (Video & Details) -->
-        <section class="grid md:grid-cols-2 gap-12 items-center mb-16">
-            <div class="aspect-video bg-black border border-[#b5a642]/50 rounded-md shadow-[0_0_15px_rgba(217,119,6,0.2)] flex items-center justify-center overflow-hidden relative">
-                <!-- Replace with your actual video or video embed -->
+        <section class="details-grid">
+            <div class="video-box">
                 <p class="text-gray-500 italic">[Embed: Visual Performance Reel]</p>
             </div>
             
-            <div>
-                <h3 class="text-2xl font-serif text-[#d97706] mb-4">What to Expect</h3>
-                <ul class="space-y-4">
-                    <li class="flex items-start">
-                        <span class="text-[#fbbf24] mr-3">✦</span>
-                        <span><strong>Highly Visual Magic:</strong> Utilizing everyday objects like coins, ropes, and playing cards, routines are designed to be easily seen and understood by all audiences.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-[#fbbf24] mr-3">✦</span>
-                        <span><strong>Interactive & Respectful:</strong> Gentle audience participation that makes residents feel like the stars of the show.</span>
-                    </li>
-                    <li class="flex items-start">
-                        <span class="text-[#fbbf24] mr-3">✦</span>
-                        <span><strong>Professional Reliability:</strong> Formally trained at McBride's Magic & Mystery School, delivering a prompt, self-contained performance with streamlined contracting via a fillable PDF service agreement.</span>
-                    </li>
+            <div class="info-box">
+                <h3>What to Expect</h3>
+                <ul class="info-list">
+                    <li><span><strong>Highly Visual Magic:</strong> Utilizing everyday objects like coins, ropes, and playing cards, routines are designed to be easily seen and understood by all audiences.</span></li>
+                    <li><span><strong>Interactive & Respectful:</strong> Gentle audience participation that makes residents feel like the stars of the show.</span></li>
+                    <li><span><strong>Professional Reliability:</strong> Formally trained at McBride's Magic & Mystery School, delivering a prompt, self-contained performance with streamlined contracting.</span></li>
                 </ul>
             </div>
         </section>
 
         <!-- Booking Form / Call to Action -->
-        <section class="bg-[#151515] p-8 border border-[#b5a642]/20 rounded-sm shadow-xl">
-            <div class="text-center mb-8">
-                <h3 class="text-2xl font-serif text-white">Secure a Date</h3>
-                <p class="text-gray-400 mt-2">Submit the details below to receive availability and a community rate sheet.</p>
+        <section class="contact-wrap">
+            <div class="contact-card filigree-frame">
+                <h3 style="font-family:'Cinzel'; font-size: 2.2rem; color:#d4af37; margin-bottom: 10px;">Secure a Date</h3>
+                <p style="font-style:italic; opacity:0.8; font-size: 0.95rem; margin-bottom: 20px;">Submit the details below to receive availability and a community rate sheet.</p>
+
+                <!-- ================================================================= -->
+                <!-- START OF REUSABLE FORMSPREE AVAILABILITY REQUEST FORM CODE BLOCK  -->
+                <!-- Copy everything between the START and END markers to reuse elsewhere -->
+                <!-- ================================================================= -->
+                <form class="availability-form" action="https://formspree.io/f/mwlpoyda" method="POST">
+                    
+                    <!-- Full Name Field -->
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required placeholder="Lord/Lady/Name">
+                    </div>
+
+                    <!-- Email & Phone Contact Information -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="correspondence@domain.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="(541) 000-0000">
+                        </div>
+                    </div>
+
+                    <!-- Date and Time Picker -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label for="event_date">Requested Date</label>
+                            <input type="date" id="event_date" name="event_date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="event_time">Requested Time</label>
+                            <input type="time" id="event_time" name="event_time" class="form-control" required>
+                        </div>
+                    </div>
+
+                    <!-- Event Details / Notes -->
+                    <div class="form-group">
+                        <label for="details">Event Details & Location</label>
+                        <textarea id="details" name="details" rows="4" class="form-control" placeholder="Tell us about the venue, guest count, and nature of the gathering..."></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="wax-seal">Dispatch Inquiry</button>
+
+                </form>
+                <!-- ================================================================= -->
+                <!-- END OF REUSABLE FORMSPREE AVAILABILITY REQUEST FORM CODE BLOCK    -->
+                <!-- ================================================================= -->
+
             </div>
-
-
-            <!-- ================================================================= -->
-            <!-- START OF REUSABLE FORMSPREE AVAILABILITY REQUEST FORM CODE BLOCK  -->
-            <!-- Copy everything between the START and END markers to reuse elsewhere -->
-            <!-- ================================================================= -->
-            <form class="availability-form" action="https://formspree.io/f/mwlpoyda" method="POST">
-                
-                <!-- Full Name Field -->
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" class="form-control" required placeholder="Lord/Lady/Name">
-                </div>
-
-                <!-- Email & Phone Contact Information -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-control" required placeholder="correspondence@domain.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="(541) 000-0000">
-                    </div>
-                </div>
-
-                <!-- Date and Time Picker -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    <div class="form-group">
-                        <label for="event_date">Requested Date</label>
-                        <input type="date" id="event_date" name="event_date" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="event_time">Requested Time</label>
-                        <input type="time" id="event_time" name="event_time" class="form-control" required>
-                    </div>
-                </div>
-
-                <!-- Event Details / Notes -->
-                <div class="form-group">
-                    <label for="details">Event Details & Location</label>
-                    <textarea id="details" name="details" rows="4" class="form-control" placeholder="Tell us about the venue, guest count, and nature of the gathering..."></textarea>
-                </div>
-
-                <!-- Submit Button -->
-                <button type="submit" class="wax-seal">Dispatch Inquiry</button>
-
-            </form>
-            <!-- ================================================================= -->
-            <!-- END OF REUSABLE FORMSPREE AVAILABILITY REQUEST FORM CODE BLOCK    -->
-            <!-- ================================================================= -->
         </section>
         
     </main>
+
+    <footer>&copy; 2026 Michael Evernaught | Community Entertainment</footer>
 </body>
 </html>
