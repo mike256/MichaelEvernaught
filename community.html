@@ -126,28 +126,56 @@
                 <p class="text-gray-400 mt-2">Submit the details below to receive availability and a community rate sheet.</p>
             </div>
 
-            <form class="space-y-6 max-w-lg mx-auto" action="https://formspree.io/f/mwlpoyda" method="POST">
-                <!-- Note: Ensure your form action points to your actual form handling endpoint (e.g., Netlify/Cloudflare forms or an API) -->
-                <div>
-                    <label class="block text-sm font-medium text-[#b5a642] mb-1">Facility / Community Name</label>
-                    <input type="text" name="facility_name" class="w-full bg-black border border-gray-700 rounded p-3 text-white focus:outline-none focus:border-[#d97706]" required>
+
+            <!-- ================================================================= -->
+            <!-- START OF REUSABLE FORMSPREE AVAILABILITY REQUEST FORM CODE BLOCK  -->
+            <!-- Copy everything between the START and END markers to reuse elsewhere -->
+            <!-- ================================================================= -->
+            <form class="availability-form" action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST">
+                
+                <!-- Full Name Field -->
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required placeholder="Lord/Lady/Name">
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-[#b5a642] mb-1">Activities Director Name</label>
-                    <input type="text" name="director_name" class="w-full bg-black border border-gray-700 rounded p-3 text-white focus:outline-none focus:border-[#d97706]" required>
+
+                <!-- Email & Phone Contact Information -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required placeholder="correspondence@domain.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="(541) 000-0000">
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-[#b5a642] mb-1">Email Address</label>
-                    <input type="email" name="email" class="w-full bg-black border border-gray-700 rounded p-3 text-white focus:outline-none focus:border-[#d97706]" required>
+
+                <!-- Date and Time Picker -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label for="event_date">Requested Date</label>
+                        <input type="date" id="event_date" name="event_date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event_time">Requested Time</label>
+                        <input type="time" id="event_time" name="event_time" class="form-control" required>
+                    </div>
                 </div>
-                <div>
-                    <label class="block text-sm font-medium text-[#b5a642] mb-1">Proposed Month or Date</label>
-                    <input type="text" name="proposed_date" class="w-full bg-black border border-gray-700 rounded p-3 text-white focus:outline-none focus:border-[#d97706]">
+
+                <!-- Event Details / Notes -->
+                <div class="form-group">
+                    <label for="details">Event Details & Location</label>
+                    <textarea id="details" name="details" rows="4" class="form-control" placeholder="Tell us about the venue, guest count, and nature of the gathering..."></textarea>
                 </div>
-                <button type="submit" class="w-full bg-[#d97706] hover:bg-[#fbbf24] text-black font-bold uppercase tracking-wider py-4 rounded transition-colors duration-300">
-                    Request Availability
-                </button>
+
+                <!-- Submit Button -->
+                <button type="submit" class="wax-seal">Dispatch Inquiry</button>
+
             </form>
+            <!-- ================================================================= -->
+            <!-- END OF REUSABLE FORMSPREE AVAILABILITY REQUEST FORM CODE BLOCK    -->
+            <!-- ================================================================= -->
         </section>
         
     </main>
