@@ -177,21 +177,59 @@
     <!-- CONTACT / BOOKING -->
     <section id="contact" class="contact-wrap">
         <div class="contact-card filigree-frame">
-            <h2 style="font-family:'Cinzel'; font-size: 2.2rem; margin-bottom: 10px; color:#d4af37;">The Ledger of Inquiry</h2>
-            <p style="font-style:italic; opacity:0.8; margin-bottom:40px; line-height: 1.6; color:#d1c7b1;">
-                For international bookings, closeup performances, and matters of mystery throughout the Columbia River Gorge.
-            </p>
-            
-            <div style="margin-bottom: 40px;">
-                <span style="display:block; text-transform:uppercase; letter-spacing:2px; font-size:0.8rem; opacity:0.6; margin-bottom:5px;">Direct Correspondence</span>
-                <span class="secure-mail contact-link" data-user="mike256+evernaught" data-domain="gmail.com">
-                    [Reveal Correspondence Path]
-                </span>
-            </div>
+            <h2 style="font-family:'Cinzel'; font-size: 2.2rem; color:#d4af37; margin-bottom: 10px;">Request Availability</h2>
+            <p style="font-style:italic; opacity:0.8; font-size: 0.95rem; margin-bottom: 20px;">Inquire about secure dates and times for your upcoming gathering.</p>
 
-            <button class="wax-seal secure-mail-btn" data-user="mike256+evernaught" data-domain="gmail.com" data-subject="Booking Inquiry">
-                Dispatch an Email
-            </button>
+           <!-- ================================================================= -->
+            <!-- START OF REUSABLE FORMSPREE AVAILABILITY REQUEST FORM CODE BLOCK  -->
+            <!-- Copy everything between the START and END markers to reuse elsewhere -->
+            <!-- ================================================================= -->
+            <form class="availability-form" action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT" method="POST">
+                
+                <!-- Full Name Field -->
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required placeholder="Lord/Lady/Name">
+                </div>
+
+                <!-- Email & Phone Contact Information -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required placeholder="correspondence@domain.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="(541) 000-0000">
+                    </div>
+                </div>
+
+                <!-- Date and Time Picker -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label for="event_date">Requested Date</label>
+                        <input type="date" id="event_date" name="event_date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event_time">Requested Time</label>
+                        <input type="time" id="event_time" name="event_time" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Event Details / Notes -->
+                <div class="form-group">
+                    <label for="details">Event Details & Location</label>
+                    <textarea id="details" name="details" rows="4" class="form-control" placeholder="Tell us about the venue, guest count, and nature of the gathering..."></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="wax-seal">Dispatch Inquiry</button>
+
+            </form>
+            <!-- ================================================================= -->
+            <!-- END OF REUSABLE FORMSPREE AVAILABILITY REQUEST FORM CODE BLOCK    -->
+            <!-- ================================================================= --> 
+
         </div>
     </section>
 
