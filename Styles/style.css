@@ -379,6 +379,25 @@ h1 {
     transform: rotate(90deg);
 }
 
-https://www.autodesk.com/support/download-install/individuals/configure/install-your-product
+/* Contact Section & Form Styles (Centered & Theme-Matched) */
+.contact-wrap { 
+    padding: 120px 5%; 
+    background: radial-gradient(circle, #333333 0%, #242424 100%); 
+    display: flex; justify-content: center; 
+}
+.contact-card { 
+    width: 100%; max-width: 700px; 
+    text-align: center; 
+    margin: 0 auto; 
+}
 
+.availability-form { text-align: left; margin-top: 30px; display: flex; flex-direction: column; gap: 20px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-family: 'Cinzel', serif; color: #d4af37; font-size: 0.9rem; letter-spacing: 1px; }
+.form-control { background: rgba(20, 20, 20, 0.9); border: 1px solid rgba(212, 175, 55, 0.3); padding: 12px 15px; color: #d1c7b1; font-family: 'Fauna One', serif; border-radius: 4px; font-size: 1rem; }
+.form-control:focus { outline: none; border-color: #d4af37; box-shadow: 0 0 8px rgba(212, 175, 55, 0.3); }
+input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator { filter: invert(0.8) sepia(1) hue-rotate(5deg); cursor: pointer; }
+
+.wax-seal { display: inline-flex; align-items: center; justify-content: center; margin: 20px auto 0; padding: 22px 60px; background: radial-gradient(circle at 30% 30%, rgba(100, 0, 0, 0.6), rgba(40, 0, 0, 0.75)); color: #fff; border: 1px solid #d4af37; border-radius: 60px; font-family: 'Cinzel'; text-transform: uppercase; cursor: pointer; text-decoration: none; width: 100%; box-sizing: border-box; }
+.wax-seal:hover { background: radial-gradient(circle at 30% 30%, rgba(139, 0, 0, 0.7), rgba(60, 0, 0, 0.85)); }
 footer { text-align: center; padding: 60px 40px; font-size: 0.8rem; opacity: 0.4; letter-spacing: 2px; }
