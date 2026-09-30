@@ -523,3 +523,72 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     transform: scale(1.02);
     color: #fff;
 }
+
+/* ==========================================
+   Client Logos Grid
+   ========================================== */
+
+.client-logos-section {
+  background-color: #0d0f12;
+  padding: 4rem 1.5rem;
+}
+
+.client-logos-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.client-logos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem 2.5rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 80px;
+}
+
+.logo-image {
+  max-width: 140px;
+  max-height: 50px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  opacity: 0.65;
+  filter: grayscale(100%) brightness(1.2);
+}
+
+/* Tablet / Medium Screens */
+@media (max-width: 860px) {
+  .client-logos-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* Mobile Screens */
+@media (max-width: 520px) {
+  .client-logos-section {
+    padding: 2.5rem 1rem;
+  }
+
+  .client-logos-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .logo-item {
+    height: 60px;
+  }
+
+  .logo-image {
+    max-width: 110px;
+    max-height: 40px;
+  }
+}
