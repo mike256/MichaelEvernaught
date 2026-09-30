@@ -73,7 +73,7 @@
     }
     </script>
 
-    <link rel="stylesheet" href="/Styles/style.css">  
+    <link rel="stylesheet" href="./Styles/style.css">  
 </head>
 <body>
     <!-- Navigation -->
@@ -99,14 +99,15 @@
     <section id="top" class="hero-banner">
         <div class="hero-overlay"></div>
         <div class="hero-text">
-            <!--<h1>Michael Evernaught</h1>-->
+            <p background><h1>Michael Evernaught</h1></p>
             <div class="subtitle">International Man of Wonder</div>
-            <a href="#contact" class="wax-seal">Request an Audience</a>
+            <a href="#contact" class="wax-seal">Contact Me</a>
 
                         <!-- Venmo Tip Jar -->
             <a href="https://account.venmo.com/u/michaelevernaught" target="_blank" rel="noopener noreferrer" class="tip-jar-container" style="text-decoration: none;">
-                <img src="Images/Venmo.png" alt="Venmo QR Code" class="venmo-qr" onerror="this.src='https://placehold.co/100x100/1e1a15/d4af37?text=Venmo'">
-                <span class="tip-text">If you enjoyed the performance,<br>Here's my Venmo.</span>
+                <img src="./Images/Venmo.png" alt="Venmo QR Code" class="venmo-qr" onerror="this.src='https://placehold.co/100x100/1e1a15/d4af37?text=Venmo'">
+                <span class="tip-text">If you enjoyed the performance,<br>Here's a link to my Venmo.</span>
+            </a>
         </div>
     </section>
             
@@ -177,21 +178,59 @@
     <!-- CONTACT / BOOKING -->
     <section id="contact" class="contact-wrap">
         <div class="contact-card filigree-frame">
-            <h2 style="font-family:'Cinzel'; font-size: 2.2rem; margin-bottom: 10px; color:#d4af37;">The Ledger of Inquiry</h2>
-            <p style="font-style:italic; opacity:0.8; margin-bottom:40px; line-height: 1.6; color:#d1c7b1;">
-                For international bookings, closeup performances, and matters of mystery throughout the Columbia River Gorge.
-            </p>
-            
-            <div style="margin-bottom: 40px;">
-                <span style="display:block; text-transform:uppercase; letter-spacing:2px; font-size:0.8rem; opacity:0.6; margin-bottom:5px;">Direct Correspondence</span>
-                <span class="secure-mail contact-link" data-user="mike256+evernaught" data-domain="gmail.com">
-                    [Reveal Correspondence Path]
-                </span>
-            </div>
+            <h2 style="font-family:'Cinzel'; font-size: 2.2rem; color:#d4af37; margin-bottom: 10px;">Request Availability</h2>
+            <h3 style="font-family:'Cinzel'; font-size: 1rem; color:#d4af37; margin-bottom: 10px;">Please reach out for any general Inquiry or to book your next event.</h3>
 
-            <button class="wax-seal secure-mail-btn" data-user="mike256+evernaught" data-domain="gmail.com" data-subject="Booking Inquiry">
-                Dispatch an Email
-            </button>
+           <!-- ================================================================= -->
+            <!-- START OF REUSABLE FORMSPREE AVAILABILITY REQUEST FORM CODE BLOCK  -->
+            <!-- Copy everything between the START and END markers to reuse elsewhere -->
+            <!-- ================================================================= -->
+            <form class="availability-form" action="https://formspree.io/f/mqpanwnr" method="POST">
+                
+                <!-- Full Name Field -->
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required placeholder="contact name">
+                </div>
+
+                <!-- Email & Phone Contact Information -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="(541) 000-0000">
+                    </div>
+                </div>
+
+                <!-- Date and Time Picker -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label for="event_date">Requested Date</label>
+                        <input type="date" id="event_date" name="event_date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event_time">Requested Time</label>
+                        <input type="time" id="event_time" name="event_time" class="form-control" required>
+                    </div>
+                </div>
+
+                <!-- Event Details / Notes -->
+                <div class="form-group">
+                    <label for="details">Please provide any details</label>
+                    <textarea id="details" name="details" rows="4" class="form-control" placeholder="Tell us about the venue, guest count, and nature of the gathering. Or just ask a question."></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="wax-seal">Submit Request</button>
+
+            </form>
+            <!-- ================================================================= -->
+            <!-- END OF REUSABLE FORMSPREE AVAILABILITY REQUEST FORM CODE BLOCK    -->
+            <!-- ================================================================= --> 
+
         </div>
     </section>
 
@@ -229,6 +268,6 @@
 //        { filename: 'sizzle_c.mp4', caption: 'Hilightreel', type: 'video' }
     ];
 </script>
-<script src="/Scripts/main.js"></script>
+<script src="./Scripts/main.js"></script>
 </body>
 </html>
