@@ -159,11 +159,11 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                         <div class="form-group">
                             <label for="event_date">Requested Date</label>
-                            <input type="date" id="event_date" name="event_date" class="form-control" required>
+                            <input type="date" id="event_date" name="event_date" class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="event_time">Requested Time</label>
-                            <input type="time" id="event_time" name="event_time" class="form-control" required>
+                            <input type="time" id="event_time" name="event_time" class="form-control">
                         </div>
                     </div>
 
@@ -187,52 +187,5 @@
     </main>
 
     <footer>&copy; 2026 Michael Evernaught | Community Entertainment</footer>
-
-    <!-- <script>
-        document.addEventListener('mousemove', function(e) {
-            const particlesPerStep = 3; 
-            for (let i = 0; i < particlesPerStep; i++) {
-                if (Math.random() > 0.4) continue;
-                const sparkle = document.createElement('div');
-                sparkle.className = 'sparkle-trail';
-                const size = Math.random() * 5 + 2;
-                sparkle.style.width = size + 'px';
-                sparkle.style.height = size + 'px';
-                sparkle.style.left = e.clientX + 'px';
-                sparkle.style.top = e.clientY + 'px';
-                const dx = (Math.random() - 0.5) * 50;
-                const dy = (Math.random() * 30) + 10; 
-                sparkle.style.setProperty('--dx', `${dx}px`);
-                sparkle.style.setProperty('--dy', `${dy}px`);
-                const glowColors = ['#d4af37', '#e5c687', '#ffffff', '#f1d38e'];
-                const color = glowColors[Math.floor(Math.random() * glowColors.length)];
-                sparkle.style.setProperty('--glow', color);
-                sparkle.style.background = color;
-                document.body.appendChild(sparkle);
-                setTimeout(() => sparkle.remove(), 1500);
-            }
-        });
-
-        document.addEventListener('mousedown', function(e) {
-            const particleCount = 20;
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'magical-pop';
-                particle.style.left = e.clientX + 'px';
-                particle.style.top = e.clientY + 'px';
-                const angle = Math.random() * Math.PI * 2;
-                const distance = 60 + Math.random() * 100;
-                const tx = Math.cos(angle) * distance;
-                const ty = Math.sin(angle) * distance;
-                particle.style.setProperty('--tx', `${tx}px`);
-                particle.style.setProperty('--ty', `${ty}px`);
-                const colors = ['#e5c687', '#d4af37', '#ffffff', '#f1d38e'];
-                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-                document.body.appendChild(particle);
-                setTimeout(() => particle.remove(), 800);
-            }
-        });
-    </script>
--->
 </body>
 </html>
