@@ -3,221 +3,621 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary Meta Tags -->
-    <title>Kids Shows | Michael Evernaught</title>
-    <meta name="title" content="Kids Shows | Michael Evernaught">
-    <meta name="description" content="Whimsical and magical entertainment for children and family events by Michael Evernaught.">
-    <meta name="author" content="Michael Evernaught">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="./Styles/style.css">  
-    
+    <!-- Primary Meta Tags -->
+    <title>Children&rsquo;s &amp; Family Magic Shows | Michael Evernaught — Pacific Northwest</title>
+    <meta name="title" content="Children’s & Family Magic Shows | Michael Evernaught — Pacific Northwest">
+    <meta name="description" content="Whimsical, interactive children’s birthday magic shows, school assemblies, library programs, and family festival entertainment across Portland, the Columbia River Gorge, Seattle, and the Pacific Northwest.">
+    <meta name="keywords" content="kids birthday party magician portland, childrens magician columbia river gorge, school assembly magician oregon washington, family magic show hood river, kids party entertainment, library magic show">
+    <meta name="author" content="Michael Evernaught">
+    <link rel="canonical" href="https://michaelevernaught.com/childrens.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://michaelevernaught.com/childrens.html">
+    <meta property="og:title" content="Wonder &amp; Magic for Young Imaginations | Michael Evernaught">
+    <meta property="og:description" content="Unforgettable interactive magic shows for children’s birthdays, elementary school assemblies, libraries, and family festivals.">
+    <meta property="og:image" content="https://michaelevernaught.com/Images/hero.png">
+
+    <!-- Preconnect & Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Fauna+One&display=swap">
+
+    <!-- Structured Data: Family & Children's Entertainment -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EntertainmentBusiness",
+      "name": "Michael Evernaught — Children's & Family Magic Shows",
+      "description": "Whimsical, age-calibrated interactive magic shows for children's birthday parties, school assemblies, library programs, and family festivals.",
+      "url": "https://michaelevernaught.com/childrens.html",
+      "image": "https://michaelevernaught.com/Images/hero.png",
+      "areaServed": [
+        { "@type": "City", "name": "Portland" },
+        { "@type": "City", "name": "Seattle" },
+        { "@type": "AdministrativeArea", "name": "Columbia River Gorge" },
+        { "@type": "AdministrativeArea", "name": "Pacific Northwest" }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Children's & Family Magic Packages",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "The Apprentice Birthday Show",
+              "description": "45 minutes of high-energy, interactive magic where the birthday child becomes the celebrated star of the show."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "The Grand Wizard Deluxe Experience",
+              "description": "60-minute interactive magic show featuring a signature grand illusion and take-home magical keepsakes for young guests."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "School Assemblies, Libraries & Family Festivals",
+              "description": "Large-format stage magic celebrating curiosity, reading, and imagination for audiences of 30 to 300+ children and families."
+            }
+          }
+        ]
+      }
+    }
+    </script>
+
+    <!-- Core Brand Stylesheet -->
+    <link rel="stylesheet" href="./Styles/style.css">
+
+    <!-- Whimsical "Starlit Storybook" Sub-Theme Overrides -->
     <style>
-        /* Base Template Adjustments */
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            /* Add a pure CSS starry night background overlay while keeping the dark theme */
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.08) 1px, transparent 2px),
-                radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.15) 2px, transparent 3px),
-                radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.05) 1.5px, transparent 2px),
-                radial-gradient(circle at 20% 10%, rgba(212, 175, 55, 0.1) 1px, transparent 2px);
-            background-size: 100vw 100vh;
-            background-attachment: fixed;
+        :root {
+            --kids-bg-midnight: #141627;
+            --kids-bg-velvet: #1e1830;
+            --kids-card-bg: linear-gradient(145deg, rgba(36, 29, 54, 0.94) 0%, rgba(21, 19, 34, 0.98) 100%);
+            --kids-border-gold: rgba(237, 214, 156, 0.38);
+            --kids-accent-plum: #5b2c83;
         }
-        
-        main {
-            flex-grow: 1;
-            padding-top: 100px; 
-            padding-bottom: 50px;
+
+        body.kids-theme {
+            background-color: var(--kids-bg-midnight);
+            /* Seamless, iOS-safe repeating starlight constellation pattern */
+            background-image:
+                radial-gradient(circle at 18% 24%, rgba(255, 255, 255, 0.14) 1.5px, transparent 2.5px),
+                radial-gradient(circle at 76% 16%, rgba(237, 214, 156, 0.22) 2px, transparent 3.5px),
+                radial-gradient(circle at 42% 68%, rgba(255, 255, 255, 0.1) 1px, transparent 2px),
+                radial-gradient(circle at 88% 72%, rgba(212, 175, 55, 0.18) 1.5px, transparent 3px),
+                radial-gradient(circle at 12% 84%, rgba(237, 214, 156, 0.14) 1px, transparent 2.5px);
+            background-size: 340px 340px;
+            background-attachment: scroll;
         }
-        
-        /* Whimsical Page Header */
-        .page-header {
-            background: linear-gradient(to bottom, #1a0b2e 0%, var(--color-bg-base) 100%);
-            padding: 80px 20px 40px;
-            text-align: center;
-            border-bottom: 2px dashed rgba(212, 175, 55, 0.3);
-            margin-bottom: 40px;
+
+        /* Whimsical Storybook Hero */
+        .kids-hero {
             position: relative;
+            padding: 140px 5% 80px 5%;
+            background:
+                radial-gradient(circle at 50% 20%, rgba(91, 44, 131, 0.35) 0%, rgba(20, 22, 39, 0.92) 70%),
+                linear-gradient(180deg, #1b1330 0%, var(--kids-bg-midnight) 100%);
+            text-align: center;
+            border-bottom: 1px solid var(--kids-border-gold);
             overflow: hidden;
         }
 
-        /* Glowing text for the main title */
-        .page-header h1 {
-             font-size: clamp(2rem, 5vw, 3.5rem);
-             margin-bottom: 10px;
-             text-shadow: 0 0 15px rgba(212, 175, 55, 0.6), 0 0 30px rgba(212, 175, 55, 0.3);
+        .kids-hero-inner {
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
-        .page-header .subtitle {
-            color: #e5c687;
-            letter-spacing: 4px;
+        .constellation-ornament {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--color-gold-light);
+            font-size: 1.15rem;
+            letter-spacing: 0.3em;
+            margin-bottom: 0.75rem;
         }
 
-        /* Soft, glowing, rounded frames instead of sharp filigree */
+        .kids-hero h1 {
+            font-size: clamp(2.2rem, 5.2vw, 3.9rem);
+            color: var(--color-gold-light);
+            margin: 0 0 1rem 0;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.85);
+        }
+
+        .kids-hero .subtitle {
+            max-width: 58ch;
+            margin: 0 auto 1.25rem auto;
+            font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+            line-height: 1.6;
+            color: #f6f0e2;
+        }
+
+        /* Age Range Pills */
+        .age-pill-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.65rem;
+            margin: 1.5rem auto 2.25rem auto;
+        }
+
+        .age-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.4rem 1rem;
+            border-radius: 999px;
+            background: rgba(237, 214, 156, 0.1);
+            border: 1px solid var(--kids-border-gold);
+            color: var(--color-gold-light);
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        /* Soft Storybook Rounded Frames */
         .whimsical-frame {
             position: relative;
-            padding: clamp(40px, 8vw, 60px);
-            background: linear-gradient(135deg, rgba(40, 25, 55, 0.8) 0%, rgba(20, 20, 25, 0.95) 100%);
-            border: 2px solid rgba(212, 175, 55, 0.4);
-            border-radius: 30px; /* Soft, bubbly corners */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(212, 175, 55, 0.1);
+            padding: clamp(2rem, 5vw, 3.75rem) clamp(1.5rem, 4.5vw, 3.25rem);
+            background: var(--kids-card-bg);
+            border: 1.5px solid var(--kids-border-gold);
+            border-radius: 22px;
+            box-shadow:
+                inset 0 0 0 1px rgba(255, 255, 255, 0.05),
+                inset 0 0 32px rgba(91, 44, 131, 0.18),
+                0 20px 45px rgba(0, 0, 0, 0.65);
         }
 
-        /* Fun animations for buttons and elements */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-            100% { transform: translateY(0px); }
+        /* Royal Amethyst Velvet CTA Button (WCAG AAA 11.4:1 Text Contrast) */
+        .magic-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.5rem;
+            background: radial-gradient(circle at 30% 25%, #6a3299 0%, #421b66 62%, #290e42 100%);
+            color: #fff9ed;
+            border: 1.5px solid var(--color-gold-light);
+            border-radius: 999px;
+            box-shadow:
+                inset 0 1px 2px rgba(255, 235, 190, 0.35),
+                0 10px 26px rgba(0, 0, 0, 0.7),
+                0 0 20px rgba(106, 50, 153, 0.35);
+            font-family: var(--font-heading);
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
         }
 
-        .floating-element {
-            animation: float 4s ease-in-out infinite;
+        .magic-button:hover {
+            transform: translateY(-2px);
+            border-color: #ffffff;
+            box-shadow:
+                inset 0 1px 3px rgba(255, 240, 200, 0.5),
+                0 14px 32px rgba(0, 0, 0, 0.82),
+                0 0 28px rgba(212, 175, 55, 0.42);
+            color: #ffffff;
         }
 
-        /* Modify the list styling for kids (sparkles instead of stars) */
-        .kids-list {
-            list-style-type: none;
-            padding: 0;
-            max-width: 800px; 
-            margin: 40px auto; 
+        /* Subtle Decorative Float (Respects Reduced Motion, Never Applied to Interactive Targets) */
+        @keyframes gentle-starlight-float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .floating-ornament {
+            animation: gentle-starlight-float 4.5s ease-in-out infinite;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .floating-ornament {
+                animation: none;
+            }
+        }
+
+        /* Storybook Sections */
+        .kids-section {
+            padding: clamp(4rem, 7vw, 6rem) 5%;
+        }
+
+        .kids-section-alt {
+            padding: clamp(4rem, 7vw, 6rem) 5%;
+            background: rgba(16, 14, 28, 0.65);
+            border-top: 1px solid rgba(237, 214, 156, 0.16);
+            border-bottom: 1px solid rgba(237, 214, 156, 0.16);
+        }
+
+        /* Package Cards Grid */
+        .kids-packages-grid {
+            max-width: 1240px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            align-items: stretch;
+        }
+
+        .kids-package-card {
+            display: flex;
+            flex-direction: column;
             text-align: left;
+            padding: 2.25rem 2rem;
+            transition: transform 0.3s ease, border-color 0.3s ease;
         }
-        
-        .kids-list li {
+
+        .kids-package-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--color-gold-light);
+        }
+
+        .kids-package-meta {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .age-badge {
+            display: inline-block;
+            padding: 0.3rem 0.85rem;
+            border-radius: 999px;
+            background: rgba(106, 50, 153, 0.35);
+            border: 1px solid var(--color-gold-light);
+            color: var(--color-gold-light);
+            font-family: var(--font-heading);
+            font-size: 0.74rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .duration-label {
+            font-size: 0.84rem;
+            color: var(--color-text-muted);
+            font-weight: 600;
+        }
+
+        .kids-package-card h3 {
+            margin: 0 0 0.75rem 0;
+            font-size: 1.42rem;
+            color: var(--color-gold-light);
+        }
+
+        .kids-package-desc {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text);
+        }
+
+        /* Accessible Star List (No Screen-Reader Emoji Spam) */
+        .kids-feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0 0 0;
+        }
+
+        .kids-feature-list li {
             position: relative;
-            padding-left: 35px;
-            margin-bottom: 20px;
-            font-size: 1.15rem;
-            line-height: 1.6;
+            padding-left: 1.85rem;
+            margin-bottom: 0.9rem;
+            font-size: 0.98rem;
+            line-height: 1.65;
+            color: var(--color-text);
         }
-        
-        .kids-list li::before {
-            content: "✨"; /* Magical sparkle emoji */
+
+        .kids-feature-list .list-icon {
             position: absolute;
             left: 0;
-            top: 2px;
-            font-size: 1.2rem;
+            top: 0.05rem;
+            color: var(--color-gold-light);
+            font-size: 1rem;
         }
-        
-        /* Playful button override */
-        .magic-button {
-            border-radius: 50px;
-            padding: 18px 50px;
-            background: linear-gradient(45deg, #4a1977, #8a2be2);
-            border: 2px solid var(--color-gold);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
-            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+
+        /* Parent & Educator Reassurance Grid */
+        .reassurance-grid {
+            max-width: 1120px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            text-align: left;
         }
-        .magic-button:hover {
-            background: linear-gradient(45deg, #5c2094, #9d3bf0);
-            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6);
+
+        .reassurance-card {
+            padding: 1.65rem;
+            background: rgba(24, 20, 38, 0.82);
+            border: 1px solid rgba(237, 214, 156, 0.24);
+            border-radius: 16px;
+        }
+
+        .reassurance-card h3 {
+            margin: 0 0 0.55rem 0;
+            font-size: 1.1rem;
+            color: var(--color-gold-light);
+        }
+
+        .reassurance-card p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: var(--color-text);
         }
     </style>
 </head>
-<body>
-    <!-- Navigation -->
-    <nav class="site-nav">
-        <a href="index.html">← Back to Main</a>
-        <a href="#top">Page Top</a>
-        <a href="#show-info">The Show</a>
-        <a href="#packages">Packages</a>
+<body class="kids-theme">
+    <!-- UNIFIED STICKY NAVIGATION -->
+    <nav class="site-nav" aria-label="Children's Page Navigation">
+        <div class="nav-container">
+            <a href="./index.html" class="nav-brand">Michael Evernaught</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav-links" aria-label="Toggle navigation menu">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <div class="nav-links" id="primary-nav-links">
+                <a href="./index.html">Main Site</a>
+                <a href="./album.html">Photo Album</a>
+                <a href="./childrens.html" aria-current="page">Children&rsquo;s</a>
+                <a href="./community.html">Community</a>
+                <a href="./epk.html">EPK</a>
+                <a href="#contact" class="nav-cta">Book a Show</a>
+            </div>
+        </div>
     </nav>
 
     <main id="top">
-        <!-- PAGE HEADER -->
-        <header class="page-header">
-            <h1>Wonder & Magic</h1>
-            <div class="subtitle">Unforgettable Shows for Children</div>
+        <!-- 1. WHIMSICAL STORYBOOK HERO -->
+        <header class="kids-hero">
+            <div class="kids-hero-inner">
+                <div class="constellation-ornament floating-ornament" aria-hidden="true">
+                    <span>✦</span><span>✧</span><span>✦</span>
+                </div>
+                <p class="hero-kicker">Storybook Magic &amp; Interactive Wonder</p>
+                <h1>Wonder &amp; Magic for Young Imaginations</h1>
+                <p class="subtitle">
+                    Laugh-out-loud interactive magic shows where children become the heroes of the story—crafted for unforgettable birthdays, elementary schools, libraries, and family festivals.
+                </p>
+
+                <div class="age-pill-bar" aria-label="Age Groups Served">
+                    <span class="age-pill"><span aria-hidden="true">✦</span> Ages 4–7: Playful Wonder</span>
+                    <span class="age-pill"><span aria-hidden="true">✦</span> Ages 8–12: Mind-Bending Mystery</span>
+                    <span class="age-pill"><span aria-hidden="true">✦</span> All-Ages Family &amp; School Shows</span>
+                </div>
+
+                <div class="hero-cta-group">
+                    <a href="#contact" class="magic-button">Check Party &amp; Assembly Dates</a>
+                    <a href="#packages" class="btn-secondary">Explore Show Packages</a>
+                </div>
+            </div>
         </header>
 
-        <!-- SECTION 1: Whimsical Text Block -->
-        <section id="show-info" class="intro-section" style="padding: 20px 10%; background: none;">
-            <div class="intro-content whimsical-frame">
-                <h2 style="color: var(--color-gold); font-size: 2.2rem; margin-bottom: 20px; font-family: var(--font-heading);">
-                    A Journey into Imagination
-                </h2>
+        <!-- 2. THE EXPERIENCE (Whimsical Intro Block) -->
+        <section id="show-info" class="kids-section">
+            <div class="intro-content whimsical-frame" style="text-align: center;">
+                <p class="section-eyebrow">More Than a Magic Trick</p>
+                <h2 class="section-title">A Journey Into Imagination</h2>
                 <p class="intro-text">
-                    This template uses the <span class="highlight">whimsical-frame</span> class. It replaces the sharp, elegant edges of the main site with softer, bubblier corners and a slightly purple, magical background tint.
+                    When <span class="highlight">Michael Evernaught</span> steps into the room, the living room, classroom, or auditorium transforms into a starlit theater of curiosity. Rather than asking children to sit quietly and merely watch, Michael invites them into the story—helping magical objects vanish, impossibly appear, and obey their spoken wishes.
                 </p>
                 <p class="intro-text">
-                    Perfect for detailing birthday party packages, school assemblies, or family-friendly festival performances. The font and core colors remain the same, ensuring it feels like it belongs to the <span class="highlight">Michael Evernaught</span> brand, just with a playful twist!
+                    Every performance is thoughtfully calibrated to the age group in front of him: gentle, colorful, silly-smart wonder for younger children, and jaw-dropping sleight of hand and interactive mysteries that captivate older kids—and keep parents laughing right alongside them.
                 </p>
             </div>
         </section>
 
-        <!-- SECTION 2: Kids List & Floating Button -->
-        <section id="packages" class="services-section" style="background: none; border-top: 2px dotted rgba(212, 175, 55, 0.2); margin-top: 40px;">
-            <h2 style="font-family: var(--font-heading); color: var(--color-gold); font-size: 2.2rem;">Party Packages</h2>
-            
-            <ul class="kids-list">
-                <li><strong>The Apprentice Package:</strong> 45 minutes of high-energy, interactive magic where the birthday child becomes the star of the show!</li>
-                <li><strong>The Wizard Package:</strong> Includes the 45-minute show, plus a special levitation illusion and magical souvenirs for up to 15 guests.</li>
-                <li><strong>Whimsical Details:</strong> Notice how the bullets have been changed to sparkles (✨) and the text size is slightly larger for easier reading.</li>
-            </ul>
-            
-            <div class="floating-element" style="margin-top: 40px;">
-                <a href="index.html#contact" class="wax-seal magic-button">Book a Magic Show</a>
+        <!-- 3. PARTY & SCHOOL PACKAGES -->
+        <section id="packages" class="kids-section-alt">
+            <div class="section-header">
+                <p class="section-eyebrow">Birthday Parties, Schools &amp; Festivals</p>
+                <h2 class="section-title">Choose Your Magical Adventure</h2>
+                <p class="section-lead">Every show is 100% self-contained, clean, and tailored to your space—from cozy living rooms to packed school gymnasiums.</p>
+            </div>
+
+            <div class="kids-packages-grid">
+                <!-- Package 1: Apprentice -->
+                <article class="kids-package-card whimsical-frame">
+                    <div class="kids-package-meta">
+                        <span class="age-badge">Ages 4–12</span>
+                        <span class="duration-label">45 Minutes</span>
+                    </div>
+                    <h3>The Apprentice Show</h3>
+                    <p class="kids-package-desc">
+                        High-energy, laugh-filled interactive magic designed to make your birthday child the celebrated star of their special day.
+                    </p>
+                    <ul class="kids-feature-list">
+                        <li><span class="list-icon" aria-hidden="true">✦</span> The birthday child serves as Chief Magician&rsquo;s Assistant and performs a miracle in front of their friends</li>
+                        <li><span class="list-icon" aria-hidden="true">✦</span> Continuous audience participation keeping 10 to 30+ young guests completely engaged</li>
+                        <li><span class="list-icon" aria-hidden="true">✦</span> Includes an official Apprentice Magician certificate for the guest of honor</li>
+                    </ul>
+                </article>
+
+                <!-- Package 2: Grand Wizard Deluxe -->
+                <article class="kids-package-card whimsical-frame">
+                    <div class="kids-package-meta">
+                        <span class="age-badge">Most Popular</span>
+                        <span class="duration-label">60 Minutes</span>
+                    </div>
+                    <h3>The Grand Wizard Deluxe</h3>
+                    <p class="kids-package-desc">
+                        Our signature full-hour storybook adventure featuring extra showstopping illusions and take-home magic for the guests.
+                    </p>
+                    <ul class="kids-feature-list">
+                        <li><span class="list-icon" aria-hidden="true">✦</span> Everything in The Apprentice Show, extended to a full 60-minute theatrical experience</li>
+                        <li><span class="list-icon" aria-hidden="true">✦</span> Features a special grand illusion routine creating an unforgettable photo moment for parents</li>
+                        <li><span class="list-icon" aria-hidden="true">✦</span> Includes magical souvenir keepsakes for up to 15 guests (additional guests easily added)</li>
+                    </ul>
+                </article>
+
+                <!-- Package 3: Schools, Libraries & Festivals -->
+                <article class="kids-package-card whimsical-frame">
+                    <div class="kids-package-meta">
+                        <span class="age-badge">All Ages</span>
+                        <span class="duration-label">45–60 Minutes</span>
+                    </div>
+                    <h3>Schools, Libraries &amp; Festivals</h3>
+                    <p class="kids-package-desc">
+                        Big, visual stage magic celebrating curiosity, reading, and creative problem-solving for large family and student audiences.
+                    </p>
+                    <ul class="kids-feature-list">
+                        <li><span class="list-icon" aria-hidden="true">✦</span> Scales effortlessly for 30 to 300+ students, library summer reading programs, and community events</li>
+                        <li><span class="list-icon" aria-hidden="true">✦</span> Positive, inclusive humor where every student volunteer leaves the stage feeling like a hero</li>
+                        <li><span class="list-icon" aria-hidden="true">✦</span> Self-contained wireless microphone and PA sound system available upon request</li>
+                    </ul>
+                </article>
             </div>
         </section>
 
-        <!-- CONTACT / BOOKING -->
-    <section id="contact" class="contact-wrap">
-        <div class="contact-card filigree-frame">
-            <h2 style="font-size: 2.2rem; color: var(--color-gold); margin-bottom: 10px;">Request Availability</h2>
-            <h3 style="font-size: 1rem; color: var(--color-gold); margin-bottom: 10px;">Please reach out for any general Inquiry or to book your next event.</h3>
+        <!-- 4. STRESS-FREE PARENT & EDUCATOR GUIDE -->
+        <section id="parent-guide" class="kids-section">
+            <div class="section-header">
+                <p class="section-eyebrow">Peace of Mind for Parents &amp; Organizers</p>
+                <h2 class="section-title">Stress-Free From Arrival to Applause</h2>
+                <p class="section-lead">You focus on enjoying the smiles and taking photos—Michael handles the entertainment from the moment he arrives.</p>
+            </div>
 
-            <form class="availability-form" action="https://formspree.io/f/mzedpnpw" method="POST">
-                <!-- Full Name Field -->
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" class="form-control" required placeholder="contact name">
+            <div class="reassurance-grid">
+                <div class="reassurance-card">
+                    <h3>Zero Mess &amp; Compact Setup</h3>
+                    <p>No confetti cannons, live animals, fire, or messy props. Michael needs only a small 6&times;6 ft performance corner in your living room, backyard shade, or classroom.</p>
                 </div>
-
-                <!-- Email & Phone Contact Information -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" class="form-control" required placeholder="your@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="(541) 000-0000">
-                    </div>
+                <div class="reassurance-card">
+                    <h3>Age-Calibrated Routines</h3>
+                    <p>A show for 5-year-olds looks completely different from a show for 10-year-olds. Every routine is tailored to match your group&rsquo;s exact developmental stage and attention span.</p>
                 </div>
-
-                <!-- Date and Time Picker -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                    <div class="form-group">
-                        <label for="event_date">Requested Date</label>
-                        <input type="date" id="event_date" name="event_date" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label for="event_time">Requested Time</label>
-                        <input type="time" id="event_time" name="event_time" class="form-control">
-                    </div>
+                <div class="reassurance-card">
+                    <h3>Inclusive &amp; Kind-Hearted</h3>
+                    <p>Volunteers are always celebrated, never embarrassed. Shy children can participate comfortably from their seats while eager helpers join right up front.</p>
                 </div>
-
-                <!-- Event Details / Notes -->
-                <div class="form-group">
-                    <label for="details">Please provide any details</label>
-                    <textarea id="details" name="details" rows="4" class="form-control" placeholder="Tell us about the venue, guest count, and nature of the gathering. Or just ask a question."></textarea>
+                <div class="reassurance-card">
+                    <h3>Pacific Northwest Service</h3>
+                    <p>Traveling directly to homes, schools, parks, and venues across Portland, Vancouver, Hood River, White Salmon, The Dalles, and the Columbia River Gorge.</p>
                 </div>
+            </div>
+        </section>
 
-                <!-- Submit Button -->
-                <button type="submit" class="wax-seal magic-button">Submit Request</button>
-            </form>
-        </div>
-    </section>
+        <!-- 5. FAMILY & SCHOOL BOOKING FORM -->
+        <section id="contact" class="contact-wrap">
+            <div class="contact-card whimsical-frame">
+                <p class="section-eyebrow">Reserve Your Date</p>
+                <h2 class="section-title">Book a Children&rsquo;s or Family Show</h2>
+                <p class="contact-subtext">Tell us a little about your celebration or school event below, and we&rsquo;ll reply within 24 hours with availability and package pricing.</p>
 
+                <form class="availability-form" action="https://formspree.io/f/mzedpnpw" method="POST">
+                    <input type="hidden" name="inquiry_source" value="Childrens & Family Shows Page">
+
+                    <!-- Parent / Organizer Name -->
+                    <div class="form-group">
+                        <label for="name">Parent or Organizer Name <span class="req-star" aria-hidden="true">*</span></label>
+                        <input type="text" id="name" name="name" class="form-control" required placeholder="e.g., Jordan Taylor">
+                    </div>
+
+                    <!-- Email & Phone -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="req-star" aria-hidden="true">*</span></label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="you@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="(503) 555-0199">
+                        </div>
+                    </div>
+
+                    <!-- Event Type & Age Group -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event_type">Type of Celebration / Event</label>
+                            <select id="event_type" name="event_type" class="form-control">
+                                <option value="Kids Birthday - Apprentice Show (45 min)">Birthday Party — The Apprentice Show (45 min)</option>
+                                <option value="Kids Birthday - Grand Wizard Deluxe (60 min)">Birthday Party — Grand Wizard Deluxe (60 min)</option>
+                                <option value="School Assembly / PTA Event">School Assembly / PTA Event</option>
+                                <option value="Library / Community Program">Library / Community Program</option>
+                                <option value="Family Festival / Holiday Gathering">Family Festival / Holiday Gathering</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="age_range">Children&rsquo;s Age Group</label>
+                            <select id="age_range" name="age_range" class="form-control">
+                                <option value="Ages 4-6">Ages 4–6 (Early Elementary / Pre-K)</option>
+                                <option value="Ages 7-9" selected>Ages 7–9 (Elementary)</option>
+                                <option value="Ages 10-12">Ages 10–12 (Tweens)</option>
+                                <option value="Mixed Ages / All-Ages Family">Mixed Ages / All-Ages Family Group</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Date & Time -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event_date">Requested Date</label>
+                            <input type="date" id="event_date" name="event_date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="event_time">Preferred Show Time</label>
+                            <input type="time" id="event_time" name="event_time" class="form-control">
+                        </div>
+                    </div>
+
+                    <!-- Location & Guest Count -->
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event_location">City / Venue Type</label>
+                            <input type="text" id="event_location" name="event_location" class="form-control" placeholder="e.g., Hood River — Home Living Room / School Gym">
+                        </div>
+                        <div class="form-group">
+                            <label for="guest_count">Approx. Number of Kids</label>
+                            <input type="text" id="guest_count" name="guest_count" class="form-control" placeholder="e.g., 15 kids">
+                        </div>
+                    </div>
+
+                    <!-- Special Notes -->
+                    <div class="form-group">
+                        <label for="details">Birthday Child&rsquo;s First Name or Event Notes</label>
+                        <textarea id="details" name="details" rows="4" class="form-control" placeholder="Share the birthday child's name/age, theme ideas, or any questions about space and setup!"></textarea>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="magic-button" style="margin: 1rem auto 0 auto; min-width: 280px;">Check Date &amp; Pricing</button>
+                </form>
+            </div>
+        </section>
     </main>
 
-    <footer>&copy; 2026 Michael Evernaught &trade; | Magical Entertainment for All Ages</footer>
-    
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="footer-brand">Michael Evernaught&trade; &mdash; Magical Entertainment for All Ages</p>
+            <p class="footer-meta">Children&rsquo;s Birthdays, School Assemblies &amp; Family Events &bull; Pacific Northwest &amp; Columbia River Gorge</p>
+            <nav class="footer-links" aria-label="Footer Navigation">
+                <a href="./index.html">Main Site</a>
+                <a href="./album.html">Photo Album</a>
+                <a href="./childrens.html" aria-current="page">Children&rsquo;s Shows</a>
+                <a href="./community.html">Community &amp; Senior</a>
+                <a href="./epk.html">Press Kit / EPK</a>
+                <a href="#contact">Book a Show</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 Michael Evernaught&trade;. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="./Scripts/main.js"></script>
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4bc70e2c01a94c73b74392e4234840661791215815920" integrity="sha512-L0ha0OXavK/8okipN9F8BtP84dg9DUhPERbBXzwI6dgTA55d2+yweo3pn5CSFYs45/r8md2+xvUPtTdvTNRfjA==" data-cf-beacon='{"version":"2024.11.0","token":"f55f7c24190f4b25b5bda3b40b093743","r":1,"spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
