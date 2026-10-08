@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Kids Shows | Michael Evernaught</title>
+    <meta name="title" content="Kids Shows | Michael Evernaught">
+    <meta name="description" content="Whimsical and magical entertainment for children and family events by Michael Evernaught.">
+    <meta name="author" content="Michael Evernaught">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./Styles/style.css">  
+    
+    <style>
+        /* Base Template Adjustments */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* Add a pure CSS starry night background overlay while keeping the dark theme */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.08) 1px, transparent 2px),
+                radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.15) 2px, transparent 3px),
+                radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.05) 1.5px, transparent 2px),
+                radial-gradient(circle at 20% 10%, rgba(212, 175, 55, 0.1) 1px, transparent 2px);
+            background-size: 100vw 100vh;
+            background-attachment: fixed;
+        }
+        
+        main {
+            flex-grow: 1;
+            padding-top: 100px; 
+            padding-bottom: 50px;
+        }
+        
+        /* Whimsical Page Header */
+        .page-header {
+            background: linear-gradient(to bottom, #1a0b2e 0%, var(--color-bg-base) 100%);
+            padding: 80px 20px 40px;
+            text-align: center;
+            border-bottom: 2px dashed rgba(212, 175, 55, 0.3);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glowing text for the main title */
+        .page-header h1 {
+             font-size: clamp(2rem, 5vw, 3.5rem);
+             margin-bottom: 10px;
+             text-shadow: 0 0 15px rgba(212, 175, 55, 0.6), 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .page-header .subtitle {
+            color: #e5c687;
+            letter-spacing: 4px;
+        }
+
+        /* Soft, glowing, rounded frames instead of sharp filigree */
+        .whimsical-frame {
+            position: relative;
+            padding: clamp(40px, 8vw, 60px);
+            background: linear-gradient(135deg, rgba(40, 25, 55, 0.8) 0%, rgba(20, 20, 25, 0.95) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            border-radius: 30px; /* Soft, bubbly corners */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5), inset 0 0 20px rgba(212, 175, 55, 0.1);
+        }
+
+        /* Fun animations for buttons and elements */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating-element {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Modify the list styling for kids (sparkles instead of stars) */
+        .kids-list {
+            list-style-type: none;
+            padding: 0;
+            max-width: 800px; 
+            margin: 40px auto; 
+            text-align: left;
+        }
+        
+        .kids-list li {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 20px;
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+        
+        .kids-list li::before {
+            content: "✨"; /* Magical sparkle emoji */
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 1.2rem;
+        }
+        
+        /* Playful button override */
+        .magic-button {
+            border-radius: 50px;
+            padding: 18px 50px;
+            background: linear-gradient(45deg, #4a1977, #8a2be2);
+            border: 2px solid var(--color-gold);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+        }
+        .magic-button:hover {
+            background: linear-gradient(45deg, #5c2094, #9d3bf0);
+            box-shadow: 0 8px 25px rgba(138, 43, 226, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <a href="index.html">← Back to Main</a>
+        <a href="#top">Page Top</a>
+        <a href="#show-info">The Show</a>
+        <a href="#packages">Packages</a>
+    </nav>
+
+    <main id="top">
+        <!-- PAGE HEADER -->
+        <header class="page-header">
+            <h1>Wonder & Magic</h1>
+            <div class="subtitle">Unforgettable Shows for Children</div>
+        </header>
+
+        <!-- SECTION 1: Whimsical Text Block -->
+        <section id="show-info" class="intro-section" style="padding: 20px 10%; background: none;">
+            <div class="intro-content whimsical-frame">
+                <h2 style="color: var(--color-gold); font-size: 2.2rem; margin-bottom: 20px; font-family: var(--font-heading);">
+                    A Journey into Imagination
+                </h2>
+                <p class="intro-text">
+                    This template uses the <span class="highlight">whimsical-frame</span> class. It replaces the sharp, elegant edges of the main site with softer, bubblier corners and a slightly purple, magical background tint.
+                </p>
+                <p class="intro-text">
+                    Perfect for detailing birthday party packages, school assemblies, or family-friendly festival performances. The font and core colors remain the same, ensuring it feels like it belongs to the <span class="highlight">Michael Evernaught</span> brand, just with a playful twist!
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Kids List & Floating Button -->
+        <section id="packages" class="services-section" style="background: none; border-top: 2px dotted rgba(212, 175, 55, 0.2); margin-top: 40px;">
+            <h2 style="font-family: var(--font-heading); color: var(--color-gold); font-size: 2.2rem;">Party Packages</h2>
+            
+            <ul class="kids-list">
+                <li><strong>The Apprentice Package:</strong> 45 minutes of high-energy, interactive magic where the birthday child becomes the star of the show!</li>
+                <li><strong>The Wizard Package:</strong> Includes the 45-minute show, plus a special levitation illusion and magical souvenirs for up to 15 guests.</li>
+                <li><strong>Whimsical Details:</strong> Notice how the bullets have been changed to sparkles (✨) and the text size is slightly larger for easier reading.</li>
+            </ul>
+            
+            <div class="floating-element" style="margin-top: 40px;">
+                <a href="index.html#contact" class="wax-seal magic-button">Book a Magic Show</a>
+            </div>
+        </section>
+
+        <!-- CONTACT / BOOKING -->
+    <section id="contact" class="contact-wrap">
+        <div class="contact-card filigree-frame">
+            <h2 style="font-size: 2.2rem; color: var(--color-gold); margin-bottom: 10px;">Request Availability</h2>
+            <h3 style="font-size: 1rem; color: var(--color-gold); margin-bottom: 10px;">Please reach out for any general Inquiry or to book your next event.</h3>
+
+            <form class="availability-form" action="https://formspree.io/f/mzedpnpw" method="POST">
+                <!-- Full Name Field -->
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required placeholder="contact name">
+                </div>
+
+                <!-- Email & Phone Contact Information -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" class="form-control" placeholder="(541) 000-0000">
+                    </div>
+                </div>
+
+                <!-- Date and Time Picker -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <div class="form-group">
+                        <label for="event_date">Requested Date</label>
+                        <input type="date" id="event_date" name="event_date" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="event_time">Requested Time</label>
+                        <input type="time" id="event_time" name="event_time" class="form-control">
+                    </div>
+                </div>
+
+                <!-- Event Details / Notes -->
+                <div class="form-group">
+                    <label for="details">Please provide any details</label>
+                    <textarea id="details" name="details" rows="4" class="form-control" placeholder="Tell us about the venue, guest count, and nature of the gathering. Or just ask a question."></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="wax-seal magic-button">Submit Request</button>
+            </form>
+        </div>
+    </section>
+
+    </main>
+
+    <footer>&copy; 2026 Michael Evernaught &trade; | Magical Entertainment for All Ages</footer>
+    
+    <script src="./Scripts/main.js"></script>
+</body>
+</html>

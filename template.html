@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>Template | Michael Evernaught</title>
+    <meta name="title" content="Template | Michael Evernaught">
+    <meta name="description" content="Blank template page for the Michael Evernaught website.">
+    <meta name="author" content="Michael Evernaught">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./Styles/style.css">  
+    <style>
+        /* Template Specific Adjustments to handle shorter pages gracefully */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        
+        main {
+            flex-grow: 1;
+            /* Push content down to account for fixed nav */
+            padding-top: 100px; 
+            padding-bottom: 50px;
+        }
+        
+        /* Adjust hero banner to act as a header for inner pages rather than full screen */
+        .page-header {
+            background: linear-gradient(to bottom, #111 0%, var(--color-bg-base) 100%);
+            padding: 80px 20px 40px;
+            text-align: center;
+            border-bottom: var(--glass-border-light);
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+             font-size: clamp(1.8rem, 4vw, 3rem);
+             margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="site-nav">
+        <a href="index.html">← Back to Main</a>
+        <a href="#top">Page Top</a>
+        <a href="#section-1">Section 1</a>
+        <a href="#section-2">Section 2</a>
+    </nav>
+
+    <main id="top">
+        <!-- PAGE HEADER -->
+        <header class="page-header">
+            <h1>Page Title</h1>
+            <div class="subtitle">Optional Subtitle or Tagline</div>
+        </header>
+
+        <!-- SECTION 1: Standard Text Block with Filigree Frame -->
+        <section id="section-1" class="intro-section" style="padding: 40px 10%; background: none;">
+            <div class="intro-content filigree-frame">
+                <h2 style="color: var(--color-gold); font-size: 2.2rem; margin-bottom: 20px; font-family: var(--font-heading);">
+                    Section Heading
+                </h2>
+                <p class="intro-text">
+                    This is a standard text block inside the <span class="highlight">filigree frame</span>. You can use this for text-heavy content, articles, expanded service descriptions, or policy pages.
+                </p>
+                <p class="intro-text">
+                    The frame provides an elegant container that matches the magical aesthetic of the main site while keeping the content easy to read against the dark background.
+                </p>
+            </div>
+        </section>
+
+        <!-- SECTION 2: List / Secondary Content -->
+        <section id="section-2" class="services-section" style="background: none; border-top: 1px dashed rgba(212, 175, 55, 0.2); margin-top: 40px;">
+            <h2>Another Section</h2>
+            <ul class="services-list" style="max-width: 800px; margin: 40px auto; text-align: left;">
+                <li><strong>List Item 1:</strong> Use this structure for laying out bullet points or structured information.</li>
+                <li><strong>List Item 2:</strong> The gold star bullet points apply automatically to lists formatted this way.</li>
+                <li><strong>List Item 3:</strong> You can add buttons or call-to-actions below this.</li>
+            </ul>
+            
+            <a href="index.html#top" class="wax-seal" style="margin-top: 20px;">Return Home</a>
+        </section>
+    </main>
+
+    <footer>&copy; 2026 Michael Evernaught &trade; | Traveling Magician in the Columbia River Gorge</footer>
+    
+    <script src="./Scripts/main.js"></script>
+</body>
+</html>
