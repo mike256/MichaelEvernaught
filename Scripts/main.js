@@ -1,11 +1,12 @@
 /**
  * Michael Evernaught — Official Website Scripts
- * Accessible Gallery Carousel, Lightbox Modal & Mobile Navigation
+ * Unified Mobile Navigation, Carousel, Filterable Photo Album & Accessible Lightbox
  */
 
 let currentCarouselIndex = 0;
 let currentLightboxIndex = 0;
 let carouselTotal = 0;
+let activeLightboxItems = [];
 
 /**
  * 1. MOBILE NAVIGATION TOGGLE
@@ -22,7 +23,6 @@ function initializeNavigation() {
         navLinks.classList.toggle('is-open', !isExpanded);
     });
 
-    // Close mobile menu when any navigation link is clicked
     navLinks.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             navToggle.setAttribute('aria-expanded', 'false');
@@ -32,7 +32,7 @@ function initializeNavigation() {
 }
 
 /**
- * 2. RENDER DYNAMIC GALLERY CAROUSEL
+ * 2. RENDER DYNAMIC GALLERY CAROUSEL (index.html)
  */
 function initializeGallery() {
     const galleryContainer = document.getElementById('dynamic-gallery');
@@ -42,8 +42,11 @@ function initializeGallery() {
         return;
     }
 
-    galleryImages.forEach((item, index) => {
-        const basePath = `Images/${item.filename}`;
+    activeLightboxItems = [];
+    carouselTotal = 0;
+
+    galleryImages.forEach((item) => {
+        const basePath = item.path || `Images/${item.filename}`;
 
         if (item.type === 'video') {
             if (videoContainer) {
@@ -55,11 +58,14 @@ function initializeGallery() {
         }
 
         const itemIndex = carouselTotal;
+        const captionText = item.caption || 'Michael Evernaught live magic performance';
+        activeLightboxItems.push({ src: basePath, caption: captionText, type: 'image' });
+
         const photoFrame = document.createElement('div');
         photoFrame.className = 'carousel-item photo-frame';
         photoFrame.setAttribute('role', 'button');
         photoFrame.setAttribute('tabindex', '0');
-        photoFrame.setAttribute('aria-label', `View full size: ${item.caption}`);
+        photoFrame.setAttribute('aria-label', `View full size: ${captionText}`);
 
         photoFrame.addEventListener('click', () => openLightbox(itemIndex));
         photoFrame.addEventListener('keydown', (e) => {
@@ -69,10 +75,10 @@ function initializeGallery() {
             }
         });
 
-        const placeholder = `https://placehold.co/900x600/1c1b19/d4af37?text=${encodeURIComponent(item.caption)}`;
+        const placeholder = `https://placehold.co/900x600/1c1b19/d4af37?text=${encodeURIComponent(captionText)}`;
         const img = document.createElement('img');
         img.src = basePath;
-        img.alt = item.caption || 'Michael Evernaught live magic performance';
+        img.alt = captionText;
         img.loading = itemIndex === 0 ? 'eager' : 'lazy';
         img.decoding = 'async';
         img.onerror = function() {
@@ -82,7 +88,7 @@ function initializeGallery() {
 
         const captionDiv = document.createElement('div');
         captionDiv.className = 'caption';
-        captionDiv.textContent = item.caption || '';
+        captionDiv.textContent = captionText;
 
         photoFrame.appendChild(img);
         photoFrame.appendChild(captionDiv);
@@ -91,25 +97,19 @@ function initializeGallery() {
     });
 
     updateCarouselMetadata();
-    attachCarouselSwipe(galleryContainer);
+    attachTouchSwipe(galleryContainer, (dir) => moveCarousel(dir));
 }
 
 function updateCarouselMetadata() {
     const counterEl = document.getElementById('carousel-counter');
     const captionBarEl = document.getElementById('carousel-caption-bar');
-    const track = document.getElementById('dynamic-gallery');
 
     if (counterEl && carouselTotal > 0) {
         counterEl.textContent = `${currentCarouselIndex + 1} / ${carouselTotal}`;
     }
 
-    if (captionBarEl && track) {
-        const items = track.querySelectorAll('.carousel-item');
-        const activeItem = items[currentCarouselIndex];
-        if (activeItem) {
-            const cap = activeItem.querySelector('.caption');
-            captionBarEl.textContent = cap ? cap.textContent : '';
-        }
+    if (captionBarEl && activeLightboxItems[currentCarouselIndex]) {
+        captionBarEl.textContent = activeLightboxItems[currentCarouselIndex].caption;
     }
 }
 
@@ -124,39 +124,121 @@ function moveCarousel(direction) {
 }
 
 /**
- * Touch Swipe Support for Mobile Carousel
+ * 3. RENDER FILTERABLE PHOTO ALBUM GRID (album.html)
  */
-function attachCarouselSwipe(trackElement) {
+function initializeAlbum() {
+    const albumGrid = document.getElementById('album-grid');
+    if (!albumGrid || typeof albumPhotos === 'undefined' || !Array.isArray(albumPhotos)) {
+        return;
+    }
+
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    function renderAlbumFilter(category) {
+        albumGrid.innerHTML = '';
+        activeLightboxItems = [];
+
+        const filtered = category === 'all'
+            ? albumPhotos
+            : albumPhotos.filter(item => item.category === category);
+
+        filtered.forEach((item, idx) => {
+            activeLightboxItems.push({
+                src: item.src,
+                caption: item.caption,
+                type: 'image'
+            });
+
+            const card = document.createElement('figure');
+            card.className = 'album-card';
+            card.setAttribute('role', 'button');
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('aria-label', `Enlarge photo: ${item.caption}`);
+
+            card.addEventListener('click', () => openLightbox(idx));
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    openLightbox(idx);
+                }
+            });
+
+            const placeholder = `https://placehold.co/800x600/1c1b19/d4af37?text=${encodeURIComponent(item.tag || 'Illumination')}`;
+            const img = document.createElement('img');
+            img.src = item.src;
+            img.alt = item.caption;
+            img.loading = idx < 4 ? 'eager' : 'lazy';
+            img.decoding = 'async';
+            img.onerror = function() {
+                this.onerror = null;
+                this.src = placeholder;
+            };
+
+            const overlay = document.createElement('figcaption');
+            overlay.className = 'album-card-overlay';
+
+            const tagSpan = document.createElement('span');
+            tagSpan.className = 'album-card-tag';
+            tagSpan.textContent = item.tag || 'Live Performance';
+
+            const capSpan = document.createElement('span');
+            capSpan.className = 'album-card-caption';
+            capSpan.textContent = item.caption;
+
+            overlay.appendChild(tagSpan);
+            overlay.appendChild(capSpan);
+            card.appendChild(img);
+            card.appendChild(overlay);
+            albumGrid.appendChild(card);
+        });
+    }
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const category = btn.getAttribute('data-filter') || 'all';
+            filterBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
+            btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
+            renderAlbumFilter(category);
+        });
+    });
+
+    renderAlbumFilter('all');
+}
+
+/**
+ * 4. TOUCH SWIPE HELPER
+ */
+function attachTouchSwipe(element, onSwipe) {
+    if (!element) return;
     let touchStartX = 0;
-    let touchEndX = 0;
     const minSwipeDistance = 45;
 
-    trackElement.addEventListener('touchstart', (e) => {
+    element.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
 
-    trackElement.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
+    element.addEventListener('touchend', (e) => {
+        const touchEndX = e.changedTouches[0].screenX;
         const deltaX = touchStartX - touchEndX;
         if (Math.abs(deltaX) > minSwipeDistance) {
-            moveCarousel(deltaX > 0 ? 1 : -1);
+            onSwipe(deltaX > 0 ? 1 : -1);
         }
     }, { passive: true });
 }
 
 /**
- * 3. ACCESSIBLE LIGHTBOX LOGIC
+ * 5. ACCESSIBLE LIGHTBOX LOGIC (Shared by Carousel & Album Grid)
  */
 function openLightbox(index) {
     const lightbox = document.getElementById('lightbox');
-    const track = document.getElementById('dynamic-gallery');
-    if (!lightbox || !track) return;
+    if (!lightbox || !activeLightboxItems.length) return;
 
-    const items = track.querySelectorAll('.carousel-item');
-    if (!items.length) return;
-
-    currentLightboxIndex = (index + items.length) % items.length;
-    renderLightboxSlide(items[currentLightboxIndex]);
+    currentLightboxIndex = (index + activeLightboxItems.length) % activeLightboxItems.length;
+    renderLightboxSlide(activeLightboxItems[currentLightboxIndex]);
 
     lightbox.style.display = 'flex';
     requestAnimationFrame(() => {
@@ -165,51 +247,55 @@ function openLightbox(index) {
     document.body.style.overflow = 'hidden';
 }
 
-function renderLightboxSlide(element) {
+function renderLightboxSlide(item) {
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxVid = document.getElementById('lightbox-video');
     const lightboxCap = document.getElementById('lightbox-caption');
     const lightboxCounter = document.getElementById('lightbox-counter');
 
-    if (!lightboxImg || !lightboxVid) return;
+    if (!lightboxImg || !item) return;
 
     lightboxImg.style.display = 'none';
-    lightboxVid.style.display = 'none';
-    lightboxVid.pause();
+    if (lightboxVid) {
+        lightboxVid.style.display = 'none';
+        lightboxVid.pause();
+    }
 
-    const sourceVid = element.querySelector('video');
-    const sourceImg = element.querySelector('img');
-    const sourceCap = element.querySelector('.caption');
-
-    if (sourceVid) {
-        lightboxVid.src = sourceVid.src;
+    if (item.type === 'video' && lightboxVid) {
+        lightboxVid.src = item.src;
         lightboxVid.style.display = 'block';
-    } else if (sourceImg) {
-        lightboxImg.src = sourceImg.src;
-        lightboxImg.alt = sourceImg.alt || '';
+    } else {
+        const placeholder = `https://placehold.co/900x650/1c1b19/d4af37?text=${encodeURIComponent(item.caption)}`;
+        lightboxImg.onerror = function() {
+            this.onerror = null;
+            this.src = placeholder;
+        };
+        lightboxImg.src = item.src;
+        lightboxImg.alt = item.caption || '';
         lightboxImg.style.display = 'block';
     }
 
     if (lightboxCap) {
-        lightboxCap.textContent = sourceCap ? sourceCap.textContent : '';
+        lightboxCap.textContent = item.caption || '';
     }
-    if (lightboxCounter && carouselTotal > 0) {
-        lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${carouselTotal}`;
+    if (lightboxCounter && activeLightboxItems.length > 0) {
+        lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${activeLightboxItems.length}`;
     }
 }
 
 function navigateLightbox(direction) {
+    if (!activeLightboxItems.length) return;
+
+    currentLightboxIndex = (currentLightboxIndex + direction + activeLightboxItems.length) % activeLightboxItems.length;
+    renderLightboxSlide(activeLightboxItems[currentLightboxIndex]);
+
+    // Synchronize background carousel if present on the page
     const track = document.getElementById('dynamic-gallery');
-    if (!track || carouselTotal === 0) return;
-
-    const items = track.querySelectorAll('.carousel-item');
-    currentLightboxIndex = (currentLightboxIndex + direction + carouselTotal) % carouselTotal;
-    renderLightboxSlide(items[currentLightboxIndex]);
-
-    // Keep background carousel synchronized with Lightbox position
-    currentCarouselIndex = currentLightboxIndex;
-    track.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
-    updateCarouselMetadata();
+    if (track && carouselTotal === activeLightboxItems.length) {
+        currentCarouselIndex = currentLightboxIndex;
+        track.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+        updateCarouselMetadata();
+    }
 }
 
 function closeLightbox() {
@@ -231,7 +317,7 @@ function closeLightbox() {
 }
 
 /**
- * 4. KEYBOARD NAVIGATION (Lightbox & Carousel)
+ * 6. KEYBOARD & LIGHTBOX SWIPE NAVIGATION
  */
 document.addEventListener('keydown', (e) => {
     const lightbox = document.getElementById('lightbox');
@@ -249,9 +335,15 @@ document.addEventListener('keydown', (e) => {
 });
 
 /**
- * 5. INITIALIZE ON DOM READY
+ * 7. INITIALIZE ON DOM READY
  */
 document.addEventListener('DOMContentLoaded', () => {
     initializeNavigation();
     initializeGallery();
+    initializeAlbum();
+
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        attachTouchSwipe(lightbox, (dir) => navigateLightbox(dir));
+    }
 });
