@@ -85,6 +85,7 @@
         <a href="#calendar">Calendar</a>
         <a href="#contact">Contact</a>
     </nav>
+    
     <!-- LIGHTBOX -->
     <div id="lightbox" onclick="closeLightbox()">
         <span class="close-lightbox" onclick="event.stopPropagation(); closeLightbox();">&times;</span>
@@ -99,20 +100,12 @@
     <section id="top" class="hero-banner">
         <div class="hero-overlay"></div>
         <div class="hero-text">
-            <p background><h1>Michael Evernaught &trade;</h1></p>
+            <h1>Michael Evernaught &trade;</h1>
             <div class="subtitle">International Man of Wonder</div>
-            <a href="#contact" class="wax-seal">Contact Me</a>
-
-                        <!-- Venmo Tip Jar
-            <a href="https://account.venmo.com/u/michaelevernaught" target="_blank" rel="noopener noreferrer" class="tip-jar-container" style="text-decoration: none;">
-                <img src="./Images/Venmo.png" alt="Venmo QR Code" class="venmo-qr" onerror="this.src='https://placehold.co/100x100/1e1a15/d4af37?text=Venmo'">
-                <span class="tip-text">If you enjoyed the performance,<br>Here's a link to my Venmo.</span>
-            </a>
-            -->
+            <a href="#contact" class="wax-seal">Book Now</a>
         </div>
     </section>
             
-
     <!-- INTRODUCTION SECTION -->
     <section id="about" class="intro-section">
         <div class="intro-content filigree-frame">
@@ -133,7 +126,7 @@
 
     <!-- GALLERY (Carousel) -->
     <section id="gallery" class="gallery-section">
-        <h2 style="font-family:'Cinzel'; color:#d4af37; font-size: 2.2rem; margin-bottom: 20px;">Magic Moments</h2>
+        <h2 style="color: var(--color-gold); font-size: 2.2rem; margin-bottom: 20px;">Magic Moments</h2>
         <div class="carousel-container">
             <div class="carousel-track" id="dynamic-gallery">
                 <!-- Images will be injected here automatically -->
@@ -145,10 +138,8 @@
 
     <!-- VIDEO REEL SECTION -->
     <section id="video-reel" class="video-section">
-        <h2 style="font-family:'Cinzel'; color:#d4af37; font-size: 2.2rem; margin-bottom: 20px;">Highlights</h2>
+        <h2 style="color: var(--color-gold); font-size: 2.2rem; margin-bottom: 20px;">Highlights</h2>
         <iframe width="560" height="315" src="https://www.youtube.com/embed/jIBCMfkByN8?si=nuT6GsheurZEj1Gi" title="Highlight Reel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <!-- Video will be injected here automatically <div class="video-container" id="dynamic-video"></div>-->
-        
     </section>
     
     <!-- SERVICES SECTION -->
@@ -156,50 +147,123 @@
         <h2>Services Offered</h2>
         <ul class="services-list">
             <li><strong>Close-Up Magic:</strong> Intimate sleight of hand performances perfect for cocktail hours and networking events.</li>
-            <li><strong>Platform and parolor:</strong> Engaging magic shows designed for stages, galas, and medium-sized gatherings.</li>
+            <li><strong>Platform and Parlor:</strong> Engaging magic shows designed for stages, galas, and medium-sized gatherings.</li>
             <li><strong>Traveling Wonder:</strong> Bringing professional entertainment directly to your venue!</li>
             <li><strong>Special Occasions:</strong> Customized routines crafted specifically to elevate your event.
-                <ul><li>Weddings, birthdays, or corporate events.</li></ul></li>    
+                <ul style="list-style: none; padding-left: 0; margin-top: 10px;">
+                    <li>Weddings, birthdays, or corporate events.</li>
+                </ul>
+            </li>    
         </ul>
     </section>
     
     <!-- CALENDAR WIDGET -->
-    <section id="calendar" class="calendar-section" style="padding: 100px 5%; background: #242424; text-align: center;">
-    <div class="filigree-frame">
-        <h2 style="font-family:'Cinzel'; color:#d4af37; font-size: 2.2rem; margin-bottom: 30px;">Upcoming Engagements</h2>
-        <div class="calendar-container" style="max-width: 800px; margin: 0 auto; border: 1px solid rgba(212, 175, 55, 0.3); border-radius: 4px; overflow: hidden;">
-            <iframe src="https://calendar.google.com/calendar/embed?src=8f0dbcf90630f7cc734816bc48a575baade07dc368727e06b7e1b6b6d61e2b72%40group.calendar.google.com&ctz=America%2FLos_Angeles" 
-                    style="border: 0; width: 100%; height: 600px; filter: invert(90%) hue-rotate(180deg) brightness(0.8);" 
-                    frameborder="0" scrolling="no">
-            </iframe>
+    <section id="calendar" class="calendar-section" style="padding: 100px 5%; background: var(--color-bg-base); text-align: center;">
+        <div class="filigree-frame">
+            <h2 style="color: var(--color-gold); font-size: 2.2rem; margin-bottom: 30px;">Upcoming Engagements</h2>
+            <div class="calendar-container" style="max-width: 800px; margin: 0 auto; border: var(--border-gold); border-radius: 4px; overflow: hidden;">
+                <iframe src="https://calendar.google.com/calendar/embed?src=8f0dbcf90630f7cc734816bc48a575baade07dc368727e06b7e1b6b6d61e2b72%40group.calendar.google.com&ctz=America%2FLos_Angeles" 
+                        style="border: 0; width: 100%; height: 600px; filter: invert(90%) hue-rotate(180deg) brightness(0.8);" 
+                        frameborder="0" scrolling="no">
+                </iframe>
+            </div>
         </div>
-    </div>
     </section>
-    
-    <!-- FLAIR / PRESS KIT 
-    <section id="clients" class="services-section">
-        <h2>clients</h2>
-        <ul class="services-list">
-            <li><strong>Close-Up Magic:</strong> Intimate sleight of hand performances perfect for cocktail hours and networking events.</li>
-            <li><strong>Platform and parolor:</strong> Engaging magic shows designed for stages, galas, and medium-sized gatherings.</li>
-            <li><strong>Traveling Wonder:</strong> Bringing professional entertainment directly to your venue!</li>
-            <li><strong>Special Occasions:</strong> Customized routines crafted specifically to elevate your event.
-                <ul><li>Weddings, birthdays, or corporate events.</li></ul></li>    
-        </ul>
-    </section>  
--->
-    <!-- CONTACT / BOOKING -->
+
+<!-- Client Logos Marquee Section 
+    NOTE: All clients must be duplicated for seamless scrolling-->
+    <section id="clients" class="client-marquee-section">
+        <div class="client-marquee-title-wrap">
+            <h3 style="font-family:'Cinzel'; font-size: 2.2rem; color:#d4af37; margin-bottom: 10px; text-align: center;">Clients</h3>
+        </div>
+
+        <div class="client-marquee-container">
+            <div class="client-marquee-track">
+                
+                <!-- Google -->
+                <div class="client-pill">
+                    <div class="client-logo-box">
+                        <img src="./Images/clients/client-2.png" alt="Google">
+                    </div>
+                    <span class="client-name">Google</span>
+                </div>
+                <!-- Friendship Club -->
+                <div class="client-pill">
+                    <div class="client-logo-box">
+                        <img src="./Images/clients/client-3.jpg" alt="Friendship Club">
+                    </div>
+                    <span class="client-name">Friendship Club</span>
+                </div>
+                <!-- Broadway Bakery -->
+                <div class="client-pill">
+                    <div class="client-logo-box">
+                        <img src="./Images/clients/client-1.webp" alt="Broadway Bakery">
+                    </div>
+                    <span class="client-name">Broadway Bakery</span>
+                </div>
+                <!-- Rootstock -->
+                <div class="client-pill">
+                    <div class="client-logo-box">
+                        <img src="./Images/clients/rootstock.jpeg" alt="Rootstock">
+                    </div>
+                    <span class="client-name">Rootstock</span>
+                </div>
+                <!-- Srathdale -->
+                <div class="client-pill">
+                    <div class="client-logo-box">
+                        <img src="./Images/clients/client-5.webp" alt="Srathdale">
+                    </div>
+                    <span class="client-name">Srathdale</span>
+                </div>
+
+                
+                <!-- Duplicate set for seamless infinite loop -->
+                <div class="client-pill">
+                    <div class="client-logo-box">
+                        <img src="./Images/clients/client-2.png" alt="Google">
+                    </div>
+                    <span class="client-name">Google</span>
+                </div>
+                                <!-- Friendship Club -->
+                <div class="client-pill">
+                    <div class="client-logo-box">
+                        <img src="./Images/clients/client-3.jpg" alt="Friendship Club">
+                    </div>
+                    <span class="client-name">Friendship Club</span>
+                </div>
+                <!-- Broadway Bakery -->
+                <div class="client-pill">
+                    <div class="client-logo-box">
+                        <img src="./Images/clients/client-1.webp" alt="Broadway Bakery">
+                    </div>
+                    <span class="client-name">Broadway Bakery</span>
+                </div>
+                <!-- Rootstock -->
+                <div class="client-pill">
+                    <div class="client-logo-box">
+                        <img src="./Images/clients/rootstock.jpeg" alt="Rootstock">
+                    </div>
+                    <span class="client-name">Rootstock</span>
+                </div>
+                <!-- Srathdale -->
+                <div class="client-pill">
+                    <div class="client-logo-box">
+                        <img src="./Images/clients/client-5.webp" alt="Srathdale">
+                    </div>
+                    <span class="client-name">Srathdale</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+ <!-- CONTACT / BOOKING -->
     <section id="contact" class="contact-wrap">
         <div class="contact-card filigree-frame">
-            <h2 style="font-family:'Cinzel'; font-size: 2.2rem; color:#d4af37; margin-bottom: 10px;">Request Availability</h2>
-            <h3 style="font-family:'Cinzel'; font-size: 1rem; color:#d4af37; margin-bottom: 10px;">Please reach out for any general Inquiry or to book your next event.</h3>
+            <h2 style="font-size: 2.2rem; color: var(--color-gold); margin-bottom: 10px;">Request Availability</h2>
+            <h3 style="font-size: 1rem; color: var(--color-gold); margin-bottom: 10px;">Please reach out for any general Inquiry or to book your next event.</h3>
 
-           <!-- ================================================================= -->
-            <!-- START OF REUSABLE FORMSPREE AVAILABILITY REQUEST FORM CODE BLOCK  -->
-            <!-- Copy everything between the START and END markers to reuse elsewhere -->
-            <!-- ================================================================= -->
             <form class="availability-form" action="https://formspree.io/f/mzedpnpw" method="POST">
-                
                 <!-- Full Name Field -->
                 <div class="form-group">
                     <label for="name">Your Name</label>
@@ -238,49 +302,31 @@
 
                 <!-- Submit Button -->
                 <button type="submit" class="wax-seal">Submit Request</button>
-
             </form>
-            <!-- ================================================================= -->
-            <!-- END OF REUSABLE FORMSPREE AVAILABILITY REQUEST FORM CODE BLOCK    -->
-            <!-- ================================================================= --> 
-
         </div>
     </section>
 
-    <!-- FLAIR / PRESS KIT 
-    <section id="clients" class="services-section">
-        <h2>clients</h2>
-        <ul class="services-list">
-            <li><strong>Close-Up Magic:</strong> Intimate sleight of hand performances perfect for cocktail hours and networking events.</li>
-            <li><strong>Platform and parolor:</strong> Engaging magic shows designed for stages, galas, and medium-sized gatherings.</li>
-            <li><strong>Traveling Wonder:</strong> Bringing professional entertainment directly to your venue!</li>
-            <li><strong>Special Occasions:</strong> Customized routines crafted specifically to elevate your event.
-                <ul><li>Weddings, birthdays, or corporate events.</li></ul></li>    
-        </ul>
-    </section>  
--->
-    <footer>&copy; 2026 Michael Evernaught &trade;| Traveling Magician in the Columbia River Gorge</footer>
+    <footer>&copy; 2026 Michael Evernaught &trade; | Traveling Magician in the Columbia River Gorge</footer>
     
-<!-- Define your gallery images here so they are easy to update -->
-<script>
-    const galleryImages = [
-        { filename: '1.jpg', caption: 'image' },
-        { filename: '2.jpg', caption: 'image' },
-        { filename: '3.jpg', caption: 'image' },
-        { filename: '4.jpg', caption: 'image' },
-        { filename: '5.jpg', caption: 'image' },
-        { filename: '6.jpg', caption: 'image' },
-        { filename: '7.jpg', caption: 'image' },
-        { filename: '8.jpg', caption: 'image' },
-        { filename: '9.jpg', caption: 'image' },
-        { filename: '10.jpg', caption: 'image' },
-        { filename: '11.jpg', caption: 'image' },
-        { filename: '12.jpg', caption: 'image' },
-        { filename: '13.jpg', caption: 'image' },
-        { filename: '14.png', caption: 'image' }
-//        { filename: 'sizzle_c.mp4', caption: 'Hilightreel', type: 'video' }
-    ];
-</script>
-<script src="./Scripts/main.js"></script>
+    <!-- Define gallery images -->
+    <script>
+        const galleryImages = [
+            { filename: '1.jpg', caption: 'image' },
+            { filename: '2.jpg', caption: 'image' },
+            { filename: '3.jpg', caption: 'image' },
+            { filename: '4.jpg', caption: 'image' },
+            { filename: '5.jpg', caption: 'image' },
+            { filename: '6.jpg', caption: 'image' },
+            { filename: '7.jpg', caption: 'image' },
+            { filename: '8.jpg', caption: 'image' },
+            { filename: '9.jpg', caption: 'image' },
+            { filename: '10.jpg', caption: 'image' },
+            { filename: '11.jpg', caption: 'image' },
+            { filename: '12.jpg', caption: 'image' },
+            { filename: '13.jpg', caption: 'image' },
+            { filename: '14.png', caption: 'image' }
+        ];
+    </script>
+    <script src="./Scripts/main.js"></script>
 </body>
 </html>
