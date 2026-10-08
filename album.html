@@ -3,194 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Moments of Illumination | Michael Evernaught</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Fauna+One&display=swap" rel="stylesheet">
-    <style>
-        body, html { 
-            margin: 0; padding: 0; background-color: #242424; 
-            color: #d1c7b1; font-family: 'Fauna One', serif;
-        }
 
-        .gallery-nav { padding: 40px 20px; text-align: center; }
-        .nav-link {
-            font-family: 'Cinzel', serif; color: #d4af37; text-decoration: none;
-            text-transform: uppercase; letter-spacing: 3px;
-            border: 1px solid rgba(212, 175, 55, 0.3); padding: 10px 20px;
-        }
+    <!-- Primary Meta Tags -->
+    <title>Moments of Illumination — Photo Portfolio | Michael Evernaught</title>
+    <meta name="title" content="Moments of Illumination — Photo Portfolio | Michael Evernaught">
+    <meta name="description" content="Explore Moments of Illumination: live photography capturing Michael Evernaught's close-up sleight of hand, parlor magic, and astonished audiences at corporate galas and private events.">
+    <meta name="keywords" content="michael evernaught photos, live magic photography, corporate magician portfolio, sleight of hand gallery, moments of illumination">
+    <meta name="author" content="Michael Evernaught">
+    <link rel="canonical" href="https://michaelevernaught.com/album.html">
 
-        /* Lightbox Container */
-        .gallery-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 70vh;
-            padding: 20px;
-        }
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://michaelevernaught.com/album.html">
+    <meta property="og:title" content="Moments of Illumination — Photo Portfolio | Michael Evernaught">
+    <meta property="og:description" content="A curated visual archive of live close-up sleight of hand, parlor illusions, and unforgettable guest reactions.">
+    <meta property="og:image" content="https://michaelevernaught.com/Images/hero.png">
 
-        .lightbox {
-            width: 700px;
-            height: 450px;
-            background: rgba(30, 30, 30, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://michaelevernaught.com/album.html">
+    <meta name="twitter:title" content="Moments of Illumination — Photo Portfolio | Michael Evernaught">
+    <meta name="twitter:description" content="A curated visual archive of live close-up sleight of hand, parlor illusions, and unforgettable guest reactions.">
+    <meta name="twitter:image" content="https://michaelevernaught.com/Images/hero.png">
 
-        .lightbox img {
-            max-width: 95%;
-            max-height: 95%;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.5);
-            transition: opacity 0.5s ease;
-        }
+    <!-- Preconnect & Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Fauna+One&display=swap">
 
-        /* Buttons */
-        .controls {
-            margin-top: 20px;
-            display: flex;
-            gap: 20px;
-        }
+    <!-- Structured Data: ImageGallery -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageGallery",
+      "name": "Moments of Illumination — Michael Evernaught Live Performance Portfolio",
+      "description": "Photographic portfolio of Michael Evernaught performing close-up, roaming cocktail, and parlor stage magic across the Pacific Northwest and worldwide.",
+      "url": "https://michaelevernaught.com/album.html",
+      "author": {
+        "@type": "Person",
+        "name": "Michael Evernaught"
+      }
+    }
+    </script>
 
-        button {
-            background: rgba(212, 175, 55, 0.1);
-            color: #d4af37;
-            border: 1px solid #d4af37;
-            padding: 10px 25px;
-            font-family: 'Cinzel', serif;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        button:hover {
-            background: rgba(212, 175, 55, 0.2);
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-        }
-
-        @media (max-width: 800px) {
-            .lightbox { width: 90vw; height: 60vw; }
-        }
-
-/* Magical Pixie Dust FX Styles */
-.sparkle-trail {
-    position: fixed;
-    pointer-events: none;
-    background: #fff;
-    border-radius: 50%;
-    z-index: 9999;
-    box-shadow: 0 0 10px 1px var(--glow);
-    animation: pixie-fade 1.5s cubic-bezier(0.1, 0.4, 0.4, 1) forwards;
-}
-
-@keyframes pixie-fade {
-    0% { transform: translate(0, 0) scale(1) rotate(0deg); opacity: 0.8; }
-    100% { transform: translate(var(--dx), var(--dy)) scale(0) rotate(360deg); opacity: 0; }
-}
-
-.magical-pop {
-    position: fixed;
-    pointer-events: none;
-    width: 3px;
-    height: 3px;
-    background: white;
-    z-index: 11000;
-    border-radius: 50%;
-    animation: pop-out 0.8s ease-out forwards;
-}
-
-@keyframes pop-out {
-    0% { transform: translate(0, 0) scale(1); opacity: 1; }
-    100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
-}
-    </style>
+    <link rel="stylesheet" href="./Styles/style.css">
 </head>
 <body>
+    <!-- UNIFIED STICKY NAVIGATION -->
+    <nav class="site-nav" aria-label="Primary Navigation">
+        <div class="nav-container">
+            <a href="./index.html" class="nav-brand">Michael Evernaught</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav-links" aria-label="Toggle navigation menu">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <div class="nav-links" id="primary-nav-links">
+                <a href="./index.html">Main Site</a>
+                <a href="./album.html" aria-current="page">Photo Album</a>
+                <a href="./childrens.html">Children&rsquo;s</a>
+                <a href="./community.html">Community</a>
+                <a href="./epk.html">EPK</a>
+                <a href="./index.html#contact" class="nav-cta">Inquire</a>
+            </div>
+        </div>
+    </nav>
 
-    <div class="gallery-nav">
-        <a href="index.html" class="nav-link">← Return to the Unknown</a>
+    <!-- ACCESSIBLE FULL-SCREEN LIGHTBOX MODAL -->
+    <div id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged Portfolio Photograph" onclick="closeLightbox()">
+        <button type="button" class="close-lightbox" aria-label="Close gallery view" onclick="event.stopPropagation(); closeLightbox();">&times;</button>
+        <button type="button" id="lightbox-prev" class="lightbox-nav prev" aria-label="Previous image" onclick="event.stopPropagation(); navigateLightbox(-1);">&#10094;</button>
+        <div id="lightbox-content-container" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="">
+            <video id="lightbox-video" controls playsinline></video>
+            <div class="lightbox-meta">
+                <div id="lightbox-caption"></div>
+                <div id="lightbox-counter"></div>
+            </div>
+        </div>
+        <button type="button" id="lightbox-next" class="lightbox-nav next" aria-label="Next image" onclick="event.stopPropagation(); navigateLightbox(1);">&#10095;</button>
     </div>
 
-    <div class="gallery-wrapper">
-        <div class="lightbox" id="lightbox">
-            <img id="galleryImg" src="Images/gallery/1.jpg" alt="Gallery Photo">
-        </div>
-        <div class="controls">
-            <button onclick="changePhoto(-1)">PREVIOUS</button>
-            <button onclick="changePhoto(1)">NEXT</button>
-        </div>
-    </div>
+    <main id="top">
+        <!-- 1. INNER-PAGE HEADER -->
+        <header class="page-header">
+            <div class="page-header-inner">
+                <p class="hero-kicker">Visual Archive &amp; Live Portfolio</p>
+                <h1>Moments of Illumination</h1>
+                <p class="subtitle">
+                    A curated collection of unscripted astonishment, intimate sleight of hand, and theatrical wonder captured at corporate galas, private estates, and live performances.
+                </p>
+            </div>
+        </header>
 
+        <!-- 2. INTERACTIVE PORTFOLIO FILTER & PHOTO GRID -->
+        <section class="album-section" aria-label="Photography Portfolio">
+            <div class="album-filter-bar" role="group" aria-label="Filter photographs by collection">
+                <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All Moments (18)</button>
+                <button type="button" class="filter-btn" data-filter="featured" aria-pressed="false">Featured Illumination (4)</button>
+                <button type="button" class="filter-btn" data-filter="events" aria-pressed="false">Live Event Portfolio (14)</button>
+            </div>
+
+            <div id="album-grid" class="album-grid" aria-live="polite">
+                <!-- Populated dynamically by Scripts/main.js -->
+            </div>
+        </section>
+
+        <!-- 3. BOTTOM BOOKING CTA -->
+        <section class="contact-wrap" style="padding-top: 1rem;">
+            <div class="contact-card filigree-frame">
+                <p class="section-eyebrow">Bring the Impossible to Your Room</p>
+                <h2 class="section-title">Ready to Create Unforgettable Moments?</h2>
+                <p class="contact-subtext">
+                    Whether you are planning an executive gala, a VIP reception, a community celebration, or a family milestone, every performance is custom-crafted for your audience.
+                </p>
+                <div class="hero-cta-group" style="margin-bottom: 1.5rem;">
+                    <a href="./index.html#contact" class="wax-seal">Check Date Availability</a>
+                    <a href="./epk.html" class="btn-secondary">View Booking Agent EPK</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="footer-brand">Michael Evernaught&trade; &mdash; International Man of Wonder</p>
+            <p class="footer-meta">Corporate, Parlor &amp; Close-Up Magician &bull; Pacific Northwest &amp; Worldwide</p>
+            <nav class="footer-links" aria-label="Footer Navigation">
+                <a href="./index.html">Main Site</a>
+                <a href="./album.html" aria-current="page">Photo Album</a>
+                <a href="./childrens.html">Children&rsquo;s Shows</a>
+                <a href="./community.html">Community &amp; Senior</a>
+                <a href="./epk.html">Press Kit / EPK</a>
+                <a href="./index.html#contact">Inquire</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 Michael Evernaught&trade;. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Portfolio Dataset: Featured Illumination (Images/gallery/1..4) + Live Event Portfolio (Images/1..14) -->
     <script>
-        const totalPhotos = 4; // Updte based on total number of images
-        let currentIndex = 1;
-        const imgElement = document.getElementById('galleryImg');
+        const albumPhotos = [
+            // Featured Illumination Series (Images/gallery/)
+            { src: './Images/gallery/1.jpg', category: 'featured', tag: 'Featured Illumination', caption: 'In the spotlight — classical sleight of hand framed in shadow and gold' },
+            { src: './Images/gallery/2.jpg', category: 'featured', tag: 'Featured Illumination', caption: 'A study in mystery — precision card artistry in intimate lighting' },
+            { src: './Images/gallery/3.jpg', category: 'featured', tag: 'Featured Illumination', caption: 'The threshold of wonder — theatrical illusion and psychological intrigue' },
+            { src: './Images/gallery/4.jpg', category: 'featured', tag: 'Featured Illumination', caption: 'An unforgettable finale — captivating the room in shared disbelief' },
 
-        function changePhoto(direction) {
-            currentIndex += direction;
-            if (currentIndex > totalPhotos) currentIndex = 1;
-            if (currentIndex < 1) currentIndex = totalPhotos;
-            
-            imgElement.style.opacity = 0;
-            setTimeout(() => {
-                imgElement.src = `Images/gallery/${currentIndex}.jpg`;
-                imgElement.style.opacity = 1;
-            }, 300);
-        }
-
-/**
- * MAGICAL EFFECTS: Pixie Dust & Pop
- */
-document.addEventListener('mousemove', function(e) {
-    const particlesPerStep = 3; 
-    for (let i = 0; i < particlesPerStep; i++) {
-        if (Math.random() > 0.4) continue;
-        const sparkle = document.createElement('div');
-        sparkle.className = 'sparkle-trail';
-        const size = Math.random() * 5 + 2;
-        sparkle.style.width = size + 'px';
-        sparkle.style.height = size + 'px';
-        sparkle.style.left = e.clientX + 'px';
-        sparkle.style.top = e.clientY + 'px';
-        const dx = (Math.random() - 0.5) * 50;
-        const dy = (Math.random() * 30) + 10; 
-        sparkle.style.setProperty('--dx', `${dx}px`);
-        sparkle.style.setProperty('--dy', `${dy}px`);
-        const glowColors = ['#d4af37', '#e5c687', '#ffffff', '#f1d38e'];
-        const color = glowColors[Math.floor(Math.random() * glowColors.length)];
-        sparkle.style.setProperty('--glow', color);
-        sparkle.style.background = color;
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 1500);
-    }
-});
-
-document.addEventListener('mousedown', function(e) {
-    const particleCount = 20;
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'magical-pop';
-        particle.style.left = e.clientX + 'px';
-        particle.style.top = e.clientY + 'px';
-        const angle = Math.random() * Math.PI * 2;
-        const distance = 60 + Math.random() * 100;
-        const tx = Math.cos(angle) * distance;
-        const ty = Math.sin(angle) * distance;
-        particle.style.setProperty('--tx', `${tx}px`);
-        particle.style.setProperty('--ty', `${ty}px`);
-        const colors = ['#e5c687', '#d4af37', '#ffffff', '#f1d38e'];
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        document.body.appendChild(particle);
-        setTimeout(() => particle.remove(), 800);
-    }
-});
-
-
+            // Live Event Portfolio (Images/1..14)
+            { src: './Images/1.jpg', category: 'events', tag: 'VIP Close-Up', caption: 'Intimate close-up sleight of hand captivating VIP reception guests' },
+            { src: './Images/2.jpg', category: 'events', tag: 'Roaming Magic', caption: 'Michael Evernaught performing interactive card magic during cocktail hour' },
+            { src: './Images/3.jpg', category: 'events', tag: 'Parlor Experience', caption: 'Astonished guest reactions during a live parlor magic showcase' },
+            { src: './Images/4.jpg', category: 'events', tag: 'Sleight of Hand', caption: 'Precision sleight of hand performed inches from the audience' },
+            { src: './Images/5.jpg', category: 'events', tag: 'Stage & Gala', caption: 'Theatrical storytelling and psychological illusion on stage' },
+            { src: './Images/6.jpg', category: 'events', tag: 'Corporate Event', caption: 'Engaging executives and guests with interactive close-up wonder' },
+            { src: './Images/7.jpg', category: 'events', tag: 'Gala Evening', caption: 'Shared laughter and disbelief during an evening gala performance' },
+            { src: './Images/8.jpg', category: 'events', tag: 'Private Gathering', caption: 'Bespoke parlor magic crafted for distinguished private celebrations' },
+            { src: './Images/9.jpg', category: 'events', tag: 'Cocktail Reception', caption: 'Roaming cocktail hour magic that sparks effortless conversation' },
+            { src: './Images/10.jpg', category: 'events', tag: 'Pacific Northwest', caption: 'A moment of impossible mystery in the Columbia River Gorge' },
+            { src: './Images/11.jpg', category: 'events', tag: 'Audience Spotlight', caption: 'Celebrated audience participation during a featured stage routine' },
+            { src: './Images/12.jpg', category: 'events', tag: 'Close-Up Miracle', caption: 'Up-close illusions leaving guests with a lasting personal memory' },
+            { src: './Images/13.jpg', category: 'events', tag: 'Luxury Entertainment', caption: 'Refined evening entertainment for corporate and VIP events' },
+            { src: './Images/14.png', category: 'events', tag: 'Portrait', caption: 'Michael Evernaught — International Man of Wonder' }
+        ];
     </script>
+    <script src="./Scripts/main.js"></script>
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4bc70e2c01a94c73b74392e4234840661791215815920" integrity="sha512-L0ha0OXavK/8okipN9F8BtP84dg9DUhPERbBXzwI6dgTA55d2+yweo3pn5CSFYs45/r8md2+xvUPtTdvTNRfjA==" data-cf-beacon='{"version":"2024.11.0","token":"f55f7c24190f4b25b5bda3b40b093743","r":1,"spa":2}' crossorigin="anonymous"></script>
 </body>
 </html>
