@@ -3,91 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Primary Meta Tags -->
-    <title>Template | Michael Evernaught</title>
-    <meta name="title" content="Template | Michael Evernaught">
-    <meta name="description" content="Blank template page for the Michael Evernaught website.">
+
+    <!-- =========================================================================
+         MASTER PAGE TEMPLATE — Michael Evernaught Design System
+         Instructions:
+         1. Duplicate this file and rename it (e.g., weddings.html, press.html).
+         2. Update <title>, <meta name="description">, and <link rel="canonical">.
+         3. Keep or delete any of the 6 modular component sections below.
+         ========================================================================= -->
+    <title>Page Title | Michael Evernaught</title>
+    <meta name="title" content="Page Title | Michael Evernaught">
+    <meta name="description" content="Brief, compelling summary of this page for search engines and social sharing.">
     <meta name="author" content="Michael Evernaught">
+    <link rel="canonical" href="https://michaelevernaught.com/template.html">
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="./Styles/style.css">  
-    <style>
-        /* Template Specific Adjustments to handle shorter pages gracefully */
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-        
-        main {
-            flex-grow: 1;
-            /* Push content down to account for fixed nav */
-            padding-top: 100px; 
-            padding-bottom: 50px;
-        }
-        
-        /* Adjust hero banner to act as a header for inner pages rather than full screen */
-        .page-header {
-            background: linear-gradient(to bottom, #111 0%, var(--color-bg-base) 100%);
-            padding: 80px 20px 40px;
-            text-align: center;
-            border-bottom: var(--glass-border-light);
-            margin-bottom: 40px;
-        }
+    <!-- Open Graph / Social Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://michaelevernaught.com/template.html">
+    <meta property="og:title" content="Page Title | Michael Evernaught">
+    <meta property="og:description" content="Brief, compelling summary of this page for search engines and social sharing.">
+    <meta property="og:image" content="https://michaelevernaught.com/Images/hero.png">
 
-        .page-header h1 {
-             font-size: clamp(1.8rem, 4vw, 3rem);
-             margin-bottom: 10px;
-        }
-    </style>
+    <!-- Preconnect & Google Fonts (Required for Cinzel & Fauna One) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Fauna+One&display=swap">
+
+    <!-- Shared Brand Stylesheet -->
+    <link rel="stylesheet" href="./Styles/style.css">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="site-nav">
-        <a href="index.html">← Back to Main</a>
-        <a href="#top">Page Top</a>
-        <a href="#section-1">Section 1</a>
-        <a href="#section-2">Section 2</a>
+    <!-- =========================================================================
+         UNIFIED STICKY NAVIGATION
+         Note: Add aria-current="page" to the active page's <a> tag.
+         ========================================================================= -->
+    <nav class="site-nav" aria-label="Primary Navigation">
+        <div class="nav-container">
+            <a href="./index.html" class="nav-brand">Michael Evernaught</a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav-links" aria-label="Toggle navigation menu">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <div class="nav-links" id="primary-nav-links">
+                <a href="./index.html">Main Site</a>
+                <a href="./album.html">Photo Album</a>
+                <a href="./childrens.html">Children&rsquo;s</a>
+                <a href="./community.html">Community</a>
+                <a href="./epk.html">EPK</a>
+                <a href="#contact" class="nav-cta">Inquire</a>
+            </div>
+        </div>
     </nav>
 
     <main id="top">
-        <!-- PAGE HEADER -->
+        <!-- =====================================================================
+             COMPONENT 1: COMPACT INNER-PAGE HEADER (.page-header)
+             Use for all inner pages instead of full-screen 100svh hero banners.
+             ===================================================================== -->
         <header class="page-header">
-            <h1>Page Title</h1>
-            <div class="subtitle">Optional Subtitle or Tagline</div>
+            <div class="page-header-inner">
+                <span class="credential-badge">
+                    <span aria-hidden="true">✦</span> Optional Badge or Credential
+                </span>
+                <p class="hero-kicker">Optional Eyebrow Kicker</p>
+                <h1>Inner Page Headline</h1>
+                <p class="subtitle">
+                    A concise 1–2 sentence lead-in explaining the value proposition of this page for event planners, hosts, or guests.
+                </p>
+                <div class="hero-cta-group">
+                    <a href="#contact" class="wax-seal">Primary Call to Action</a>
+                    <a href="#section-cards" class="btn-secondary">Secondary Action</a>
+                </div>
+            </div>
         </header>
 
-        <!-- SECTION 1: Standard Text Block with Filigree Frame -->
-        <section id="section-1" class="intro-section" style="padding: 40px 10%; background: none;">
+        <!-- =====================================================================
+             COMPONENT 2: EDITORIAL FILIGREE FRAME + BLOCKQUOTE (.filigree-frame)
+             Use for storytelling, artist statements, testimonials, or policies.
+             ===================================================================== -->
+        <section id="section-editorial" class="intro-section">
             <div class="intro-content filigree-frame">
-                <h2 style="color: var(--color-gold); font-size: 2.2rem; margin-bottom: 20px; font-family: var(--font-heading);">
-                    Section Heading
-                </h2>
+                <p class="section-eyebrow">Editorial Section Eyebrow</p>
+                <h2 class="section-title">Framed Editorial Heading</h2>
+
+                <!-- Optional Testimonial / Blockquote -->
+                <blockquote class="intro-quote">
+                    &ldquo;Use this blockquote component to feature a memorable client testimonial, press pull-quote, or artistic statement.&rdquo;
+                </blockquote>
+
                 <p class="intro-text">
-                    This is a standard text block inside the <span class="highlight">filigree frame</span>. You can use this for text-heavy content, articles, expanded service descriptions, or policy pages.
+                    Standard body paragraphs inside <span class="highlight">.filigree-frame</span> automatically inherit comfortable 68ch measure and WCAG AAA contrast against the dark luxury backdrop.
                 </p>
                 <p class="intro-text">
-                    The frame provides an elegant container that matches the magical aesthetic of the main site while keeping the content easy to read against the dark background.
+                    Wrap key brand phrases in <span class="highlight">&lt;span class="highlight"&gt;</span> to emphasize names or signature concepts in antique gold.
                 </p>
             </div>
         </section>
 
-        <!-- SECTION 2: List / Secondary Content -->
-        <section id="section-2" class="services-section" style="background: none; border-top: 1px dashed rgba(212, 175, 55, 0.2); margin-top: 40px;">
-            <h2>Another Section</h2>
-            <ul class="services-list" style="max-width: 800px; margin: 40px auto; text-align: left;">
-                <li><strong>List Item 1:</strong> Use this structure for laying out bullet points or structured information.</li>
-                <li><strong>List Item 2:</strong> The gold star bullet points apply automatically to lists formatted this way.</li>
-                <li><strong>List Item 3:</strong> You can add buttons or call-to-actions below this.</li>
-            </ul>
-            
-            <a href="index.html#top" class="wax-seal" style="margin-top: 20px;">Return Home</a>
+        <!-- =====================================================================
+             COMPONENT 3: 3-COLUMN EXPERIENCE / PACKAGE CARDS (.experiences-grid)
+             Use for event packages, service tiers, or feature breakdowns.
+             ===================================================================== -->
+        <section id="section-cards" class="services-section">
+            <div class="section-header">
+                <p class="section-eyebrow">Modular Card Grid</p>
+                <h2 class="section-title">Three-Column Package Layout</h2>
+                <p class="section-lead">Automatically adapts from 3 columns on desktop to 1 column on mobile viewports.</p>
+            </div>
+
+            <div class="experiences-grid">
+                <article class="experience-card filigree-frame">
+                    <span class="experience-tag">Package Tag</span>
+                    <h3>First Package Title</h3>
+                    <p class="experience-desc">Brief description of who this experience is best suited for and the atmosphere it creates.</p>
+                    <ul class="services-list">
+                        <li>First key highlight or deliverable with automatic gold star bullet</li>
+                        <li>Second key highlight or audience capacity detail</li>
+                        <li>Third key logistical or customization benefit</li>
+                    </ul>
+                </article>
+
+                <article class="experience-card filigree-frame">
+                    <span class="experience-tag">Most Popular</span>
+                    <h3>Second Package Title</h3>
+                    <p class="experience-desc">Brief description of who this experience is best suited for and the atmosphere it creates.</p>
+                    <ul class="services-list">
+                        <li>First key highlight or deliverable with automatic gold star bullet</li>
+                        <li>Second key highlight or audience capacity detail</li>
+                        <li>Third key logistical or customization benefit</li>
+                    </ul>
+                </article>
+
+                <article class="experience-card filigree-frame">
+                    <span class="experience-tag">Custom Format</span>
+                    <h3>Third Package Title</h3>
+                    <p class="experience-desc">Brief description of who this experience is best suited for and the atmosphere it creates.</p>
+                    <ul class="services-list">
+                        <li>First key highlight or deliverable with automatic gold star bullet</li>
+                        <li>Second key highlight or audience capacity detail</li>
+                        <li>Third key logistical or customization benefit</li>
+                    </ul>
+                </article>
+            </div>
+
+            <!-- Optional Technical / Turnkey Callout Banner -->
+            <div class="tech-specs-banner">
+                <strong>Optional Highlight Banner:</strong> Use <code>.tech-specs-banner</code> to surface important guarantees, travel terms, or setup notes below a card grid.
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             COMPONENT 4: 2-COLUMN MEDIA & FEATURE SPLIT (.details-grid)
+             Use to pair a 16:9 YouTube video or image alongside structured bullets.
+             ===================================================================== -->
+        <section id="section-split" class="split-section" style="background: var(--color-bg-base);">
+            <div class="details-grid">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/jIBCMfkByN8?si=nuT6GsheurZEj1Gi"
+                            title="Michael Evernaught Highlight Reel"
+                            loading="lazy"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen></iframe>
+                </div>
+
+                <div class="info-box">
+                    <p class="section-eyebrow">Two-Column Split</p>
+                    <h2>Video &amp; Feature Highlights</h2>
+                    <p>Pair a 16:9 video or featured image on the left with scannable benefits on the right:</p>
+                    <ul class="info-list">
+                        <li><strong>Responsive 16:9 Embed:</strong> Automatically scales across mobile and desktop without horizontal overflow.</li>
+                        <li><strong>Clear Visual Hierarchy:</strong> Ideal for spotlighting specific event types or performance styles.</li>
+                        <li><strong>Accessible Lists:</strong> Gold star bullets apply automatically via <code>.info-list &gt; li</code>.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             COMPONENT 5: 3-PILLAR QUICK-FACTS BOX (.availability-grid)
+             Use for FAQ summaries, geographic service areas, or event logistics.
+             ===================================================================== -->
+        <section id="section-pillars" class="availability-section">
+            <div class="availability-card filigree-frame">
+                <p class="section-eyebrow">Quick Facts &amp; Logistics</p>
+                <h2 class="section-title">Three-Pillar Information Grid</h2>
+                <p class="section-lead">Great for summarizing travel regions, booking timelines, or frequently asked questions.</p>
+
+                <div class="availability-grid">
+                    <div class="availability-pillar">
+                        <h3>First Pillar Title</h3>
+                        <p>Concise supporting explanation with <strong>highlighted key terms</strong> for rapid scanning.</p>
+                    </div>
+                    <div class="availability-pillar">
+                        <h3>Second Pillar Title</h3>
+                        <p>Concise supporting explanation with <strong>highlighted key terms</strong> for rapid scanning.</p>
+                    </div>
+                    <div class="availability-pillar">
+                        <h3>Third Pillar Title</h3>
+                        <p>Concise supporting explanation with <strong>highlighted key terms</strong> for rapid scanning.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =====================================================================
+             COMPONENT 6: REUSABLE FORMSPREE INQUIRY FORM (#contact)
+             Update the hidden "inquiry_source" value to track which page submitted.
+             ===================================================================== -->
+        <section id="contact" class="contact-wrap">
+            <div class="contact-card filigree-frame">
+                <p class="section-eyebrow">Direct Booking Inquiry</p>
+                <h2 class="section-title">Request Date Availability</h2>
+                <p class="contact-subtext">Share your event details below for a custom proposal and availability confirmation within 24 hours.</p>
+
+                <form class="availability-form" action="https://formspree.io/f/mzedpnpw" method="POST">
+                    <input type="hidden" name="inquiry_source" value="Template Page">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Your Name <span class="req-star" aria-hidden="true">*</span></label>
+                            <input type="text" id="name" name="name" class="form-control" required placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="organization">Organization / Event Host</label>
+                            <input type="text" id="organization" name="organization" class="form-control" placeholder="Company or organization (optional)">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address <span class="req-star" aria-hidden="true">*</span></label>
+                            <input type="email" id="email" name="email" class="form-control" required placeholder="you@domain.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-control" placeholder="(503) 555-0199">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event_date">Requested Date</label>
+                            <input type="date" id="event_date" name="event_date" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="event_location">City / Venue Location</label>
+                            <input type="text" id="event_location" name="event_location" class="form-control" placeholder="e.g., Portland, OR / Hood River">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="details">Event Details or Questions</label>
+                        <textarea id="details" name="details" rows="4" class="form-control" placeholder="Tell us about your event format, guest count, and vision..."></textarea>
+                    </div>
+
+                    <button type="submit" class="wax-seal">Submit Request</button>
+                </form>
+            </div>
         </section>
     </main>
 
-    <footer>&copy; 2026 Michael Evernaught &trade; | Traveling Magician in the Columbia River Gorge</footer>
-    
+    <!-- =========================================================================
+         UNIFIED SITE FOOTER
+         ========================================================================= -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="footer-brand">Michael Evernaught&trade; &mdash; International Man of Wonder</p>
+            <p class="footer-meta">Corporate, Parlor &amp; Close-Up Magician &bull; Pacific Northwest &amp; Worldwide</p>
+            <nav class="footer-links" aria-label="Footer Navigation">
+                <a href="./index.html">Main Site</a>
+                <a href="./album.html">Photo Album</a>
+                <a href="./childrens.html">Children&rsquo;s Shows</a>
+                <a href="./community.html">Community &amp; Senior</a>
+                <a href="./epk.html">Press Kit / EPK</a>
+                <a href="#contact">Inquire</a>
+            </nav>
+            <p class="footer-copy">&copy; 2026 Michael Evernaught&trade;. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script src="./Scripts/main.js"></script>
 </body>
 </html>
