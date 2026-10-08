@@ -113,6 +113,54 @@
             padding-left: 16px;
         }
 
+        .epk-ecosystem-nav {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            border-left: 1px solid var(--gold-border-subtle);
+            padding-left: 16px;
+        }
+
+        .epk-ecosystem-nav a {
+            font-family: var(--font-heading);
+            font-size: 0.78rem;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            padding: 4px 6px;
+            border-radius: 3px;
+        }
+
+        .epk-ecosystem-nav a:hover,
+        .epk-ecosystem-nav a.active {
+            color: var(--gold-bright);
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        .epk-web-footer {
+            max-width: 1040px;
+            margin: -28px auto 48px;
+            padding: 18px 24px;
+            text-align: center;
+            border-top: 1px solid var(--gold-border-subtle);
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .epk-web-footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-bottom: 8px;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
         .epk-topbar-actions {
             display: flex;
             align-items: center;
@@ -910,8 +958,15 @@
          ========================================================= -->
     <header class="epk-topbar no-print">
         <div class="epk-topbar-left">
-            <a href="./index.html" class="back-link">&larr; Back to Main Site</a>
+            <a href="./index.html" class="back-link">&larr; Main Site</a>
             <span class="epk-badge">Official Booking One-Sheet &amp; EPK</span>
+            <nav class="epk-ecosystem-nav" aria-label="Site Ecosystem Navigation">
+                <a href="./index.html">Corporate &amp; Main</a>
+                <a href="./album.html">Photo Album</a>
+                <a href="./childrens.html">Children&rsquo;s</a>
+                <a href="./community.html">Community</a>
+                <a href="./epk.html" class="active">EPK</a>
+            </nav>
         </div>
         <div class="epk-topbar-actions">
             <button type="button" class="btn-epk btn-agency-toggle" id="agencyModeBtn" onclick="toggleAgencyMode()" title="Hide direct URLs/contact links so talent bureaus can share an unbranded PDF with clients">
@@ -1118,6 +1173,19 @@
         </footer>
 
     </main>
+
+    <!-- Web-Only Ecosystem Footer (Hidden in 1-Page Print/PDF) -->
+    <footer class="epk-web-footer no-print">
+        <div class="epk-web-footer-links">
+            <a href="./index.html">Main Site</a>
+            <a href="./album.html">Photo Album</a>
+            <a href="./childrens.html">Children&rsquo;s Shows</a>
+            <a href="./community.html">Community &amp; Senior Living</a>
+            <a href="./epk.html">Press Kit (EPK)</a>
+            <a href="./index.html#contact" class="direct-contact-item">Check Availability</a>
+        </div>
+        <div>&copy; 2026 Michael Evernaught &bull; Based in the Pacific Northwest &bull; Available Worldwide</div>
+    </footer>
 
     <script>
         function toggleAgencyMode() {
