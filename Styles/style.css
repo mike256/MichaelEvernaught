@@ -2,7 +2,7 @@
    1. CSS Variables & Design Tokens
    ========================================== */
 :root {
-    /* Typography (Loaded via <link rel="preconnect"> in index.html) */
+    /* Typography (Loaded via <link rel="preconnect"> in HTML <head>) */
     --font-main: 'Fauna One', Georgia, serif;
     --font-heading: 'Cinzel', Georgia, serif;
 
@@ -44,16 +44,23 @@ body {
     font-size: 1rem;
     line-height: 1.75;
     overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+    flex-grow: 1;
 }
 
 /* Shared Display Heading Font */
 h1, h2, h3,
 .nav-brand, .nav-links a,
 .hero-kicker, .wax-seal, .btn-secondary, .btn-epk,
-.experience-tag, .form-group label,
-#lightbox-caption, .close-lightbox {
+.experience-tag, .credential-badge, .filter-btn,
+.form-group label, #lightbox-caption, .close-lightbox {
     font-family: var(--font-heading);
 }
 
@@ -122,23 +129,26 @@ textarea:focus-visible {
 }
 
 /* Star Bullet Lists (Strictly Scoped to Direct Children) */
-.services-list {
+.services-list,
+.info-list {
     list-style: none;
     padding: 0;
     margin: 1.5rem 0 0 0;
     text-align: left;
 }
 
-.services-list > li {
+.services-list > li,
+.info-list > li {
     position: relative;
     padding-left: 1.75rem;
-    margin-bottom: 0.85rem;
-    font-size: 0.96rem;
-    line-height: 1.65;
+    margin-bottom: 0.95rem;
+    font-size: 0.98rem;
+    line-height: 1.7;
     color: var(--color-text);
 }
 
-.services-list > li::before {
+.services-list > li::before,
+.info-list > li::before {
     content: "✦";
     position: absolute;
     left: 0;
@@ -147,7 +157,7 @@ textarea:focus-visible {
 }
 
 /* ==========================================
-   4. Sticky Navigation Bar
+   4. Sticky Navigation Bar (Unified Site-Wide)
    ========================================== */
 .site-nav {
     position: fixed;
@@ -162,21 +172,21 @@ textarea:focus-visible {
 }
 
 .nav-container {
-    max-width: 1280px;
+    max-width: 1320px;
     margin: 0 auto;
-    padding: 0.85rem 5%;
+    padding: 0.85rem 4%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.25rem;
 }
 
 .nav-brand {
     color: var(--color-gold-light);
     text-decoration: none;
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: 700;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
     white-space: nowrap;
 }
@@ -184,26 +194,33 @@ textarea:focus-visible {
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.2rem;
 }
 
 .nav-links a {
     color: var(--color-text);
     text-decoration: none;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     padding: 0.4rem 0;
-    transition: color 0.25s ease;
+    white-space: nowrap;
+    border-bottom: 1.5px solid transparent;
+    transition: color 0.25s ease, border-color 0.25s ease;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
     color: var(--color-gold-light);
 }
 
+.nav-links a[aria-current="page"] {
+    border-bottom-color: var(--color-gold);
+}
+
 .nav-links a.nav-cta {
-    padding: 0.55rem 1.25rem;
+    padding: 0.5rem 1.15rem;
     border: 1px solid var(--color-gold);
     border-radius: 999px;
     background: rgba(212, 175, 55, 0.12);
@@ -241,7 +258,7 @@ textarea:focus-visible {
 }
 
 /* ==========================================
-   5. Hero Section (Above the Fold)
+   5. Hero Section & Inner-Page Header
    ========================================== */
 .hero-banner {
     position: relative;
@@ -290,6 +307,41 @@ textarea:focus-visible {
     box-shadow: 0 24px 60px rgba(0, 0, 0, 0.85);
 }
 
+/* Compact Inner-Page Header (Community, Album, Template) */
+.page-header {
+    position: relative;
+    padding: 136px 5% 68px 5%;
+    background:
+        radial-gradient(circle at 50% 25%, rgba(212, 175, 55, 0.1) 0%, rgba(20, 19, 17, 0.95) 70%),
+        linear-gradient(180deg, #141311 0%, var(--color-bg-base) 100%);
+    text-align: center;
+    border-bottom: var(--border-gold);
+    overflow: hidden;
+}
+
+.page-header-inner {
+    max-width: 860px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+}
+
+.credential-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 1.1rem;
+    margin-bottom: 1.1rem;
+    border-radius: 999px;
+    background: rgba(212, 175, 55, 0.12);
+    border: 1px solid rgba(212, 175, 55, 0.42);
+    color: var(--color-gold-light);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
 .hero-kicker {
     margin: 0 0 0.5rem 0;
     font-size: clamp(0.78rem, 1.5vw, 0.92rem);
@@ -307,6 +359,11 @@ h1 {
     letter-spacing: 0.06em;
     color: var(--color-gold-light);
     text-shadow: 0 4px 18px rgba(0, 0, 0, 0.95);
+}
+
+.page-header h1 {
+    font-size: clamp(2rem, 4.5vw, 3.3rem);
+    margin-bottom: 0.85rem;
 }
 
 .tm-mark {
@@ -341,6 +398,11 @@ h1 {
     align-items: center;
     gap: 1rem;
     margin-bottom: 1.5rem;
+}
+
+.page-header .hero-cta-group {
+    margin-top: 1.75rem;
+    margin-bottom: 0;
 }
 
 /* Primary Conversion CTA (.wax-seal) — High Affordance & WCAG 1.4.11 Compliant */
@@ -503,7 +565,7 @@ h1 {
 .client-logo-box img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Preserves full rectangular logos without cropping */
+    object-fit: contain;
     display: block;
 }
 
@@ -522,7 +584,7 @@ h1 {
 }
 
 /* ==========================================
-   7. Video Highlight Reel Section
+   7. Video Highlight Reel & 2-Column Split (.details-grid)
    ========================================== */
 .video-section {
     padding: clamp(4.5rem, 8vw, 6.5rem) 5%;
@@ -546,6 +608,45 @@ h1 {
     height: 100%;
     border: 0;
     display: block;
+}
+
+/* 2-Column Media & Feature Split (Used on Community & Template Pages) */
+.split-section {
+    padding: clamp(4.5rem, 8vw, 6.5rem) 5%;
+    background: var(--color-bg-alt);
+}
+
+.details-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.details-grid .video-container {
+    width: 100%;
+    margin: 0;
+}
+
+.info-box {
+    text-align: left;
+}
+
+.info-box h2,
+.info-box h3 {
+    margin: 0 0 1rem 0;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: var(--color-gold-light);
+    letter-spacing: 0.05em;
+}
+
+.info-box p {
+    margin: 0 0 1.25rem 0;
+    font-size: 1.02rem;
+    line-height: 1.75;
+    color: var(--color-text);
 }
 
 /* ==========================================
@@ -629,9 +730,10 @@ h1 {
 }
 
 /* ==========================================
-   9. Gallery Carousel & Accessible Lightbox
+   9. Gallery Carousel, Portfolio Album Grid & Lightbox
    ========================================== */
-.gallery-section {
+.gallery-section,
+.album-section {
     padding: clamp(4.5rem, 8vw, 6.5rem) 5%;
     background: var(--color-bg-base);
     text-align: center;
@@ -732,6 +834,119 @@ h1 {
     color: var(--color-gold);
     letter-spacing: 0.1em;
     white-space: nowrap;
+}
+
+/* Standalone Photo Album Filter Tabs & Masonry Grid (album.html) */
+.album-filter-bar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 0 auto 2.75rem auto;
+}
+
+.filter-btn {
+    padding: 0.65rem 1.4rem;
+    background: rgba(24, 23, 20, 0.85);
+    color: var(--color-text);
+    border: 1px solid var(--color-gold-dim);
+    border-radius: 999px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--color-gold-light);
+    color: var(--color-gold-light);
+    transform: translateY(-1px);
+}
+
+.filter-btn.active,
+.filter-btn[aria-pressed="true"] {
+    background: var(--color-gold);
+    color: #141311;
+    border-color: var(--color-gold);
+    box-shadow: 0 4px 18px rgba(212, 175, 55, 0.32);
+}
+
+.album-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.5rem;
+}
+
+.album-card {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    border: var(--border-gold);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #141311;
+    box-shadow: var(--shadow-subtle);
+    cursor: pointer;
+    margin: 0;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.album-card:hover,
+.album-card:focus-visible {
+    transform: translateY(-4px);
+    border-color: var(--color-gold-light);
+    box-shadow: var(--shadow-heavy);
+}
+
+.album-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: sepia(0.08) contrast(1.04);
+    transition: transform 0.45s ease, filter 0.35s ease;
+}
+
+.album-card:hover img,
+.album-card:focus-visible img {
+    transform: scale(1.04);
+    filter: none;
+}
+
+.album-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(14, 13, 12, 0.92) 0%, rgba(14, 13, 12, 0.35) 45%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.25rem;
+    text-align: left;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.album-card:hover .album-card-overlay,
+.album-card:focus-visible .album-card-overlay {
+    opacity: 1;
+}
+
+.album-card-tag {
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin-bottom: 0.25rem;
+}
+
+.album-card-caption {
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: #fff9ed;
 }
 
 /* Full-Viewport Accessible Lightbox */
@@ -866,7 +1081,7 @@ h1 {
     margin: 1.5rem auto 2.25rem auto;
     max-width: 56ch;
     font-size: clamp(1.1rem, 2.2vw, 1.45rem);
-    font-style: normal; /* True Roman Cinzel without synthesized oblique distortion */
+    font-style: normal;
     line-height: 1.65;
     letter-spacing: 0.03em;
     color: var(--color-gold-light);
@@ -888,7 +1103,7 @@ h1 {
     margin: 0 auto 1.5rem auto;
     font-size: 1.06rem;
     line-height: 1.85;
-    color: var(--color-text); /* Full AAA contrast — no opacity reduction */
+    color: var(--color-text);
 }
 
 .intro-text:last-child {
@@ -903,7 +1118,7 @@ h1 {
 }
 
 /* ==========================================
-   11. Confidential Availability & Global Touring
+   11. Confidential Availability & Pillar Grids
    ========================================== */
 .availability-section {
     padding: clamp(4.5rem, 8vw, 6.5rem) 5%;
@@ -1066,7 +1281,7 @@ h1 {
 }
 
 .form-control::placeholder {
-    color: rgba(221, 212, 192, 0.58); /* WCAG AA compliant placeholder contrast */
+    color: rgba(221, 212, 192, 0.58);
 }
 
 .form-control:focus {
@@ -1133,7 +1348,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 /* ==========================================
-   13. Footer
+   13. Footer (Unified Site-Wide)
    ========================================== */
 .site-footer {
     background: var(--color-bg-elevated);
@@ -1143,7 +1358,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 }
 
 .footer-inner {
-    max-width: 960px;
+    max-width: 1080px;
     margin: 0 auto;
 }
 
@@ -1166,21 +1381,22 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem 2rem;
+    gap: 0.9rem 1.75rem;
     margin-bottom: 1.75rem;
 }
 
 .footer-links a {
     color: var(--color-text);
     font-family: var(--font-heading);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
-.footer-links a:hover {
+.footer-links a:hover,
+.footer-links a[aria-current="page"] {
     color: var(--color-gold-light);
 }
 
@@ -1193,7 +1409,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
 /* ==========================================
    14. Active Responsive Breakpoints
    ========================================== */
-@media (max-width: 960px) {
+@media (max-width: 1080px) {
     .nav-toggle {
         display: flex;
     }
@@ -1209,7 +1425,7 @@ input[type="time"]::-webkit-calendar-picker-indicator {
         flex-direction: column;
         align-items: center;
         padding: 1.25rem 5% 1.75rem 5%;
-        gap: 0.5rem;
+        gap: 0.4rem;
         box-shadow: 0 20px 40px rgba(0, 0, 0, 0.85);
     }
 
@@ -1222,7 +1438,8 @@ input[type="time"]::-webkit-calendar-picker-indicator {
         max-width: 320px;
         text-align: center;
         padding: 0.75rem 1rem; /* >44px touch target height */
-        font-size: 0.92rem;
+        font-size: 0.9rem;
+        border-bottom: none;
     }
 
     .nav-links a.nav-cta {
@@ -1230,9 +1447,20 @@ input[type="time"]::-webkit-calendar-picker-indicator {
     }
 }
 
+@media (max-width: 900px) {
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+    }
+}
+
 @media (max-width: 640px) {
     .hero-banner {
         padding: 96px 4% 36px 4%;
+    }
+
+    .page-header {
+        padding: 116px 4% 48px 4%;
     }
 
     .hero-cta-group {
@@ -1258,6 +1486,11 @@ input[type="time"]::-webkit-calendar-picker-indicator {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.35rem;
+    }
+
+    .album-card-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(14, 13, 12, 0.9) 0%, rgba(14, 13, 12, 0.2) 55%, transparent 100%);
     }
 
     #lightbox {
