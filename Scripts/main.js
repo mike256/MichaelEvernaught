@@ -1,173 +1,257 @@
-
 /**
- * RENDER DYNAMIC GALLERY (Carousel & Separated Video)
+ * Michael Evernaught — Official Website Scripts
+ * Accessible Gallery Carousel, Lightbox Modal & Mobile Navigation
  */
+
 let currentCarouselIndex = 0;
+let currentLightboxIndex = 0;
 let carouselTotal = 0;
 
+/**
+ * 1. MOBILE NAVIGATION TOGGLE
+ */
+function initializeNavigation() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.getElementById('primary-nav-links');
+
+    if (!navToggle || !navLinks) return;
+
+    navToggle.addEventListener('click', () => {
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!isExpanded));
+        navLinks.classList.toggle('is-open', !isExpanded);
+    });
+
+    // Close mobile menu when any navigation link is clicked
+    navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            navToggle.setAttribute('aria-expanded', 'false');
+            navLinks.classList.remove('is-open');
+        });
+    });
+}
+
+/**
+ * 2. RENDER DYNAMIC GALLERY CAROUSEL
+ */
 function initializeGallery() {
     const galleryContainer = document.getElementById('dynamic-gallery');
     const videoContainer = document.getElementById('dynamic-video');
-    
-    if (typeof galleryImages !== 'undefined') {
-        galleryImages.forEach(item => {
-            const basePath = `Images/${item.filename}`;
 
-            if (item.type === 'video') {
-                // Populate independent video section
+    if (!galleryContainer || typeof galleryImages === 'undefined' || !Array.isArray(galleryImages)) {
+        return;
+    }
+
+    galleryImages.forEach((item, index) => {
+        const basePath = `Images/${item.filename}`;
+
+        if (item.type === 'video') {
+            if (videoContainer) {
                 videoContainer.innerHTML = `
                     <video src="${basePath}" controls playsinline poster="Images/hero.png"></video>
                 `;
-            } else {
-                // Populate Carousel track
-                const photoFrame = document.createElement('div');
-                photoFrame.className = 'carousel-item photo-frame';
-                photoFrame.onclick = function() { openLightbox(this, item.type); };
+            }
+            return;
+        }
 
-                const placeholder = `https://placehold.co/600x800/1e1a15/d4af37?text=${encodeURIComponent(item.caption)}`;
-                photoFrame.innerHTML = `
-                    <img src="${basePath}" alt="${item.caption}" onerror="this.src='${placeholder}'">
-                    <div class="caption">${item.caption}</div>
-                `;
+        const itemIndex = carouselTotal;
+        const photoFrame = document.createElement('div');
+        photoFrame.className = 'carousel-item photo-frame';
+        photoFrame.setAttribute('role', 'button');
+        photoFrame.setAttribute('tabindex', '0');
+        photoFrame.setAttribute('aria-label', `View full size: ${item.caption}`);
 
-                galleryContainer.appendChild(photoFrame);
-                carouselTotal++;
+        photoFrame.addEventListener('click', () => openLightbox(itemIndex));
+        photoFrame.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openLightbox(itemIndex);
             }
         });
+
+        const placeholder = `https://placehold.co/900x600/1c1b19/d4af37?text=${encodeURIComponent(item.caption)}`;
+        const img = document.createElement('img');
+        img.src = basePath;
+        img.alt = item.caption || 'Michael Evernaught live magic performance';
+        img.loading = itemIndex === 0 ? 'eager' : 'lazy';
+        img.decoding = 'async';
+        img.onerror = function() {
+            this.onerror = null;
+            this.src = placeholder;
+        };
+
+        const captionDiv = document.createElement('div');
+        captionDiv.className = 'caption';
+        captionDiv.textContent = item.caption || '';
+
+        photoFrame.appendChild(img);
+        photoFrame.appendChild(captionDiv);
+        galleryContainer.appendChild(photoFrame);
+        carouselTotal++;
+    });
+
+    updateCarouselMetadata();
+    attachCarouselSwipe(galleryContainer);
+}
+
+function updateCarouselMetadata() {
+    const counterEl = document.getElementById('carousel-counter');
+    const captionBarEl = document.getElementById('carousel-caption-bar');
+    const track = document.getElementById('dynamic-gallery');
+
+    if (counterEl && carouselTotal > 0) {
+        counterEl.textContent = `${currentCarouselIndex + 1} / ${carouselTotal}`;
+    }
+
+    if (captionBarEl && track) {
+        const items = track.querySelectorAll('.carousel-item');
+        const activeItem = items[currentCarouselIndex];
+        if (activeItem) {
+            const cap = activeItem.querySelector('.caption');
+            captionBarEl.textContent = cap ? cap.textContent : '';
+        }
     }
 }
 
 function moveCarousel(direction) {
     if (carouselTotal === 0) return;
     const track = document.getElementById('dynamic-gallery');
+    if (!track) return;
+
     currentCarouselIndex = (currentCarouselIndex + direction + carouselTotal) % carouselTotal;
     track.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+    updateCarouselMetadata();
 }
 
 /**
- * LIGHTBOX LOGIC
+ * Touch Swipe Support for Mobile Carousel
  */
-function openLightbox(element, type) {
+function attachCarouselSwipe(trackElement) {
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const minSwipeDistance = 45;
+
+    trackElement.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    trackElement.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const deltaX = touchStartX - touchEndX;
+        if (Math.abs(deltaX) > minSwipeDistance) {
+            moveCarousel(deltaX > 0 ? 1 : -1);
+        }
+    }, { passive: true });
+}
+
+/**
+ * 3. ACCESSIBLE LIGHTBOX LOGIC
+ */
+function openLightbox(index) {
     const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const lightboxVid = document.getElementById('lightbox-video');
-    const lightboxCap = document.getElementById('lightbox-caption');
-    const sourceCap = element.querySelector('.caption');
+    const track = document.getElementById('dynamic-gallery');
+    if (!lightbox || !track) return;
 
-    // Reset visibility
-    lightboxImg.style.display = 'none';
-    lightboxVid.style.display = 'none';
-    lightboxVid.pause();
+    const items = track.querySelectorAll('.carousel-item');
+    if (!items.length) return;
 
-    if (type === 'video') {
-        const sourceVid = element.querySelector('video');
-        lightboxVid.src = sourceVid.src;
-        lightboxVid.style.display = 'block';
-    } else {
-        const sourceImg = element.querySelector('img');
-        lightboxImg.src = sourceImg.src;
-        lightboxImg.style.display = 'block';
-    }
+    currentLightboxIndex = (index + items.length) % items.length;
+    renderLightboxSlide(items[currentLightboxIndex]);
 
-    lightboxCap.innerText = sourceCap.innerText;
-    
     lightbox.style.display = 'flex';
     requestAnimationFrame(() => {
         lightbox.classList.add('active');
     });
-    document.body.style.overflow = 'hidden'; 
+    document.body.style.overflow = 'hidden';
+}
+
+function renderLightboxSlide(element) {
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxVid = document.getElementById('lightbox-video');
+    const lightboxCap = document.getElementById('lightbox-caption');
+    const lightboxCounter = document.getElementById('lightbox-counter');
+
+    if (!lightboxImg || !lightboxVid) return;
+
+    lightboxImg.style.display = 'none';
+    lightboxVid.style.display = 'none';
+    lightboxVid.pause();
+
+    const sourceVid = element.querySelector('video');
+    const sourceImg = element.querySelector('img');
+    const sourceCap = element.querySelector('.caption');
+
+    if (sourceVid) {
+        lightboxVid.src = sourceVid.src;
+        lightboxVid.style.display = 'block';
+    } else if (sourceImg) {
+        lightboxImg.src = sourceImg.src;
+        lightboxImg.alt = sourceImg.alt || '';
+        lightboxImg.style.display = 'block';
+    }
+
+    if (lightboxCap) {
+        lightboxCap.textContent = sourceCap ? sourceCap.textContent : '';
+    }
+    if (lightboxCounter && carouselTotal > 0) {
+        lightboxCounter.textContent = `${currentLightboxIndex + 1} / ${carouselTotal}`;
+    }
+}
+
+function navigateLightbox(direction) {
+    const track = document.getElementById('dynamic-gallery');
+    if (!track || carouselTotal === 0) return;
+
+    const items = track.querySelectorAll('.carousel-item');
+    currentLightboxIndex = (currentLightboxIndex + direction + carouselTotal) % carouselTotal;
+    renderLightboxSlide(items[currentLightboxIndex]);
+
+    // Keep background carousel synchronized with Lightbox position
+    currentCarouselIndex = currentLightboxIndex;
+    track.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+    updateCarouselMetadata();
 }
 
 function closeLightbox() {
     const lightbox = document.getElementById('lightbox');
     const lightboxVid = document.getElementById('lightbox-video');
-    
+    if (!lightbox) return;
+
     lightbox.classList.remove('active');
-    lightboxVid.pause(); // Stop video playing in the background
-    
+    if (lightboxVid) {
+        lightboxVid.pause();
+    }
+
     setTimeout(() => {
         if (!lightbox.classList.contains('active')) {
             lightbox.style.display = 'none';
         }
-    }, 800);
-    document.body.style.overflow = 'auto'; 
+    }, 300);
+    document.body.style.overflow = '';
 }
 
 /**
- * MAGICAL EFFECTS: Pixie Dust & Pop
+ * 4. KEYBOARD NAVIGATION (Lightbox & Carousel)
  */
-document.addEventListener('mousemove', function(e) {
-    const particlesPerStep = 3; 
-    for (let i = 0; i < particlesPerStep; i++) {
-        if (Math.random() > 0.4) continue;
-        const sparkle = document.createElement('div');
-        sparkle.className = 'sparkle-trail';
-        const size = Math.random() * 5 + 2;
-        sparkle.style.width = size + 'px';
-        sparkle.style.height = size + 'px';
-        sparkle.style.left = e.clientX + 'px';
-        sparkle.style.top = e.clientY + 'px';
-        const dx = (Math.random() - 0.5) * 50;
-        const dy = (Math.random() * 30) + 10; 
-        sparkle.style.setProperty('--dx', `${dx}px`);
-        sparkle.style.setProperty('--dy', `${dy}px`);
-        const glowColors = ['#d4af37', '#e5c687', '#ffffff', '#f1d38e'];
-        const color = glowColors[Math.floor(Math.random() * glowColors.length)];
-        sparkle.style.setProperty('--glow', color);
-        sparkle.style.background = color;
-        document.body.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 1500);
+document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    const isLightboxOpen = lightbox && lightbox.classList.contains('active');
+
+    if (isLightboxOpen) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowRight') {
+            navigateLightbox(1);
+        } else if (e.key === 'ArrowLeft') {
+            navigateLightbox(-1);
+        }
     }
 });
 
-document.addEventListener('mousedown', function(e) {
-    const particleCount = 20;
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'magical-pop';
-        particle.style.left = e.clientX + 'px';
-        particle.style.top = e.clientY + 'px';
-        const angle = Math.random() * Math.PI * 2;
-        const distance = 60 + Math.random() * 100;
-        const tx = Math.cos(angle) * distance;
-        const ty = Math.sin(angle) * distance;
-        particle.style.setProperty('--tx', `${tx}px`);
-        particle.style.setProperty('--ty', `${ty}px`);
-        const colors = ['#e5c687', '#d4af37', '#ffffff', '#f1d38e'];
-        particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-        document.body.appendChild(particle);
-        setTimeout(() => particle.remove(), 800);
-    }
-});
-
-function handleSecureMail() {
-    const secureElements = document.querySelectorAll('.secure-mail');
-    const secureButtons = document.querySelectorAll('.secure-mail-btn');
-    const getAddress = (el) => {
-        const user = el.getAttribute('data-user');
-        const domain = el.getAttribute('data-domain');
-        return `${user}@${domain}`;
-    };
-    secureElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            el.innerText = getAddress(el);
-        }, { once: true });
-        el.addEventListener('click', () => {
-            const address = getAddress(el);
-            window.location.href = `mailto:${address}`;
-        });
-    });
-    secureButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const address = getAddress(btn);
-            const subject = btn.getAttribute('data-subject') || 'Inquiry';
-            window.location.href = `mailto:${address}?subject=${encodeURIComponent(subject)}`;
-        });
-    });
-}
-
-// Run both setup scripts when the page finishes loading
-window.onload = function() {
-    handleSecureMail();
+/**
+ * 5. INITIALIZE ON DOM READY
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    initializeNavigation();
     initializeGallery();
-};
+});
